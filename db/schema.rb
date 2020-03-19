@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_025058) do
+ActiveRecord::Schema.define(version: 2019_08_27_231242) do
 
-  create_table "messages", force: :cascade do |t|
-    t.text "content"
+  create_table "interactions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "room"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sequence"
+    t.string "type"
+    t.text "content"
+    t.datetime "date"
+    t.integer "interaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interaction_id"], name: "index_messages_on_interaction_id"
   end
 
 end
