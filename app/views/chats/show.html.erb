@@ -1,0 +1,26 @@
+<div class="container" align="center">
+    <h1 class="title">Bate Papo</h1>
+
+    <div id="messages">
+        <%= render @messages %>
+    </div>
+
+    <input id="room" type="text" placeholder="Sala" />
+
+    <button onclick="connect()">
+        Conectar na Sala
+    </button>
+
+    <input type="text" placeholder="Mensagem" data-behavior="chat_speaker" />
+</div>
+
+<!--
+inscricao
+cable.js > chats.js#3 > chat_channel.rb#1
+
+envio
+chat.js#1 > chat.js#2 > chat_channel.rb#1 > message.rb#1 > chat_broadcast_job.rb#1
+
+resposta
+chat.js#1 > chat.js#2 > chat_channel.rb#1 > message.rb#1 > chat_broadcast_job.rb#1
+-->
