@@ -3,4 +3,13 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  get 'users/login', to: 'users#login'
+  post 'users/login', to: 'users#login'
+  get 'users/logout', to: 'users#logout'
+  
+  
+  
+  
 end
+
