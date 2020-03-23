@@ -1,0 +1,14 @@
+<%= form_with url: '/guest/users/login', local: true do %>
+
+  <input type="text" name="user[name]" />
+  <input type="text" name="user[password]" />
+
+  <button type="submit">
+      Entrar
+  </button>
+
+  <a href="<%= guest_sign_in_path %>">
+      Cadastre-se
+  </a>
+
+<% end %>

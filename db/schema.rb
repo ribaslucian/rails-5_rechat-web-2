@@ -13,23 +13,23 @@
 ActiveRecord::Schema.define(version: 2020_03_19_213830) do
 
   create_table "acronyms", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.string "data_refer", limit: 64
+    t.string "data_refer", limit: 64, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "interactions", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.json "user_sends"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
-    t.datetime "date"
+    t.text "content", null: false
+    t.datetime "date", null: false
     t.integer "sequence"
     t.integer "interaction_id"
     t.integer "type_acronym_id"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_213830) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "entity_name"
-    t.string "name"
-    t.string "password"
+    t.string "entity_name", null: false
+    t.string "name", null: false
+    t.string "password", null: false
+    t.integer "type_acronym_id", null: false
     t.integer "answer_1_acronym_id"
     t.integer "answer_2_acronym_id"
     t.integer "answer_3_acronym_id"
