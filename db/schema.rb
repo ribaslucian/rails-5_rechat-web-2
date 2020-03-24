@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 2020_03_19_213830) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
-    t.datetime "date", null: false
+    t.datetime "date_send", null: false
     t.integer "sequence"
     t.integer "interaction_id"
     t.integer "type_acronym_id"
     t.json "sent_users_id"
     t.json "answered_user_id"
-    t.integer "sent_user_id"
-    t.integer "received_user_id"
-    t.integer "father_message_id"
+    t.integer "origin_user_id"
+    t.integer "destiny_user_id"
+    t.integer "previous_message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["interaction_id"], name: "index_messages_on_interaction_id"
