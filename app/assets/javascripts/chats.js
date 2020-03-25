@@ -3,7 +3,7 @@ function connect(origin_user_id) {
 
     App.chat = App.cable.subscriptions.create({
         channel: "ChatChannel",
-        user_id: user_id,
+        user_id: origin_user_id,
     }, {
         connected: function () {
         },
@@ -14,12 +14,10 @@ function connect(origin_user_id) {
         },
         // 2
         speak: function (message) {
-            alert($('#destiny_user_id').val());
-            return;
             return this.perform('speak', {
                 origin_user_id: origin_user_id,
                 destiny_user_id: $('#destiny_user_id').val(),
-                message: message,
+                content: message,
             });
         }
     });
