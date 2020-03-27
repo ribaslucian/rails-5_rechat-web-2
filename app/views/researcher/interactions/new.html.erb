@@ -1,0 +1,23 @@
+interactions add
+
+<%= form_with model: @interaction, url: new_researcher_interaction_path, local: true do |f| %>
+
+  <%= f.text_field :name %>
+
+  <div id="messages">
+      <%= f.fields_for :messages do |message| %>
+        <%= render 'message_fields', f: message %>
+      <% end %>
+
+
+      <div class="links">
+          <%= link_to_add_association 'Adicionar Mensagem'.html_safe, f, :messages %>
+          <br>
+      </div>
+  </div>
+
+  <a href="<%= guest_sign_in_path %>">
+      Salvar
+  </a>
+
+<% end %>

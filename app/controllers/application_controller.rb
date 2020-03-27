@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
     namespaces = controller_path.split('/')
     namespace = namespaces.first
     
-#    return d namespace
-    
     if namespace == 'guest' && session[:user] != nil
       redirect_to '/researcher'
     end
@@ -21,7 +19,6 @@ class ApplicationController < ActionController::Base
       flash[:red] = 'Você não está conectado.'
       redirect_to '/guest'
     end
-
   end
   
 end

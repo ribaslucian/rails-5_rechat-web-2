@@ -1,8 +1,7 @@
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-#  root to: 'chats#show'
+  root to: 'guest/users#login'
   mount ActionCable.server => '/cable'
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   
   namespace :guest do
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
     
     get 'users/logout', to: 'users#logout', as: :logout
     
-    post 'api/render', to: 'api#render'
+    resources :interactions
   end
   
 end
