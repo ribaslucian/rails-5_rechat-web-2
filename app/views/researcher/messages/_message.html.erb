@@ -1,5 +1,20 @@
-<div class="messages">
-    <%= message.origin_user.entity_name %>:
-    <%= message.content %>
-    <br/>
+<div class="messages" style="font-weight: bold;">
+
+    <div>
+        <%= message.origin_user.entity_name %>
+    </div>
+
+    <div style="
+         font-family: 'Roboto';
+         font-size: 12px;
+         line-height: 20px;
+         font-weight: 500;
+         color: grey;
+         display: inline-block;
+         padding: 5px;
+         ">
+             <%= message.content %>
+    </div>
+
+    <hr/>
 </div>

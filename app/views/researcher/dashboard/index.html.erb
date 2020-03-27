@@ -1,8 +1,11 @@
-researcher
-dashboard
-index
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic);
+    @import url(https://zavoloklom.github.io/material-design-iconic-font/css/docs.md-iconic-font.min.css);
 
-<br/>
+    * {
+        font-family: 'Roboto';
+    }
+</style>
 
 <script>
   $(document).ready(function () {
@@ -11,23 +14,29 @@ index
 </script>
 
 <br/>
+<br/>
 
-<div class="container" align="center">
-    <h1 class="title">Bate Papo</h1>
-
+<div align="center">
     <div id="messages">
         <%= render @messages %>
     </div>
 
-    <input id="destiny_user_id" type="text" placeholder="ID do Usuário" />
-    <input type="text" placeholder="Mensagem" data-behavior="chat_speaker" />
+    <br/>
+
+    <div>
+        <input id="destiny_user_id" type="text" placeholder="ID do Usuário" />
+    </div>
+
+    <div>
+        <input type="text" placeholder="Mensagem" data-behavior="chat_speaker" />
+    </div>
+
+    <br/>
+
+    <a href="<%= researcher_logout_path %>">
+        Logout
+    </a>
 </div>
-
-<br/>
-
-<a href="<%= researcher_logout_path %>">
-    Logout
-</a>
 
 <!--
 inscricao
