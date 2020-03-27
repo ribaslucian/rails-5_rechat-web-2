@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get 'dashboard/index', to: 'dashboard#index'
     
     get 'users/logout', to: 'users#logout', as: :logout
+    
+    post 'api/render', to: 'api#render'
   end
   
 end
