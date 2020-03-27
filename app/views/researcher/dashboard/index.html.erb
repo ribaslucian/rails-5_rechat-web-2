@@ -4,7 +4,11 @@ index
 
 <br/>
 
-
+<script>
+  $(document).ready(function () {
+      connect(<%= session[:user]['id'] %>)
+  })
+</script>
 
 <br/>
 
@@ -16,11 +20,6 @@ index
     </div>
 
     <input id="destiny_user_id" type="text" placeholder="ID do Usuário" />
-
-    <button onclick="connect(<%= session[:user]['id'] %>)">
-        Conectar na Sala
-    </button>
-
     <input type="text" placeholder="Mensagem" data-behavior="chat_speaker" />
 </div>
 
