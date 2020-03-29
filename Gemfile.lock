@@ -157,6 +157,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    semantic-ui-sass (2.4.2.0)
+      sass (>= 3.2)
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -210,6 +212,7 @@ DEPENDENCIES
   rails-erd
   sass-rails (~> 5.0)
   selenium-webdriver
+  semantic-ui-sass
   simple_form
   sqlite3-ruby
   turbolinks (~> 5)

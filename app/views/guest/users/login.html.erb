@@ -1,14 +1,68 @@
-<%= form_with url: '/guest/users/login', local: true do %>
+<style>
+    body {
+        background-color: #333;
+    }
 
-  <input type="text" name="user[name]" />
-  <input type="text" name="user[password]" />
+    body > .grid {
+        height: 100%;
+    }
+    .image {
+        margin-top: -100px;
+    }
+    .column {
+        max-width: 450px;
+    }
 
-  <button type="submit">
-      Entrar
-  </button>
+    .ui.segment {
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 8px;
+    }
+</style>
 
-  <a href="<%= guest_sign_in_path %>">
-      Cadastre-se
-  </a>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="ui very padded segment">
+            <h1 class="ui image header">
+                <b>WhatsApp Simulator</b>
+            </h1>
 
-<% end %>
+            <br/>
+            <br/>
+            <br/>
+
+            <%= form_with url: '/guest/users/login', class: 'ui big form', local: true do %>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="user[name]" placeholder="Nome de usuário" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="user[password]" placeholder="Senha" />
+                    </div>
+                </div>
+
+                <br/>
+
+                <button class="ui big center blue button" type="submit">
+                    Entrar
+                </button>
+              <% end %>
+
+          </div>
+
+
+          <br/>
+          <div class="ui divider fitted" style="width: 70%; margin: 0px auto;"></div>
+          <br/>
+
+          <a href="<%= guest_sign_in_path %>" class="ui big black button">
+              Cadastre-se
+          </a>
+      </div>
+  </div>
+

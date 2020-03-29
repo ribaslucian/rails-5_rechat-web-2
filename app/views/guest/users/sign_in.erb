@@ -1,34 +1,35 @@
-<%= form_with(model: @user, url: '/guest/users/sign_in', method: 'post', local: true) do |f| %>
+<div class="ui segment">
+    <%= form_with(model: @user, url: '/guest/users/sign_in', method: 'post', local: true) do |f| %>
+      <div>
+          <%= f.label(:entity_name, 'Nome:') %>
+          <%= f.text_field(:entity_name) %>
+      </div>
 
-  <div>
-      <%= f.label(:entity_name, 'Nome:') %>
-      <%= f.text_field(:entity_name) %>
-  </div>
+      <br/>
 
-  <br/>
+      <div>
+          <%= f.label(:name, 'Nome de usuário:') %>
+          <%= f.text_field(:name) %>
+      </div>
 
-  <div>
-      <%= f.label(:name, 'Nome de usuário:') %>
-      <%= f.text_field(:name) %>
-  </div>
+      <br/>
 
-  <br/>
+      <div>
+          <%= f.label(:password, 'Senha:') %>
+          <%= f.text_field(:password) %>
+      </div>
 
-  <div>
-      <%= f.label(:password, 'Senha:') %>
-      <%= f.text_field(:password) %>
-  </div>
+      <br/>
 
-  <br/>
+      <div>
+          <%= f.label(:type_acronym_id, 'Tipo de usuário:') %>
+          <%= f.text_field(:type_acronym_id) %>
+      </div>
 
-  <div>
-      <%= f.label(:type_acronym_id, 'Tipo de usuário:') %>
-      <%= f.text_field(:type_acronym_id) %>
-  </div>
+      <br/>
 
-  <br/>
-
-  <button type="submit">
-      Cadastrar
-  </button>
-<% end %>
+      <button type="submit" class="ui button">
+          Cadastrar
+      </button>
+    <% end %>
+</div>
