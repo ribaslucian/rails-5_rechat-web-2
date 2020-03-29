@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_213830) do
   create_table "interactions", force: :cascade do |t|
     t.string "name", null: false
     t.json "user_sends"
+    t.integer "type_acronym_id", null: false
+    t.integer "schedule_acronym_id", null: false
+    t.integer "number_schedule_acronym_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

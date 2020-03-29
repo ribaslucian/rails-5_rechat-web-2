@@ -1,8 +1,25 @@
 interactions new
 
+<br/><br/>
+
 <%= form_with model: @interaction, url: new_researcher_interaction_path, local: true do |f| %>
 
+  <%= f.label :name %>
   <%= f.text_field :name %>
+
+  <br/>
+  <%= f.label :type_acronym_id %>
+  <%= f.text_field :type_acronym_id %>
+
+  <br/>
+  <%= f.label :schedule %>
+  <%= f.text_field :schedule, value: 'Diário' %>
+
+  <br/>
+  <%= f.label :number_schedule %>
+  <%= f.text_field :number_schedule, value: '13' %>
+  
+  <br/><br/>
 
   <div id="messages">
       <%= f.fields_for :messages do |message| %>
@@ -14,6 +31,8 @@ interactions new
       </div>
   </div>
 
+  <br/>
+  
   <a href="<%= guest_sign_in_path %>">
       Salvar
   </a>

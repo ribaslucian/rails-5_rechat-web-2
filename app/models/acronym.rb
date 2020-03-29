@@ -1,3 +1,36 @@
 class Acronym < ApplicationRecord
   
+  def self.seeds
+    self.delete_all
+    
+    Acronym.create!([
+
+      # 1..
+      {id: 1, name: 'Mensagem de Controle', data_refer: 'messages.type'},
+      {id: 2, name: 'Mensagem de Alvo', data_refer: 'messages.type'},
+      {id: 3, name: 'Resposta de Controle', data_refer: 'messages.type'},
+      {id: 4, name: 'Resposta Alvo', data_refer: 'messages.type'},
+
+      # 100... 
+      {id: 100, name: 'Pergunta 01', data_refer: 'users.answer'},
+      {id: 101, name: 'Pergunta 02', data_refer: 'users.answer'},
+      {id: 102, name: 'Pergunta 03', data_refer: 'users.answer'},
+
+      # 200... 
+      {id: 200, name: 'Pesquisador', data_refer: 'users.type'},
+      {id: 201, name: 'Voluntário', data_refer: 'users.type'},
+
+      # 300... 
+      {id: 300, name: 'Interação de Controle', data_refer: 'interactions.type'},
+      {id: 301, name: 'Interação Questionário', data_refer: 'interactions.type'},
+
+      # 400... 
+      {id: 400, name: 'Diário', data_refer: 'interactions.schedule'},
+
+      # 500...
+      {id: 500, name: 'Horá do Dia', data_refer: 'interactions.number_schedule'},
+    ])
+
+  end
+  
 end
