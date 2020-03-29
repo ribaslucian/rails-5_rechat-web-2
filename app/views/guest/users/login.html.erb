@@ -18,6 +18,10 @@
         box-shadow: none !important;
         border-radius: 8px;
     }
+    
+    input {
+        padding: 15px !important;
+    }
 </style>
 
 <div class="ui middle aligned center aligned grid">
@@ -31,7 +35,7 @@
             <br/>
             <br/>
 
-            <%= form_with url: '/guest/users/login', class: 'ui big form', local: true do %>
+            <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
