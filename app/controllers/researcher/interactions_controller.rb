@@ -5,6 +5,9 @@ class Researcher::InteractionsController < ApplicationController
   
   def new
     @interaction = Interaction.new
+    @interaction.messages.build
+    
+#    return d @interaction.messages
   end
   
 end

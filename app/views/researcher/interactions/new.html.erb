@@ -1,4 +1,4 @@
-interactions add
+interactions new
 
 <%= form_with model: @interaction, url: new_researcher_interaction_path, local: true do |f| %>
 
@@ -9,10 +9,8 @@ interactions add
         <%= render 'message_fields', f: message %>
       <% end %>
 
-
       <div class="links">
           <%= link_to_add_association 'Adicionar Mensagem'.html_safe, f, :messages %>
-          <br>
       </div>
   </div>
 

@@ -1,2 +1,9 @@
-<%= f.text_field(:type_acronym_id) %>
-<%= f.text_field(:content) %>
+<div class="nested-fields">
+  <%= f.label(:type_acronym_id) %>
+  <%= f.text_field(:type_acronym_id) %>
+
+  <%= f.label(:content) %>
+  <%= f.text_field(:content) %>
+
+  <%= link_to_remove_association 'Remover', f %>
+</div>

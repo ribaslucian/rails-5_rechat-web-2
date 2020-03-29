@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MyChat</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>MyChat</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= yield %>
-    
-    <br/>
-    <br/>
-    <hr/>
-    
-    <%= User.all.inspect %>
-    
-    <br/>
-    <br/>
-    
-    <%= Message.all.inspect %>
-    
-  </body>
+    <body>
+
+        <% if session[:user] %>
+          <% if session[:user]['type_acronym_id'] == 200 %>
+            <div>
+                Menu Researcher: <br/>
+
+                <a href="<%= researcher_dashboard_index_path %>">
+                    Dashboard
+                </a>
+
+                <a href="<%= researcher_interactions_path %>">
+                    Interações
+                </a>
+
+                <a href="<%= researcher_logout_path %>">
+                    Sair
+                </a>
+            </div>
+          <% end %>
+
+          <% if session[:user]['type_acronym_id'] == 201 %>
+            <div>
+                Menu Researcher: <br/>
+
+                <a href="<%= researcher_dashboard_index_path %>">
+                    Dashboard
+                </a>
+
+                <a href="<%= researcher_logout_path %>">
+                    Sair
+                </a>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%= yield %>
+
+        <br/>
+        <br/>
+        <hr/>
+
+        <%= User.all.inspect %>
+
+        <br/>
+        <br/>
+
+        <%= Message.all.inspect %>
+
+    </body>
 </html>
