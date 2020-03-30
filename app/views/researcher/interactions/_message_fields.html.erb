@@ -1,9 +1,24 @@
 <div class="nested-fields">
-  <%= f.label(:type_acronym_id) %>
-  <%= f.text_field(:type_acronym_id) %>
+    <div class="four fields">
+        <div class="two wide field" style="padding-top: 23px;">
+            <%= link_to_remove_association f, class: 'ui button ws-center fluid' do %>
+                Remover
+              <% end %>
+          </div>
 
-  <%= f.label(:content) %>
-  <%= f.text_field(:content) %>
+          <div class="field">
+              <%= f.label :type_acronym_id, 'Tipo da Mensagem:' %>
+              <%= f.text_field :type_acronym_id, value: 'Controle' %>
+          </div>
 
-  <%= link_to_remove_association 'Remover', f %>
-</div>
+          <div class="field">
+              <%= f.label :type_content_acronym_id, 'Tipo de Conteúdo' %>
+              <%= f.text_field :type_content_acronym_id, value: 'Texto' %>
+          </div>
+
+          <div class="six wide field">
+              <%= f.label :content, 'Conteúdo:' %>
+              <%= f.text_field :content %>
+          </div>
+      </div>
+  </div>

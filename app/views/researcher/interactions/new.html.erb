@@ -1,40 +1,69 @@
-interactions new
-
 <br/><br/>
 
-<%= form_with model: @interaction, url: new_researcher_interaction_path, local: true do |f| %>
+<%#*<div class="ui three columns grid centered">%>
+<%#*<div class="column">%>
+<div class="ui segment basic very padded center align">
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <h1 class="ui header centered align">
+        <b>Nova Interação</b>
+    </h1>
 
-  <br/>
-  <%= f.label :type_acronym_id %>
-  <%= f.text_field :type_acronym_id %>
+    <br/>
 
-  <br/>
-  <%= f.label :schedule %>
-  <%= f.text_field :schedule, value: 'Diário' %>
+    <%= form_with model: @interaction, url: new_researcher_interaction_path, local: true, class: 'ui form' do |f| %>
 
-  <br/>
-  <%= f.label :number_schedule %>
-  <%= f.text_field :number_schedule, value: '13' %>
-  
-  <br/><br/>
+        <div class="ui three columns grid centered">
+            <div class="column">
+                <div class="field">
+                    <%= f.label :name, 'Título:' %>
+                    <%= f.text_field :name %>
+                </div>
 
-  <div id="messages">
-      <%= f.fields_for :messages do |message| %>
-        <%= render 'message_fields', f: message %>
-      <% end %>
+                <div class="field">
 
-      <div class="links">
-          <%= link_to_add_association 'Adicionar Mensagem'.html_safe, f, :messages %>
-      </div>
-  </div>
+                    <%= f.label :type_acronym_id, 'Tipo:' %>
+                    <%= f.text_field :type_acronym_id %>
+                </div>
 
-  <br/>
-  
-  <a href="<%= guest_sign_in_path %>">
-      Salvar
-  </a>
+                <div class="field">
+                    <%= f.label :schedule, 'Programação' %>
+                    <%= f.text_field :schedule, value: 'Diário' %>
+                </div>
 
-<% end %>
+                <div class="field">
+                    <%= f.label :number_schedule, 'Horário' %>
+                    <%= f.text_field :number_schedule, value: '13' %>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui segment very padded basic">
+            <h3 class="ui header">
+                <b>Mensagens</b>
+            </h3>
+
+            <div class="ui divider fitted"></div>
+            <br/>
+
+            <div id="messages">
+                <%= f.fields_for :messages do |message| %>
+                  <%= render 'message_fields', f: message %>
+                <% end %>
+
+                <div class="links" style="width: 11%; margin-top: 30px;">
+                    <%= link_to_add_association 'Adicionar', f, :messages, class: 'ui button blue ws-center' %>
+                  </div>
+              </div>
+
+              <br/>
+              <br/>
+              <div class="ui divider fitted"></div>
+              <br/>
+
+              <button href="<%= guest_sign_in_path %>" class="ui huge button ws-center black">
+                  Salvar
+              </button>
+
+            <% end %>
+        </div>

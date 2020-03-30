@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MyChat</title>
+        <title>WhatsApp Simulator</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
 
+
         <%= stylesheet_link_tag 'application', media: 'all' %>
         <%= javascript_include_tag 'application' %>
+
     </head>
 
     <body>
-
         <% if session[:user] %>
-          <% if session[:user]['type_acronym_id'] == 200 %>
-            <div>
-                Menu Researcher: <br/>
-
-                <a href="<%= researcher_dashboard_index_path %>">
-                    Dashboard
-                </a>
-
-                <a href="<%= researcher_interactions_path %>">
-                    Interações
-                </a>
-
-                <a href="<%= researcher_logout_path %>">
-                    Sair
-                </a>
-            </div>
-          <% end %>
-
-          <% if session[:user]['type_acronym_id'] == 201 %>
-            <div>
-                Menu Researcher: <br/>
-
-                <a href="<%= researcher_dashboard_index_path %>">
-                    Dashboard
-                </a>
-
-                <a href="<%= researcher_logout_path %>">
-                    Sair
-                </a>
-            </div>
-          <% end %>
+          <%= render "layouts/menus/#{session[:user]['type_acronym_id']}" %>
+          <style>
+              html, body {
+                  background: #f4f4f4;
+              }
+          </style>
         <% end %>
 
-        <%= yield %>
+        <div class="ui main container">
+            <%= yield %>
+        </div>
 
+        <br/>
+        <br/>
+
+        <input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+
+        <script type="text/javascript">
+          function showAndroidToast(toast) {
+              Android.showToast(toast);
+          }
+        </script>
+
+
+        <br/><br/><br/>
     </body>
 </html>

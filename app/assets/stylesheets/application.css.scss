@@ -21,3 +21,13 @@
 *:not(.icon) {
     font-family: 'Roboto';
 }
+
+.ui.basic.segment {
+    background: white;
+    border-radius: 8px;
+}
+
+.ws-center {
+    display: table !important;
+    margin: 0px auto !important;
+}
