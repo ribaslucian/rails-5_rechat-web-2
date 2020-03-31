@@ -10,8 +10,8 @@
 
 
         <%= stylesheet_link_tag 'application', media: 'all' %>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <%= javascript_include_tag 'application' %>
-
     </head>
 
     <body>
@@ -28,10 +28,14 @@
             <%= yield %>
         </div>
 
+        <div class="ws-loading-global ui active dimmer active">
+            <div class="ui loader"></div>
+        </div>
+
         <br/>
         <br/>
 
-        <input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+<%#*<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />%>
 
         <script type="text/javascript">
           function showAndroidToast(toast) {

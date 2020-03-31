@@ -19,7 +19,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic);
 
 *:not(.icon) {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .ui.basic.segment {
@@ -30,4 +30,23 @@
 .ws-center {
     display: table !important;
     margin: 0px auto !important;
+}
+
+.ws-loading-global {
+    z-index: 99999999 !important;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    /*display: none;*/
+}
+
+.ws-center-xy {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
 }

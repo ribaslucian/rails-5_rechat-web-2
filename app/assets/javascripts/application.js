@@ -13,7 +13,14 @@
 //= require rails-ujs
 //= require jquery
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require cocoon
 //= require semantic-ui
+
+$(document).ready(function () {
+    $('.ws-loading-global').fadeOut();
+});
+
+$(window).on('beforeunload', function(){
+    $('.ws-loading-global').fadeIn();
+});

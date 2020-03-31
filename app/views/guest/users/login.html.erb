@@ -3,64 +3,66 @@
         background-color: #333;
     }
 
-    .ui.segment {
-        border: none !important;
-        box-shadow: none !important;
+    .ui.basic.segment {
         border-radius: 8px;
     }
-    
+
     input {
         padding: 15px !important;
     }
 </style>
 
-<br/><br/><br/>
-<br/><br/><br/>
-<br/><br/><br/>
-
-<div class="ui middle aligned center aligned three column grid stackable">
-    <div class="six wide column">
-        <div class="ui very padded segment">
-            <h1 class="ui image header">
-                <b>WhatsApp Simulator</b>
-            </h1>
-
-            <br/>
-            <br/>
-            <br/>
-
-            <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="user[name]" placeholder="Nome de usuário" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="user[password]" placeholder="Senha" />
-                    </div>
-                </div>
+<div class="ws-center-xy">
+    <div class="ui middle aligned center aligned three column grid stackable">
+        <div class="five wide column">
+            <div class="ui very padded basic segment">
+                
+                <img
+                    width="100"
+                    class="ws-center"
+                    src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-ai-color/64/scientist-researcher-technologist-data-analysis-512.png"
+                    />
+                
+                <h1 class="ui image header" style="margin-top: 10px">
+                    <b>Chat Researcher</b>
+                </h1>
 
                 <br/>
+                <br/>
 
-                <button class="ui big center blue button" type="submit">
-                    Entrar
-                </button>
-              <% end %>
+                <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="user[name]" placeholder="Nome de usuário" />
+                        </div>
+                    </div>
 
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="user[password]" placeholder="Senha" />
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <button class="ui big center blue button" type="submit">
+                        Entrar
+                    </button>
+                  <% end %>
+
+              </div>
+
+
+              <br/>
+              <div class="ui divider fitted" style="width: 70%; margin: 0px auto;"></div>
+              <br/>
+
+              <a href="<%= guest_sign_in_path %>" class="ui big black button">
+                  Cadastre-se
+              </a>
           </div>
-
-
-          <br/>
-          <div class="ui divider fitted" style="width: 70%; margin: 0px auto;"></div>
-          <br/>
-
-          <a href="<%= guest_sign_in_path %>" class="ui big black button">
-              Cadastre-se
-          </a>
       </div>
   </div>
 
