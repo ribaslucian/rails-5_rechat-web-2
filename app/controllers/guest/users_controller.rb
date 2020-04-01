@@ -2,15 +2,18 @@ class Guest::UsersController < ApplicationController
 
   def login
     
-    
     if request.post?
-      
       user = User.find_by(name: params[:user][:name], password: params[:user][:password])
       
       if user
         session[:user] = user
         redirect_to '/researcher/dashboard/index'
       end
+      
+      flash[:black] = {
+        title: 'Credencial Inválida',
+        content: 'Não foi encontrado a combinação usuário e senha informado.',
+      }
     end
   end
 

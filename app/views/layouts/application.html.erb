@@ -31,6 +31,8 @@
             <%= yield %>
         </div>
 
+        <%= render 'layouts/alerts/black' if flash[:black] %>
+
         <div class="ws-loading-global ui active dimmer active">
             <div class="ui loader"></div>
         </div>
@@ -39,34 +41,11 @@
         <br/>
 
 <%#*<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />%>
-        
-        <style>
-            .jq-toast-single {
-                padding: 15px 20px;
-                border-radius: 6px;
-                border: 2px solid #c9ba9b;
-            }
-        </style>
 
         <script type="text/javascript">
           function showAndroidToast(toast) {
               Android.showToast(toast);
           }
-
-          $(document).ready(function () {
-              $.toast({
-                  heading: 'Credencial Inválida',
-                  text: 'Não foi encontrado a combinação usuário e senha informado.',
-                  position: 'top-center',
-                  // icon: 'warning',
-                  hideAfter: 5000,
-                  showHideTransition: 'fade',
-                  bgColor: '#fffaf3',
-                  textColor: '#8e6628',
-                  loaderBg: '#c9ba9b'
-                  // allowToastClose: true
-              });
-          })
         </script>
 
 
