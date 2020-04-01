@@ -18,9 +18,21 @@
 //= require semantic-ui
 
 $(document).ready(function () {
+    $('.dropdown').dropdown();
+
+    certer_content_visible();
     $('.ws-loading-global').fadeOut();
 });
 
-$(window).on('beforeunload', function(){
+$(window).on('beforeunload', function () {
     $('.ws-loading-global').fadeIn();
 });
+
+function certer_content_visible() {
+    var content_visible = $('#content-visible').height();
+    var body = $('body').height();
+
+    if (content_visible < body) {
+        $('#content-center').addClass('ws-center-absolute-y')
+    }
+}

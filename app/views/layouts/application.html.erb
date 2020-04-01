@@ -18,17 +18,21 @@
     </head>
 
     <body>
-        <% if session[:user] %>
-          <%= render "layouts/menus/#{session[:user]['type_acronym_id']}" %>
-          <style>
-              html, body {
-                  background: #f4f4f4;
-              }
-          </style>
-        <% end %>
+        <div id="content-visible">
+            <% if session[:user] %>
+              <%= render "layouts/menus/#{session[:user]['type_acronym_id']}" %>
+              <style>
+                  html, body {
+                      background: #f4f4f4;
+                  }
+              </style>
+            <% end %>
 
-        <div class="ui main container">
-            <%= yield %>
+            <div id="content-center">
+                <div class="ui main container">
+                    <%= yield %>
+                </div>
+            </div>
         </div>
 
         <%= render 'layouts/alerts/black' if flash[:black] %>
