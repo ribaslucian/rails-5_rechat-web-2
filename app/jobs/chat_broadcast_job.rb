@@ -5,8 +5,13 @@ class ChatBroadcastJob < ApplicationJob
   def perform(message)
     html = render_message(message)
     
-    ActionCable.server.broadcast "chat_user_id_#{message.origin_user_id}", message: html
-    ActionCable.server.broadcast "chat_user_id_#{message.destiny_user_id}", message: html
+    ActionCable.server.broadcast "chat_user_id_#{message.origin_user_id}",
+      message_html: html,
+      message_record: message
+    
+    ActionCable.server.broadcast "chat_user_id_#{message.destiny_user_id}",
+      message_html: html,
+      message_record: message
   end
 
   private

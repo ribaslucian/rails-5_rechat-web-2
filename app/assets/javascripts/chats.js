@@ -10,7 +10,7 @@ function connect(origin_user_id) {
         disconnected: function () {
         },
         received: function (data) {
-            return $('#messages').append(data['message']);
+            return $('#messages').append(data['message_html']);
         },
         // 2
         speak: function (message) {
