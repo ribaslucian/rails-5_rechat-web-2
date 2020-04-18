@@ -10,33 +10,51 @@
 
     <br/>
 
-    <%= form_with model: @interaction, url: new_researcher_interaction_path, local: true, class: 'ui form' do |f| %>
+    <%= form_with model: @interaction, url: researcher_interactions_path, local: true, class: 'ui form' do |f| %>
 
-        <div class="ui three columns grid centered">
+    <div class="ui three columns grid centered">
             <div class="column">
                 <div class="field">
                     <%= f.label :name, 'Título:' %>
                     <%= f.text_field :name %>
                 </div>
 
-                <div class="field">
+                <div class="field disabled">
+                    <label>Tipo:</label>
+                    
+                    <p style="font-size: 90%;">
+                      Será possível escolhar entre interações do tipo "Conversa" ou "Questionário".
+                    </p>
+                    <input value="Conversa" disabled />
+                </div>
+                
+                <br/>
+                <div class="ui divider fitted"></div>
+                <br/>
 
-                    <%= f.label :type_acronym_id, 'Tipo:' %>
-                    <%= f.text_field :type_acronym_id %>
+                <div class="field disabled">
+                    <label>Programação:</label>
+                    
+                    <p style="font-size: 90%;">
+                      A programação se tornará uma lista adicionável como as mensagens da interação.
+                      Mas nessa versão será disponibilizado apenas a opção "Diária".
+                    </p>
+                    
+                    <input value="Diário" disabled />
                 </div>
 
                 <div class="field">
-                    <%= f.label :schedule, 'Programação' %>
-                    <%= f.text_field :schedule, value: 'Diário' %>
-                </div>
+                    <%= f.label :number_schedule, 'Horários (de 00 até 23):' %>
 
-                <div class="field">
-                    <%= f.label :number_schedule, 'Horário' %>
+                    <p style="font-size: 90%; color: grey;">
+                      Nessa versão é possível efetuar um agendamento
+                      somente para uma horá específica, válida todo dia.
+                    </p>
+
                     <%= f.text_field :number_schedule, value: '13' %>
                 </div>
             </div>
         </div>
-
 
         <div class="ui segment very padded basic">
             <h3 class="ui header">

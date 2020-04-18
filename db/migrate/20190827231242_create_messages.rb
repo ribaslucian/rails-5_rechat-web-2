@@ -14,6 +14,10 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.json :sent_users_id       # usuarios que mensagem da interacao ja foi enviada
       t.json :answered_user_id    # usuarios que responderam essa mensagem de interacao
       
+      # para mensagens multi-midia
+      t.integer :type_content_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.:type_content'}, default: 50
+      t.string :url
+      
       ## mensagens de chats
       # saber quem enviou e quem respondeu
       t.integer :origin_user_id, foreign_key: {to_table: :users,    name: 'rule_fk:messages.origin_user'}

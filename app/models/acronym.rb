@@ -10,6 +10,12 @@ class Acronym < ApplicationRecord
       {id: 2, name: 'Mensagem de Alvo', data_refer: 'messages.type'},
       {id: 3, name: 'Resposta de Controle', data_refer: 'messages.type'},
       {id: 4, name: 'Resposta Alvo', data_refer: 'messages.type'},
+      
+      # 50...
+      {id: 50, name: 'Textual', data_refer: 'messages.type_content'},
+      {id: 51, name: 'Imagem', data_refer: 'messages.type_content'},
+      {id: 52, name: 'Vídeo', data_refer: 'messages.type_content'},
+      {id: 53, name: 'Áudio', data_refer: 'messages.type_content'},
 
       # 100... 
       {id: 100, name: 'Pergunta 01', data_refer: 'users.answer'},
@@ -21,11 +27,12 @@ class Acronym < ApplicationRecord
       {id: 201, name: 'Voluntário', data_refer: 'users.type'},
 
       # 300... 
-      {id: 300, name: 'Interação de Controle', data_refer: 'interactions.type'},
-      {id: 301, name: 'Interação Questionário', data_refer: 'interactions.type'},
+      {id: 300, name: 'Conversa', data_refer: 'interactions.type'},
+      {id: 301, name: 'Questionário', data_refer: 'interactions.type'},
 
       # 400... 
       {id: 400, name: 'Diário', data_refer: 'interactions.schedule'},
+      {id: 401, name: 'Semanal', data_refer: 'interactions.schedule'},
 
       # 500...
       {id: 500, name: 'Horá do Dia', data_refer: 'interactions.number_schedule'},

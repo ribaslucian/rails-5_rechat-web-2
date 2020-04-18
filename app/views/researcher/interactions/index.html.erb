@@ -1,13 +1,81 @@
-interactions index
-
 <br/>
 
-<a href="<%= new_researcher_interaction_path %>">
-    New
-</a>
+<h1 class="ui header">
+<%#*<i class="home icon"></i>%>
+
+    <span class="material-icons" style="font-size: 50px;">library_books</span>
+
+    <div class="content" style="position: relative; bottom: -5px">
+        Interações
+    </div>
+</h1>
 
 
-<br/>
-<br/>
 
-<%= Interaction.all.inspect %>
+<div class="ui fitted divider"></div>
+
+<table class="ui table selectable very basic large">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Tipo</th>
+            <th>Programação</th>
+            <th>Horário</th>
+            <th>Total Mensagens</th>
+            <th class="collapsing">
+                <div class="ui button icon" modal="modal_entities_search">
+                    <i class="icon search"></i>
+                </div>
+
+                <%= link_to new_researcher_interaction_path, class: 'ui icon blue button' do %>
+                    <i class="add icon"></i>
+                  <% end %>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @interactions.each do |i| %>
+            <tr>
+                <td>
+                    <%= i.id %>
+                </td>
+
+                <td>
+                    <%= i.name %>
+                </td>
+
+                <td>
+                    <%= Acronym.select(:name).find(i.schedule_acronym_id).name %>
+                </td>
+
+                <td>
+                    <%= i.number_schedule %>
+                </td>
+
+                <td>
+                    <% i.messages.each do |m| %>
+                      <div>
+                          <%= Acronym.select(:name).find(m.type_acronym_id).name %>
+                          --- 
+                          <%= m.content %>
+                      </div>
+                    <% end %>
+                </td>
+
+                <td>
+                    <div class="ui dropdown ws-center">
+                        <i class="icon ellipsis vertical grey"></i>
+                        <div class="menu">
+    <%#*<a href="<%= transfers_index_path search: true, origin_entity_id: e.id %" class="item" target="_blank">%>
+                            <a href="#" class="item" target="_blank">
+                                <i class="icon exchange blue"></i>
+                                Transações
+                            </a>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+          <% end %>
+      </tbody>
+  </table>

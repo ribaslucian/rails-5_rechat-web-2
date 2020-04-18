@@ -7,18 +7,32 @@
           </div>
 
           <div class="field">
-              <%= f.label :type_acronym_id, 'Tipo da Mensagem:' %>
-              <%= f.text_field :type_acronym_id, value: 'Controle' %>
+              <%= f.label :type_acronym_id, 'Tipo da mensagem:' %>
+
+              <%= f.select :type_acronym_id,
+                options_for_select(
+                Acronym.select(:id, :name).where('id = 1 OR id = 2').map { |a| [a.name, a.id] },
+                f.object.type_acronym_id
+                ) %>
+
+              <%= f.error_message_for :type_acronym_id %>
           </div>
 
-          <div class="field">
-              <%= f.label :type_content_acronym_id, 'Tipo de Conteúdo' %>
-              <%= f.text_field :type_content_acronym_id, value: 'Texto' %>
+          <div class="field disabled">
+              <label>Tipo de Conteúdo:</label>
+              
+              <p style="font-size: 90%; color: grey;">
+                Nessa atualização é possível criar mensagens de interação 
+                somente do tipo textual. Tipos de mídia como imagem serão
+                liberadas em breve.
+              </p>
+              
+              <input value="Textual" disabled />
           </div>
 
           <div class="six wide field">
               <%= f.label :content, 'Conteúdo:' %>
-              <%= f.text_field :content %>
+              <%= f.text_area :content, rows: 6 %>
           </div>
       </div>
   </div>
