@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
+    
+    
+#    flash[:blue] = 'verifique o formulário'
+    
+    
     namespaces = controller_path.split('/')
     namespace = namespaces.first
     

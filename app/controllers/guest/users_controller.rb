@@ -7,13 +7,10 @@ class Guest::UsersController < ApplicationController
       
       if user
         session[:user] = user
-        redirect_to '/researcher/dashboard/index'
+        return redirect_to '/researcher/dashboard/index'
       end
       
-      flash[:black] = {
-        title: 'Credencial Inválida',
-        content: 'Não foi encontrado a combinação usuário e senha informado.',
-      }
+      flash[:orange] = 'Não foi encontrado a combinação usuário e senha informado.'
     end
   end
 
@@ -27,8 +24,11 @@ class Guest::UsersController < ApplicationController
     
     if request.post?
       if @user.save
-        redirect_to '/guest/users/login'
+        flash[:green] = 'Usuário criato com sucesso.'
+        return redirect_to '/guest/users/login'
       end
+    
+      flash[:red] = 'Verifique o formulário e tente novamente.'
     end
   end
 

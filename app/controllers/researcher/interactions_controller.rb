@@ -8,7 +8,7 @@ class Researcher::InteractionsController < ApplicationController
     @interaction = Interaction.new
     @interaction.messages.build
     
-#    return d @interaction.messages
+    #    return d @interaction.messages
   end
   
   def create
@@ -17,21 +17,34 @@ class Researcher::InteractionsController < ApplicationController
     @interaction = Interaction.new params[:interaction]
     
     if @interaction.save
-      flash[:black] = {
-        title: 'Sucesso!',
-        content: 'Interação foi cadastrada, verifique na lista.',
-      }
+      flash[:green] = 'Interação foi cadastrada, verifique na lista.'
       
-      return redirect_to '/researcher/interactions'
+      return redirect_to researcher_interactions_path
     else
-      return d 'oi'
-      flash[:black] = {
-        title: 'Opa, algo deu errado.',
-        content: 'Verifique o formulário e tente novamente.',
-      }
+      flash[:red] = 'Verifique o formulário e tente novamente.'
     end
     
     return render 'new'
   end
+  
+  def destroy
+    @article = Interaction.find(params[:id])
+    @article.destroy
+    
+    flash[:blue] = 'Registro deletado com sucesso.'
+
+    redirect_to researcher_interactions_path
+  end
+  
+  
+  #def update
+  #  @article = Article.find(params[:id])
+  #
+  #  if @article.update(article_params)
+  #    redirect_to @article
+  #  else
+  #    render 'edit'
+  #  end
+  #end
   
 end

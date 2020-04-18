@@ -36,6 +36,10 @@
         </div>
 
         <%= render 'layouts/alerts/black' if flash[:black] %>
+        <%= render 'layouts/alerts/green' if flash[:green] %>
+        <%= render 'layouts/alerts/blue' if flash[:blue] %>
+        <%= render 'layouts/alerts/orange' if flash[:orange] %>
+        <%= render 'layouts/alerts/red' if flash[:red] %>
 
         <div class="ws-loading-global ui active dimmer active">
             <div class="ui loader"></div>
@@ -44,7 +48,7 @@
         <br/>
         <br/>
 
-<%#*<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />%>
+        <%#*<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />%>
 
         <script type="text/javascript">
           function showAndroidToast(toast) {

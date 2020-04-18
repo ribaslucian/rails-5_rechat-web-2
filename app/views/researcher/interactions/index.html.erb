@@ -66,11 +66,18 @@
                     <div class="ui dropdown ws-center">
                         <i class="icon ellipsis vertical grey"></i>
                         <div class="menu">
-    <%#*<a href="<%= transfers_index_path search: true, origin_entity_id: e.id %" class="item" target="_blank">%>
-                            <a href="#" class="item" target="_blank">
+                            <%#*<a href="<%= transfers_index_path search: true, origin_entity_id: e.id %" class="item" target="_blank">%>
+                            <a href="#"  target="_blank" class="item">
                                 <i class="icon exchange blue"></i>
                                 Transações
                             </a>
+
+                            <%= link_to 'Destroy', researcher_interaction_path(i),
+                              method: :delete,
+                              class: 'item',
+                              data: { confirm: 'Tem certeza?' } %>
+                            
+                            <%#= link_to 'Edit', edit_article_path(@article) %>
                         </div>
                     </div>
 
