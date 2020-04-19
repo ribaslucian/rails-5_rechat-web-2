@@ -10,12 +10,21 @@
 
 <div class="ui fitted divider"></div>
 
+<div class="ui segment basic right aligned" style="background: none; padding-left: 0; padding-right: 0;">
+    <div class="ui button white">
+        <i class="icon check green"></i>
+        Permitir Botão "Cadastre-se"
+    </div>
+</div>
+
+<div class="ui fitted divider"></div>
+
 <table class="ui table selectable very basic large">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Tipo</th>
             <th>Usuário</th>
+            <th>Tipo</th>
+            <th>Nome</th>
             <th>Senha</th>
             <th>Data de Cadastro</th>
             <th>Perguntas de Cadastro</th>
@@ -32,7 +41,7 @@
             <tr>
                 <td>
                     <b>
-                        <%= i.entity_name %>
+                        <%= i.name %>
                     </b>
                 </td>
 
@@ -42,14 +51,20 @@
                           Pesquisador
                       </label>
                     <% else %>
-                      <label class="ui label  red">
+                      <label class="ui label red">
                           Voluntário
                       </label>
                     <% end %>
                 </td>
 
                 <td>
-                    <%= i.entity_name %>
+                    <% if  i.entity_name %>
+                      <%= i.entity_name %>
+                    <% else %>
+                      <div style="color: grey; font-size: 90%;">
+                          [não informado]
+                      </div>
+                    <% end %>
                 </td>
 
                 <td>
@@ -69,13 +84,14 @@
                     <div class="ui dropdown ws-center ">
                         <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
                         <div class="menu">
-                            <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_user_path(i),
-                              method: :delete,
-                              class: 'item',
-                                data: { confirm: 'Tem certeza?' } %>
 
-                              <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_user_path(i),
-                                class: 'item' %>
+                            <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_user_path(i),
+                              class: 'item' %>
+
+                              <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_user_path(i),
+                                method: :delete,
+                                class: 'item',
+                                  data: { confirm: 'Tem certeza?' } %>
                             </div>
                         </div>
                     </td>

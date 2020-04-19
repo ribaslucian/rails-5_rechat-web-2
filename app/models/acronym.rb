@@ -35,7 +35,13 @@ class Acronym < ApplicationRecord
       {id: 401, name: 'Semanal', data_refer: 'interactions.schedule'},
 
       # 500...
-      {id: 500, name: 'Horá do Dia', data_refer: 'interactions.number_schedule'},
+      {id: 500, name: 'Hóra do Dia', data_refer: 'interactions.number_schedule'},
+      
+      # 600...
+      {id: 600, name: 'Familiar', data_refer: 'contacts.type'},
+      {id: 601, name: 'Amigo', data_refer: 'contacts.type'},
+      {id: 602, name: 'Profissional', data_refer: 'contacts.type'},
+      {id: 603, name: 'Grupo', data_refer: 'contacts.type'},
     ])
 
   end

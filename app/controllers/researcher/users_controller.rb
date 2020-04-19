@@ -6,11 +6,15 @@ class Researcher::UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.all.order :id
   end
   
   def new
     @user = User.new
+    @user.contacts.build
+    @user.contacts.build
+    @user.contacts.build
+    @user.contacts.build
   end
   
   def create
@@ -18,7 +22,7 @@ class Researcher::UsersController < ApplicationController
     @user = User.new params[:user]
     
     if @user.save!
-      flash[:green] = 'Usuário foi cadastrada, verifique na lista.'
+      flash[:green] = 'Usuário foi cadastrado, verifique na lista.'
       
       return redirect_to researcher_users_path
     else
@@ -38,7 +42,7 @@ class Researcher::UsersController < ApplicationController
     @user = User.find params[:user][:id]
     
     if @user.update! params[:user]
-      flash[:blue] = 'Usuário foi editada, verifique na lista.'
+      flash[:blue] = 'Usuário foi editado, verifique na lista.'
       
       return redirect_to researcher_users_path
     else

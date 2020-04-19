@@ -3,7 +3,8 @@ class Guest::UsersController < ApplicationController
   def login
     
     if request.post?
-      user = User.find_by(name: params[:user][:name], password: params[:user][:password])
+#      user = User.find_by(name: params[:user][:name], password: params[:user][:password])
+      user = User.find_by(name: params[:user][:name])
       
       if user
         session[:user] = user
@@ -23,7 +24,7 @@ class Guest::UsersController < ApplicationController
     @user = User.new request.params[:user]
     
     if request.post?
-      if @user.save
+      if @user.save!
         flash[:green] = 'Usuário criato com sucesso.'
         return redirect_to '/guest/users/login'
       end
