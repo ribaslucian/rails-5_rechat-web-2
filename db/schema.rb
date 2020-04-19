@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 2020_03_19_213830) do
     t.integer "number_schedule", default: 13, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_interactions_on_name", unique: true
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "date_send", null: false
-    t.integer "sequence"
     t.integer "interaction_id"
     t.integer "type_acronym_id"
     t.json "sent_users_id"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_213830) do
     t.integer "answer_1_acronym_id"
     t.integer "answer_2_acronym_id"
     t.integer "answer_3_acronym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
 end

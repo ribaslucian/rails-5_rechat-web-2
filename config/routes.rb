@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'users/logout', to: 'users#logout', as: :logout
     
     resources :interactions
+    resources :users
   end
   
 end

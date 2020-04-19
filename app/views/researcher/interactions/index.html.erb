@@ -37,11 +37,13 @@
           <% @interactions.each do |i| %>
             <tr>
                 <td>
-                    <%= i.id %>
+                    <b>
+                      <%= i.name %>
+                    </b>
                 </td>
 
-                <td>
-                    <%= i.name %>
+                <td style="color: grey; font-size: 90%;">
+                    <%= Acronym.select(:name).find(i.type_acronym_id).name %>
                 </td>
 
                 <td>
@@ -49,10 +51,11 @@
                 </td>
 
                 <td>
-                    <%= i.number_schedule %>
+                    <i class="icon time outline grey"></i>
+                    <%= i.number_schedule %> horas
                 </td>
 
-                <td>
+                <td style="color: grey; font-size: 90%;">
                     <% i.messages.each do |m| %>
                       <div>
                           <%= Acronym.select(:name).find(m.type_acronym_id).name %>
@@ -63,21 +66,21 @@
                 </td>
 
                 <td>
-                    <div class="ui dropdown ws-center">
-                        <i class="icon ellipsis vertical grey"></i>
+                    <div class="ui dropdown ws-center ">
+                        <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
                         <div class="menu">
-                            <%#*<a href="<%= transfers_index_path search: true, origin_entity_id: e.id %" class="item" target="_blank">%>
-                            <a href="#"  target="_blank" class="item">
-                                <i class="icon exchange blue"></i>
-                                Transações
-                            </a>
+                            <%#*<a href="#"  target="_blank" class="item">%>
+                                <%#*<i class="icon exchange blue"></i>%>
+                                <%#*Transações%>
+                            <%#*</a>%>
 
-                            <%= link_to 'Destroy', researcher_interaction_path(i),
+                            <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_interaction_path(i),
                               method: :delete,
                               class: 'item',
                               data: { confirm: 'Tem certeza?' } %>
-                            
-                            <%#= link_to 'Edit', edit_article_path(@article) %>
+
+                            <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_interaction_path(i),
+                              class: 'item' %>
                         </div>
                     </div>
 

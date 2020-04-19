@@ -1,0 +1,85 @@
+<br/>
+
+<h1 class="ui header">
+    <span class="material-icons" style="font-size: 50px;">people_alt</span>
+
+    <div class="content" style="position: relative; bottom: -7px">
+        Usuários e Voluntários
+    </div>
+</h1>
+
+<div class="ui fitted divider"></div>
+
+<table class="ui table selectable very basic large">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Usuário</th>
+            <th>Senha</th>
+            <th>Data de Cadastro</th>
+            <th>Perguntas de Cadastro</th>
+            <th class="collapsing">
+                <%= link_to new_researcher_user_path, class: 'ui icon blue button' do %>
+                    <i class="add icon"></i>
+                  <% end %>
+              </th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <% @users.each do |i| %>
+            <tr>
+                <td>
+                    <b>
+                        <%= i.entity_name %>
+                    </b>
+                </td>
+
+                <td style="color: grey; font-size: 90%;">
+                    <% if i.type_acronym_id == 200 %>
+                      <label class="ui label black">
+                          Pesquisador
+                      </label>
+                    <% else %>
+                      <label class="ui label  red">
+                          Voluntário
+                      </label>
+                    <% end %>
+                </td>
+
+                <td>
+                    <%= i.entity_name %>
+                </td>
+
+                <td>
+                    <i class="icon lock grey"></i>
+                    <%= i.password %>
+                </td>
+
+                <td>
+                    <%= i.created_at %>
+                </td>
+
+                <td style="color: grey; font-size: 90%;">
+                    [...]
+                </td>
+
+                <td>
+                    <div class="ui dropdown ws-center ">
+                        <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
+                        <div class="menu">
+                            <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_user_path(i),
+                              method: :delete,
+                              class: 'item',
+                                data: { confirm: 'Tem certeza?' } %>
+
+                              <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_user_path(i),
+                                class: 'item' %>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+              <% end %>
+          </tbody>
+      </table>

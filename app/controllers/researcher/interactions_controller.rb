@@ -12,11 +12,10 @@ class Researcher::InteractionsController < ApplicationController
   end
   
   def create
-    
     params.permit!
     @interaction = Interaction.new params[:interaction]
     
-    if @interaction.save
+    if @interaction.save!
       flash[:green] = 'Interação foi cadastrada, verifique na lista.'
       
       return redirect_to researcher_interactions_path
@@ -27,24 +26,33 @@ class Researcher::InteractionsController < ApplicationController
     return render 'new'
   end
   
+  def edit
+    params.permit!
+    @interaction = Interaction.find params[:id]
+  end
+  
+  def update
+    params.permit!
+    @interaction = Interaction.find params[:interaction][:id]
+    
+    if @interaction.update! params[:interaction]
+      flash[:blue] = 'Interação foi editada, verifique na lista.'
+      
+      return redirect_to researcher_interactions_path
+    else
+      flash[:red] = 'Verifique o formulário e tente novamente.'
+    end
+    
+    return render 'edit'
+  end
+  
   def destroy
-    @article = Interaction.find(params[:id])
-    @article.destroy
+    @interaction = Interaction.find(params[:id])
+    @interaction.destroy
     
     flash[:blue] = 'Registro deletado com sucesso.'
 
     redirect_to researcher_interactions_path
   end
-  
-  
-  #def update
-  #  @article = Article.find(params[:id])
-  #
-  #  if @article.update(article_params)
-  #    redirect_to @article
-  #  else
-  #    render 'edit'
-  #  end
-  #end
   
 end
