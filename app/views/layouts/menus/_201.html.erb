@@ -1,11 +1,24 @@
-<div>
-    Menu Researcher: <br/>
+<br/>
+<%#*<div class="ui segment basic attached" style="padding: 10px 0 !important;">%>
+    <div class="ui main container">
+        <div class="ui inverted menu black hug ws-shadow-1" style="background-color: #1565c0 ">
+            <div class="item">
+                <span style="font-weight: 600 !important; letter-spacing: 1px; border: 0px !important;">
+                    <%#*<i class="icon mail"></i>%>
+                    <span class="material-icons" style="float: left;">perm_phone_msg</span>
+                    <span style="margin-left: 10px; top: 5px; position: relative;">
+                    RESEARCHER
+                    </span>
+                    
+                </span>
+            </div>
 
-    <a href="<%= researcher_dashboard_index_path %>">
-        Dashboard
-    </a>
-
-    <a href="<%= researcher_logout_path %>">
-        Sair
-    </a>
-</div>
+            <div class="right menu">
+                <a href="<%= voluntary_logout_path %>" class="item">
+                    <%#*<i class="icon vertical ellipsis large"></i>%>
+                    <span class="material-icons" style="font-size: 35px">more_vert</span>
+                </a>
+            </div>
+        </div>
+    </div>
+<%#*</div>%>

@@ -39,13 +39,13 @@
       <tbody>
           <% @users.each do |i| %>
             <tr>
-                <td>
+                <td class="ws-no-white">
                     <b>
                         <%= i.name %>
                     </b>
                 </td>
 
-                <td style="color: grey; font-size: 90%;">
+                <td class="ws-no-white" style="color: grey; font-size: 90%;">
                     <% if i.type_acronym_id == 200 %>
                       <label class="ui label black">
                           Pesquisador
@@ -57,7 +57,7 @@
                     <% end %>
                 </td>
 
-                <td>
+                <td class="ws-no-white">
                     <% if  i.entity_name %>
                       <%= i.entity_name %>
                     <% else %>
@@ -67,17 +67,25 @@
                     <% end %>
                 </td>
 
-                <td>
+                <td class="ws-no-white" style="color: grey; font-size: 90%;">
                     <i class="icon lock grey"></i>
                     <%= i.password %>
                 </td>
 
-                <td>
-                    <%= i.created_at %>
+                <td class="ws-no-white" style="color: grey; font-size: 90%;">
+                    <%= i.created_at.strftime('%d/%m/%Y %H:%M') %>
                 </td>
 
                 <td style="color: grey; font-size: 90%;">
-                    [...]
+                    <% i.contacts.each do |c| %>
+                      <span class="ui label" style="margin-top: 5px;">
+                          <i class="icon mail"></i>
+                          
+                          <%= Acronym.select(:name).find(c.type_acronym_id).name %>:
+                          
+                          <%= c.name %>
+                      </span>
+                    <% end %>
                 </td>
 
                 <td>

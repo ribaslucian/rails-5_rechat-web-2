@@ -62,9 +62,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_213831) do
     t.string "name", null: false
     t.string "password", default: "123", null: false
     t.integer "type_acronym_id", null: false
-    t.integer "answer_1_acronym_id"
-    t.integer "answer_2_acronym_id"
-    t.integer "answer_3_acronym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_users_on_name", unique: true

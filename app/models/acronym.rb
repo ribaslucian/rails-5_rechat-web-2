@@ -39,7 +39,7 @@ class Acronym < ApplicationRecord
       
       # 600...
       {id: 600, name: 'Familiar', data_refer: 'contacts.type'},
-      {id: 601, name: 'Amigo', data_refer: 'contacts.type'},
+      {id: 601, name: 'Amizade', data_refer: 'contacts.type'},
       {id: 602, name: 'Profissional', data_refer: 'contacts.type'},
       {id: 603, name: 'Grupo', data_refer: 'contacts.type'},
     ])

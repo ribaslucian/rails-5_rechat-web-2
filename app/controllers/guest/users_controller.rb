@@ -3,12 +3,17 @@ class Guest::UsersController < ApplicationController
   def login
     
     if request.post?
-#      user = User.find_by(name: params[:user][:name], password: params[:user][:password])
+      #      user = User.find_by(name: params[:user][:name], password: params[:user][:password])
       user = User.find_by(name: params[:user][:name])
       
       if user
         session[:user] = user
-        return redirect_to '/researcher/dashboard/index'
+        
+        if user.type_acronym_id == 200
+          return redirect_to '/researcher'
+        else
+          return redirect_to '/voluntary'
+        end
       end
       
       flash[:orange] = 'Não foi encontrado a combinação usuário e senha informado.'

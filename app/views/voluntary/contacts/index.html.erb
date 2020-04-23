@@ -1,70 +1,57 @@
-<script>
-  $(document).ready(function () {
-      connect(1)
-  })
-</script>
-
-<br/><br/>
-
 <style>
-    body {
-        background-color: #333;
+    html, body {
+<%#*background: white;%>
     }
 
-    .ui.basic.segment {
-        border-radius: 8px;
+    .ws-shadow-1 {
+        box-shadow:0 0 10px rgba(0, 0, 0, 0.1) !important;
     }
 
-    input {
-        padding: 15px !important;
-    }
 </style>
 
 
-<div class="ui middle aligned center aligned three column grid stackable">
-    <div class="column">
-        <div class="ui very padded basic segment">
+<div class="ui segment basic" style="border-radius: 5px;">
 
-            <img
-                width="100"
-                class="ws-center"
-                src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-ai-color/64/scientist-researcher-technologist-data-analysis-512.png"
-                />
+    <div class="ui grid box">
 
-            <h1 class="ui image header" style="margin-top: 10px">
-                <b>Chat Researcher</b>
-            </h1>
+        <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
+          <div class="row" style="_padding: 25px 0px; border-bottom: 8px solid #f4f4f4;">
+              <div class="four wide column" style="_background: red;">
+                  <% if c.type_acronym_id == 603 %>
+                  <img
+                      _src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
+                      _src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-512.png"
+                      _src="https://cdn2.iconfinder.com/data/icons/avatar1/166/Untitled-1-512.png"
+                      src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686912-users_people_men_humans_heads_persons-512.png"
+                      class="ui image circular ws-center"
+                      style="opacity: 0.5"
+                      width="60px"/>
+                  <% else %>
+                  <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
+                      class="ui image circular ws-center"
+                      style="opacity: 0.5"
+                      width="60px"/>
+                  <% end %>
+              </div>
 
-            <br/>
-            <br/>
+              <div class="twelve wide column" style="padding: 0px; padding-top: 8px;">
+                  <div>
+                      <b style="font-weight: 800;">
+                          <%= c.name %>
+                      </b>
+                  </div>
 
-            <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="user[name]" placeholder="Nome de usuário" />
-                    </div>
-                </div>
-
-                <br/>
-
-                <button class="ui big center blue button" type="submit">
-                    Entrar
-                </button>
-              <% end %>
-
+                  <div style="color: grey; margin-top: 3px; font-size: 90%">
+                      <%#*Preenchimento textual para teste.%>
+                      <%= (0...28).map { (65 + rand(26)).chr }.join %>
+                  </div>
+              </div>
           </div>
 
+  <%#*<div class="ui divider fitted" style="width: 100px !important;"></div>%>
 
-          <br/>
-          <div class="ui divider fitted" style="width: 70%; margin: 0px auto;"></div>
-          <br/>
+        <% end %>
 
-          <a href="<%= guest_sign_in_path %>" class="ui big black button">
-              Cadastre-se
-          </a>
-      </div>
-  </div>
-
-  <br/>
-
+    </div>
+</div>

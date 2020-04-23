@@ -7,10 +7,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password, null: false, default: '123'
       t.integer :type_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:users.type'}, null: false
       
-      t.integer :answer_1_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:users.answer_1'}
-      t.integer :answer_2_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:users.answer_2'}
-      t.integer :answer_3_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:users.answer_3'}
-      
       t.timestamps
     end
   end

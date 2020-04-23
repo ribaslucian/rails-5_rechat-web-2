@@ -24,5 +24,12 @@ Rails.application.routes.draw do
     resources :users
   end
   
+  namespace :voluntary do
+    get '/', to: 'contacts#index'
+    get '/voluntary', to: 'contacts#index'
+    
+    get 'users/logout', to: 'users#logout', as: :logout
+  end
+  
 end
 
