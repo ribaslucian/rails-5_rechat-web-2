@@ -1,0 +1,78 @@
+<style>
+    html, body {
+        background: white;
+    }
+
+    .ws-shadow-1 {
+        box-shadow:0 0 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .grid, .row, .column {
+        padding: 0px !important;
+    }
+</style>
+
+<div class="ui two column very relaxed stackable grid">
+    <div class="column">
+        <div class="ui form">
+            <div class="field">
+                <label>Username</label>
+                <div class="ui left icon input">
+                    <input type="text" placeholder="Username">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <div class="ui left icon input">
+                    <input type="password">
+                    <i class="lock icon"></i>
+                </div>
+            </div>
+            <div class="ui blue submit button">Login</div>
+        </div>
+    </div>
+    <div class="middle aligned column">
+        <div class="ui big button">
+            <i class="signup icon"></i>
+            Sign Up
+        </div>
+    </div>
+</div>
+
+
+<% Contact.where(user_id: session[:user]["id"]).each do |c| %>
+
+  <div class="ui grid box">
+      <div class="four wide column">
+          <% if c.type_acronym_id == 603 %>
+            <img
+                _src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
+                _src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-512.png"
+                _src="https://cdn2.iconfinder.com/data/icons/avatar1/166/Untitled-1-512.png"
+                src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686912-users_people_men_humans_heads_persons-512.png"
+                class="ui ws-center"
+                style="opacity: 0.5"
+                width="60px"/>
+              <% else %>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
+                class="ui ws-center"
+                style="opacity: 0.5"
+                width="60px"/>
+              <% end %>
+      </div>
+
+      <div class="twelve wide column" style="background: red;">
+          <div>
+              <b style="font-weight: 800;">
+                  <%= c.name %>
+              </b>
+          </div>
+
+          <div style="color: grey; margin-top: 3px; font-size: 90%">
+              <%= (0...28).map { (65 + rand(26)).chr }.join %>
+          </div>
+      </div>
+  </div>
+<% end %>

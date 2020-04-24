@@ -1,57 +1,97 @@
 <style>
     html, body {
-<%#*background: white;%>
+        background: white;
     }
 
     .ws-shadow-1 {
         box-shadow:0 0 10px rgba(0, 0, 0, 0.1) !important;
     }
 
+    .grid, .row, .column {
+        padding: 0px !important;
+    }
+
+    /*
+custom shadows
+    */
+
+    .shadow {
+        /*box-shadow: 0 0 2rem 0 rgba(136,152,170,.15) !important;*/
+        box-shadow: 0 0 13px 0 rgba(82,63,105,.05) !important;
+        /*box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);*/
+    }
+
+    .shadow-input {
+        box-shadow: 0 3px 9px rgba(50,50,9,0), 3px 4px 8px rgba(94,114,228,.1) !important;
+    }
+    .shadow-button{
+        box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) !important;
+    }
+    .shadow-segment {
+        box-shadow: 0 0 40px 0 rgba(0,0,0,.15) !important;
+    }
+
 </style>
 
 
-<div class="ui segment basic" style="border-radius: 5px;">
+<%#*<div style="padding: 10px;">%>
+    <%#*<button class="green ui button ws-center large fluid shadow-button">%> 
+        <%#*Concluir Cadastro%>
+    <%#*</button>%>
+<%#*</div>%>
 
-    <div class="ui grid box">
+<%#*<br/>%>
+<%#*<div class="ui divider fitted"></div>%>
+<%#*<br/>%>
 
-        <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
-          <div class="row" style="_padding: 25px 0px; border-bottom: 8px solid #f4f4f4;">
-              <div class="four wide column" style="_background: red;">
-                  <% if c.type_acronym_id == 603 %>
-                  <img
-                      _src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
-                      _src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-512.png"
-                      _src="https://cdn2.iconfinder.com/data/icons/avatar1/166/Untitled-1-512.png"
-                      src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686912-users_people_men_humans_heads_persons-512.png"
-                      class="ui image circular ws-center"
-                      style="opacity: 0.5"
-                      width="60px"/>
-                  <% else %>
-                  <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTHpIU20KuIUDxIec6yi2TrXCIYxEmXa2wUGgTBY54NovnoByx&usqp=CAU"
-                      class="ui image circular ws-center"
-                      style="opacity: 0.5"
-                      width="60px"/>
+<div style="padding-left: 15px; width: calc(100% - 21px)">
+    <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
+
+      <div class="ui two column very relaxed grid" style="position: relative;">
+          <div class="four wide column">
+
+              <% if c.type_acronym_id == 603 %>
+                <img
+                    _src="https://cdn0.iconfinder.com/data/icons/seo-web-optimization-2/24/89-512.png"
+                    _src="https://www.applozic.com/assets/resources/node_modules/applozic-chat/message/advanced/css/app/images/mck-icon-group.png"
+                    src="http://192.168.15.9:3000/assets/group.png"
+                    class="ws-center" style="margin-top: 10px !important; opacity: 0.6; margin-bottom: 10px !important;" width="50px"/>
+              
+              
+              <%#*<i class="icon circular inverted grey users ws-center" style="opacity: 0.6; font-size: 25px; margin-top: 10px !important; margin-bottom: 10px !important;"></i>%>
+              
+                  <% else %>                
+                <img
+                    src="https://skywarehouse.s3.amazonaws.com/staticfiles/warehouse/img/nouser.png"
+                    class="ws-center" style="margin-top: 10px !important; margin-bottom: 10px !important;" width="60px"/>
                   <% end %>
-              </div>
-
-              <div class="twelve wide column" style="padding: 0px; padding-top: 8px;">
-                  <div>
-                      <b style="font-weight: 800;">
-                          <%= c.name %>
-                      </b>
-                  </div>
-
-                  <div style="color: grey; margin-top: 3px; font-size: 90%">
-                      <%#*Preenchimento textual para teste.%>
-                      <%= (0...28).map { (65 + rand(26)).chr }.join %>
-                  </div>
-              </div>
           </div>
 
-  <%#*<div class="ui divider fitted" style="width: 100px !important;"></div>%>
+          <div class="twelve wide middle aligned column">
+              <div>
+                  <b style="font-weight: 800;">
+                      <%= c.name %>
+                  </b>
+              </div>
 
-        <% end %>
+              <% if c.type_acronym_id == 603 %>
+                <div style="margin-top: 3px; font-size: 90%; font-weight: 600">
 
-    </div>
+                    É claro que a consolidação das estrutur...
+                </div>
+              <% else %>
+                <div style="color: grey; margin-top: 3px; font-size: 90%">
+                    <%#= (0...28).map { (65 + rand(26)).chr }.join %>
+                    A nível organizacional, o fenômeno da I...
+                </div>
+              <% end %>
+
+          </div>
+
+          <div style="position: absolute; bottom: 0px; right: 0px; border-bottom: 1px solid #ddd; width: calc(80% - 10px);"></div>
+          <div style="position: absolute; top: 10px; right: 10px; font-size: 80%; color: grey">
+              10:23
+          </div>
+      </div>
+    <% end %>
 </div>
