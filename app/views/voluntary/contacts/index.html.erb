@@ -30,41 +30,43 @@ custom shadows
     .shadow-segment {
         box-shadow: 0 0 40px 0 rgba(0,0,0,.15) !important;
     }
-
 </style>
 
-
-<%#*<div style="padding: 10px;">%>
-    <%#*<button class="green ui button ws-center large fluid shadow-button">%> 
-        <%#*Concluir Cadastro%>
-    <%#*</button>%>
-<%#*</div>%>
-
-<%#*<br/>%>
-<%#*<div class="ui divider fitted"></div>%>
-<%#*<br/>%>
-
-<div style="padding-left: 15px; width: calc(100% - 21px)">
+<div style="padding-left: 15px; width: calc(100% - 21px);">
     <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
 
       <div class="ui two column very relaxed grid" style="position: relative;">
           <div class="four wide column">
 
-              <% if c.type_acronym_id == 603 %>
-                <img
-                    _src="https://cdn0.iconfinder.com/data/icons/seo-web-optimization-2/24/89-512.png"
-                    _src="https://www.applozic.com/assets/resources/node_modules/applozic-chat/message/advanced/css/app/images/mck-icon-group.png"
-                    src="http://192.168.15.9:3000/assets/group.png"
-                    class="ws-center" style="margin-top: 10px !important; opacity: 0.6; margin-bottom: 10px !important;" width="50px"/>
-              
-              
-              <%#*<i class="icon circular inverted grey users ws-center" style="opacity: 0.6; font-size: 25px; margin-top: 10px !important; margin-bottom: 10px !important;"></i>%>
-              
-                  <% else %>                
-                <img
-                    src="https://skywarehouse.s3.amazonaws.com/staticfiles/warehouse/img/nouser.png"
-                    class="ws-center" style="margin-top: 10px !important; margin-bottom: 10px !important;" width="60px"/>
-                  <% end %>
+              <div
+                  class="shadow-button"
+                  style="
+                  background: #<%= ApplicationHelper.random_color %>;
+                  height: 53px;
+                  width: 53px;
+                  display: table;
+                  margin-top: 10px !important;
+                  margin-bottom: 10px !important;
+                  margin: 0px auto;
+                  border-radius: 100%;
+                  position: relative;
+                  ">
+
+                  <div style="
+                       color: white;
+                       left: 50%;
+                       top: 50%;
+                       position: absolute;
+                       transform: translate(-50%, -50%);
+                       font-weight: 200;
+                       font-family: 'Ubuntu', sans-serif;
+                       font-weight: 800;
+                       font-size: 16px;
+                       ">
+
+                      <%= I18n.transliterate(c.name[0..1]) %>
+                  </div>
+              </div>
           </div>
 
           <div class="twelve wide middle aligned column">
@@ -75,13 +77,11 @@ custom shadows
               </div>
 
               <% if c.type_acronym_id == 603 %>
-                <div style="margin-top: 3px; font-size: 90%; font-weight: 600">
-
-                    É claro que a consolidação das estrutur...
+                <div style="color: #333; margin-top: 3px; font-size: 90%; font-weight: 600">
+                    Chefe: É claro que a consolidação das e...
                 </div>
               <% else %>
                 <div style="color: grey; margin-top: 3px; font-size: 90%">
-                    <%#= (0...28).map { (65 + rand(26)).chr }.join %>
                     A nível organizacional, o fenômeno da I...
                 </div>
               <% end %>
@@ -94,4 +94,5 @@ custom shadows
           </div>
       </div>
     <% end %>
+
 </div>
