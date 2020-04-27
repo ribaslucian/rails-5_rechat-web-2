@@ -23,6 +23,8 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :origin_user_id, foreign_key: {to_table: :users, name: 'rule_fk:messages.origin_user'}
       t.integer :destiny_user_id, foreign_key: {to_table: :users, name: 'rule_fk:messages.destiny_user'}
       t.integer :previous_message_id, foreign_key: {to_table: :messages, name: 'rule_fk:messages.previous_message'}
+      
+      t.integer :contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.contact'}
 
       t.timestamps
     end
