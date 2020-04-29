@@ -24,21 +24,21 @@
 <div class="ui middle aligned center aligned three column grid stackable">
     <div class="column">
 
-        <div class="ui attached bottom very padded segment" style="border-radius: 8px 8px 0 0;">
+        <div class="ui attached bottom very padded segment" style="border-radius: 8px 8px 0 0; border: 0px !important;">
 
             <%= image_tag 'researcher.png', class: 'ws-center', width: 100 %>
 
               <h1 class="ws-font-poppins" style="margin-top: 10px; font-size: 20px !important; font-weight: 700 !important;">
                   ReChat &nbsp;
-                  
+
                   <span style="color: ddd; font-size: 80%; color: grey; font-weight: 500; white-space: nowrap;">
                       Researcher Chat
                   </span>
               </h1>
 
-              <%#*<div style="color: grey; font-weight: 300; font-size: 14px">%>
-                  <%#*Researcher Chat%>
-              <%#*</div>%>
+  <%#*<div style="color: grey; font-weight: 300; font-size: 14px">%>
+  <%#*Researcher Chat%>
+  <%#*</div>%>
 
               <br/>
 
@@ -59,7 +59,7 @@
                 <% end %>
             </div>
 
-            <div class="ui bottom attached success message" style="border-radius: 0 0 8px 8px;">
+            <div class="ws-message-success-bottom">
                 <i class="info icon"></i>
                 Ainda não é usuário ?
 
@@ -74,3 +74,15 @@
 
     <br/>
 
+    <style>
+        .ws-message-success-bottom {
+            border-radius: 0 0 8px 8px;
+            color: #1a531b;
+            background: #f2f8e3;
+            padding: 15px 20px;
+            border: 2px solid #f2f8e3;
+            width: calc(100% + 2px);
+            margin-left: -1px;
+            margin-top: -1px;
+        }
+    </style>
