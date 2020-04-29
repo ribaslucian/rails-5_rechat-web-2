@@ -1,4 +1,4 @@
-class Researcher::UsersController < ApplicationController
+class Researcher::UsersController < Researcher::ResearcherController
 
   def logout
     session[:user] = nil

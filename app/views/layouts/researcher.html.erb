@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WhatsApp Simulator</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+
+        <%= stylesheet_link_tag 'application', media: 'all' %>
+
+        <%= javascript_include_tag 'application' %>
+
+        <style>
+            html, body {
+                background: #f4f4f4 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="content-visible">
+            <%= render "layouts/menus/researcher" %>
+
+            <div id="_content-center">
+                <div class="ui main container">
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+
+        <%= render 'layouts/alerts/alerts' %>
+        <%= render 'layouts/partials/loading' %>
+
+        <br/><br/>
+        <br/><br/>
+        <br/>
+
+    </body>
+</html>

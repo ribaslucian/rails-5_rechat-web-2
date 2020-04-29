@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
-    
     type_user_namespace = {
       200 => 'researcher',
       201 => 'voluntary'
@@ -28,41 +27,6 @@ class ApplicationController < ActionController::Base
     if namespace != user_hierarchy
       redirect_to "/#{user_hierarchy}"
     end
-    
-    # setar hirarquia baseado na sessao
-    # verificar se esta logado
-
-    # esta acessando uma area da sua hierarquia ?
-    # se nao mandar para sua area home
-    
-    
-    
-    
-    
-    #    return d Message.all
-    
-    
-    #    flash[:blue] = 'verifique o formulário'
-
-    
-    #    namespaces = controller_path.split('/')
-    #    namespace = namespaces.first
-    #    
-    #    if namespace == 'guest' && session[:user] != nil
-    #      return redirect_to '/researcher'
-    #    end
-    #    
-    #    if namespace == 'researcher' && session[:user] == nil
-    #      flash[:red] = 'Você não está conectado.'
-    #      return redirect_to '/guest'
-    #    end
-    #    
-    #    
-    #    if session[:user] != nil && !User.exists?(session[:user]['id'])
-    #      session[:user] = nil
-    #      return redirect_to '/guest'
-    #    end
-      
   end
   
 end

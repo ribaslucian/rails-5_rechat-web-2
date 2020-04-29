@@ -1,4 +1,4 @@
-class Guest::UsersController < ApplicationController
+class Guest::UsersController < Guest::GuestController
 
   def login
     

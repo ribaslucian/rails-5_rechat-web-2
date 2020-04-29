@@ -1,4 +1,4 @@
-class Voluntary::UsersController < ApplicationController
+class Voluntary::UsersController < Voluntary::VoluntaryController
 
   def logout
     session[:user] = nil

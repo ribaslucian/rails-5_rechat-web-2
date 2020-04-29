@@ -1,4 +1,4 @@
-class Researcher::InteractionsController < ApplicationController
+class Researcher::InteractionsController < Researcher::ResearcherController
 
   def index
     @interactions = Interaction.all

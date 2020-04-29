@@ -1,4 +1,4 @@
-class Voluntary::ContactsController < ApplicationController
+class Voluntary::ContactsController < Voluntary::VoluntaryController
 
   def index
     
