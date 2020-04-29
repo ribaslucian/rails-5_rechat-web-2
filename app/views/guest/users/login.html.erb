@@ -25,17 +25,12 @@
     <div class="column">
         <div class="ui very padded basic segment">
 
-            <img
-                width="100"
-                class="ws-center"
-                src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-ai-color/64/scientist-researcher-technologist-data-analysis-512.png"
-                />
+            <%= image_tag 'researcher.png', class: 'ws-center', width: 100 %>
 
-            <h1 class="ui image header" style="margin-top: 10px">
-                <b>Chat Researcher</b>
+            <h1 style="margin-top: 10px; font-size: 20px !important; font-weight: 800;">
+                Chat Researcher</b>
             </h1>
 
-            <br/>
             <br/>
 
             <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>

@@ -1,46 +1,84 @@
 <%= render 'menu_user' %>
 
-<style>
-    html, body {
-        background: white;
-    }
-    .ws-messages-segments {
-        margin-top: -15px
-    }
-    .ws-messages-segments .ui.segment {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
-        min-width: 20%;
-        max-width: 85%;
-        font-size: 14px !important;
-    }
+<div class="ws-container-contacts" style="max-height: calc(100% - 133px) !important; border-bottom: 2px solid #ddd;">
+    <style>
+        .ws-messages-segments {
+            margin-top: -15px;
+            padding: 0 10px;
+            background: red !important;
+        }
+        .ws-messages-segments .ui.segment {
+            margin-top: 5px !important;
+            margin-bottom: 5px !important;
+            min-width: 20%;
+            max-width: 85%;
+            font-size: 14px !important;
+        }
 
-    .ui.left.segment {
-        background-color: #f1f1f1;
-    }
-    .ui.right.segment {
-        background-color: #e4ecf2;
-    }
-</style>
+        .ui.left.segment {
+            background-color: #f1f1f1;
+        }
+        .ui.right.segment {
+            background-color: #e4ecf2;
+            margin-right: 0px;
+        }
+    </style>
 
-<div class="ws-messages-segments">
-    <div class="ui left floated segment basic shadow-segment">
-        This segment will appear to the left
-    </div>
+    <div class="ws-messages-segments">
+        <div class="ui left floated segment basic">
+            This segment will appear to the left
+        </div>
 
-    <div class="ui right floated segment basic shadow-segment">
-        Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
-    </div>
+        <div class="ui right floated segment basic">
+            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
+        </div>
 
-    <div class="ui left floated segment basic shadow-segment">
-        É importante questionar o quanto o desafiador 
-    </div>
+        <div class="ui left floated segment basic">
+            É importante questionar o quanto o desafiador 
+        </div>
 
-    <div class="ui left floated segment basic shadow-segment">
-        cenário globalizado exige a precisão e a definição das novas proposições
+        <div class="ui left floated segment basic">
+            cenário globalizado exige a precisão e a definição das novas proposições
+        </div>
+        <div class="ui left floated segment basic">
+            This segment will appear to the left
+        </div>
+
+        <div class="ui right floated segment basic">
+            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
+        </div>
+
+        <div class="ui left floated segment basic">
+            É importante questionar o quanto o desafiador 
+        </div>
+
+        <div class="ui left floated segment basic">
+            cenário globalizado exige a precisão e a definição das novas proposições
+        </div>
+        <div class="ui left floated segment basic">
+            This segment will appear to the left
+        </div>
+
+        <div class="ui right floated segment basic">
+            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
+        </div>
+
+        <div class="ui left floated segment basic">
+            É importante questionar o quanto o desafiador 
+        </div>
+
+        <div class="ui left floated segment basic">
+            cenário globalizado exige a precisão e a definição das novas proposições
+        </div>
     </div>
 </div>
 
-<div class="ui search" style="position: absolute; bottom: 15px; left: 15px; right: 15px;">
+<div class="ui search" style="position: absolute; bottom: 15px; left: 15px; right: 65px;">
     <input class="prompt" type="text" placeholder="Digite uma mensagem..." style="width: 100%; padding: 15px;">
+</div>
+
+<div style="position: absolute; bottom: 18px; right: 11px;">
+    <div class="ui button icon circular large blue shadow-button">
+        <i class="icon paper plane"></i>
+    </div>
 </div>

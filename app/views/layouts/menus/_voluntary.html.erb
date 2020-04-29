@@ -1,44 +1,36 @@
-<style>
-    #menu * {
-        border: 0px !important;
-        outline: 0px !important;
-    }
+<div id="menu-voluntary" class="ws-menu">
+    <div class="ws-menu-column-1">
+        <div class="ws-center">
+            <div class="ui dropdown icon large">
+                <i class="bars icon large"></i>
 
-    #menu .item:before {
-        content: none !important;
-    }
-</style>
+                <div class="menu shadow-button" style="margin-top: 6px;">
+                    <div class="item">
+                        Perfil
+                    </div>
 
-<div id="menu" class="ui inverted fixed top menu blue" style="padding: 3px 0;">
+                    <div class="item">
+                        Conversas
+                    </div>
 
-    <div class="ui dropdown icon item" style="padding-left: 27px; padding-right: 27px;">
-        <i class="bars icon large"></i>
+                    <div class="item" onClick="window.location.reload();">
+                        Atualizar
+                    </div>
 
-        <div class="menu shadow-button" style="margin-top: 6px;">
-            <div class="item">
-                Perfil
+                    <a href="<%= voluntary_logout_path %>" class="item" style="color: #333 !important;">
+                        Sair
+                    </a>
+                </div>
             </div>
-
-            <div class="item">
-                Conversas
-            </div>
-
-            <div class="item" onClick="window.location.reload();">
-                Atualizar
-            </div>
-
-            <a href="<%= voluntary_logout_path %>" class="item">
-                Sair
-            </a>
         </div>
     </div>
 
-    <div class="item" style="font-size: 17px; font-weight: 600 !important; letter-spacing: 1px; border: 0px !important; padding-left: 8px;">
-        ReChat 
-        <small style="font-weight: 300; font-size: 80%; opacity: 0.5;">
-            &nbsp;&nbsp; News & Information
-        </small>
+    <div class="ws-menu-column-2">
+        <div style="position: relative; bottom: -1px;">
+            ReChat 
+            <small style="font-weight: 300; font-size: 80%; opacity: 0.5;">
+                &nbsp;&nbsp; News & Information
+            </small>
+        </div>
     </div>
 </div>
-
-<div style="padding: 40px 0;"></div>
