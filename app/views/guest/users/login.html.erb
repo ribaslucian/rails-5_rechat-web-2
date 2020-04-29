@@ -26,63 +26,57 @@
 
         <div class="ui attached bottom very padded segment" style="border-radius: 8px 8px 0 0; border: 0px !important;">
 
-            <%= image_tag 'researcher.png', class: 'ws-center', width: 100 %>
-
-              <h1 class="ws-font-poppins" style="margin-top: 10px; font-size: 20px !important; font-weight: 700 !important;">
-                  ReChat &nbsp;
-
-                  <span style="color: ddd; font-size: 80%; color: grey; font-weight: 500; white-space: nowrap;">
-                      Researcher Chat
-                  </span>
-              </h1>
-
-  <%#*<div style="color: grey; font-weight: 300; font-size: 14px">%>
-  <%#*Researcher Chat%>
-  <%#*</div>%>
-
-              <br/>
-
-              <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
-                  <div class="field">
-                      <div class="ui left icon input">
-                          <i class="user icon"></i>
-                          <input type="text" name="user[name]" placeholder="Nome de usuário" value="usuario02" />
-                      </div>
-                  </div>
-
-                  <br/>
-
-                  <button class="ui big center blue button" type="submit">
-                      Entrar
-                      <i class="icon arrow right"></i>
-                  </button>
-                <% end %>
+            <div class="ws-center" style="border-radius: 100%; padding: 18px 20px 14px 20px; background: #e6c131; border: 2px solid #ddd;">
+                <%= image_tag 'researcher (6).png', width: 60 %>
             </div>
 
-            <div class="ws-message-success-bottom">
-                <i class="info icon"></i>
-                Ainda não é usuário ?
+            <h1 class="ws-font-poppins" style="margin-top: 15px; font-size: 24px !important; font-weight: 800 !important;">
+                ReChat
+            </h1>
 
-                &nbsp;
+            <br/>
 
-                <a href="<%= guest_sign_in_path %>">
-                    <b>Cadastre-se Agora</b>
-                </a>
-            </div>
-        </div>
-    </div>
+            <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="user[name]" placeholder="Nome de usuário" value="usuario02" />
+                    </div>
+                </div>
 
-    <br/>
+                <br/>
 
-    <style>
-        .ws-message-success-bottom {
-            border-radius: 0 0 8px 8px;
-            color: #1a531b;
-            background: #f2f8e3;
-            padding: 15px 20px;
-            border: 2px solid #f2f8e3;
-            width: calc(100% + 2px);
-            margin-left: -1px;
-            margin-top: -1px;
-        }
-    </style>
+                <button class="ui big center blue button" type="submit">
+                    Entrar
+                    <i class="icon arrow right"></i>
+                </button>
+              <% end %>
+          </div>
+
+          <div class="ws-message-success-bottom">
+              <i class="info icon"></i>
+              Ainda não é usuário ?
+
+              &nbsp;
+
+              <a href="<%= guest_sign_in_path %>">
+                  <b>Cadastre-se Agora</b>
+              </a>
+          </div>
+      </div>
+  </div>
+
+  <br/>
+
+  <style>
+      .ws-message-success-bottom {
+          border-radius: 0 0 8px 8px;
+          color: #1a531b;
+          background: #f2f8e3;
+          padding: 15px 20px;
+          border: 2px solid #f2f8e3;
+          width: calc(100% + 2px);
+          margin-left: -1px;
+          margin-top: -1px;
+      }
+  </style>
