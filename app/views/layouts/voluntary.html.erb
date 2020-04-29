@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>WhatsApp Simulator</title>
+        <title>ReChat</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,15 +11,18 @@
         <%= stylesheet_link_tag 'application', media: 'all' %>
 
         <%= javascript_include_tag 'application' %>
+
+        <style>
+            *:not(.icon):not(.material-icons) {
+                font-family: 'Roboto', sans-serif !important;
+            }
+        </style>
     </head>
 
     <body>
+        <%= render "layouts/menus/voluntary" %>
 
-        <div id="content-visible">
-            <%= render "layouts/menus/voluntary" %>
-
-            <%= yield %>
-        </div>
+        <%= yield %>
 
         <%= render 'layouts/alerts/alerts' %>
         <%= render 'layouts/partials/loading' %>

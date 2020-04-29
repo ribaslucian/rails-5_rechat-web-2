@@ -30,7 +30,7 @@ class Guest::UsersController < Guest::GuestController
     
     if request.post?
       if @user.save!
-        flash[:green] = 'Usuário criato com sucesso.'
+        flash[:green] = 'Usuário criado com sucesso.'
         return redirect_to '/guest/users/login'
       end
     

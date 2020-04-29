@@ -29,7 +29,7 @@ $(window).on('beforeunload', function () {
 });
 
 function certer_content_visible() {
-    var content_visible = $('#content-visible').height();
+    var content_visible = $('#main-container').height();
     var body = $('body').height();
 
     if (content_visible < body) {

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213831) do
     t.integer "origin_user_id"
     t.integer "destiny_user_id"
     t.integer "previous_message_id"
+    t.integer "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["interaction_id"], name: "index_messages_on_interaction_id"

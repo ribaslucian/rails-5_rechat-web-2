@@ -1,84 +1,114 @@
 <%= render 'menu_user' %>
 
-<div class="ws-container-contacts" style="max-height: calc(100% - 133px) !important; border-bottom: 2px solid #ddd;">
-    <style>
-        .ws-messages-segments {
-            margin-top: -15px;
-            padding: 0 10px;
-            background: red !important;
-        }
-        .ws-messages-segments .ui.segment {
-            margin-top: 5px !important;
-            margin-bottom: 5px !important;
-            min-width: 20%;
-            max-width: 85%;
-            font-size: 14px !important;
-        }
+<style>
 
-        .ui.left.segment {
-            background-color: #f1f1f1;
-        }
-        .ui.right.segment {
-            background-color: #e4ecf2;
-            margin-right: 0px;
-        }
-    </style>
+    body {
+        background-image: url('https://i.pinimg.com/originals/51/ed/c0/51edc046eb80046ee4755ee71d0f19ca.jpg');
+        background-size: 100% 100%;
+        background-repeat: repeat;
+    }
 
-    <div class="ws-messages-segments">
-        <div class="ui left floated segment basic">
-            This segment will appear to the left
+    .ws-message {
+        display: table;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .ws-message-left,
+    .ws-message-right {
+        display: table;
+        max-width: 80%;
+        padding: 5px 10px;
+        background: white;
+        border-radius: 8px;
+        margin: 2px 15px;
+    }
+
+    .ws-message-left {
+        float: left;
+    }
+
+    .ws-message-right {
+        float: right;
+        background-color: #effedd;
+    }
+
+
+
+    .ws-send-message-painel {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 5px;
+    }
+    .ws-send-message-painel .ui.search {
+        float: left; width: calc(100% - 60px)
+    }
+    .ws-send-message-painel .ui.search input {
+        width: 100%; padding: 15px; border: 0px;
+    }
+    .ws-send-message-painel .ui.button {
+        float: right; padding: 12px;
+    }
+</style>
+
+<div class="ws-container-contacts" style="max-height: calc(100% - 118px) !important;">
+
+    <div class="ws-message">
+        <div class="ws-message-right">
+            hi
+        </div>
+    </div>
+
+    <div class="ws-message">
+        <div class="ws-message-left">
+            O empenho em analisar a hegemonia do ambiente político oferece uma
+            interessante oportunidade para verificação das diretrizes de
+            desenvolvimento para o futuro.
         </div>
 
-        <div class="ui right floated segment basic">
-            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
+        <div class="ws-message-left">
+            O empenho em analisar a hegemonia do ambiente.
         </div>
 
-        <div class="ui left floated segment basic">
-            É importante questionar o quanto o desafiador 
+        <div class="ws-message-left">
+            para verificação das diretrizes
+        </div>
+    </div>
+
+    <div class="ws-message">
+        <div class="ws-message-right">
+            Assim mesmo, a estrutura atual da organização representa uma abertura
+            para a melhoria dos paradigmas corporativos.
         </div>
 
-        <div class="ui left floated segment basic">
-            cenário globalizado exige a precisão e a definição das novas proposições
+        <div class="ws-message-right">
+            representa uma abertura para a melhoria dos paradigmas corporativos.
         </div>
-        <div class="ui left floated segment basic">
-            This segment will appear to the left
-        </div>
+    </div>
 
-        <div class="ui right floated segment basic">
-            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
-        </div>
 
-        <div class="ui left floated segment basic">
-            É importante questionar o quanto o desafiador 
+    <div class="ws-message">
+        <div class="ws-message-left">
+            hi
         </div>
+    </div>
 
-        <div class="ui left floated segment basic">
-            cenário globalizado exige a precisão e a definição das novas proposições
-        </div>
-        <div class="ui left floated segment basic">
-            This segment will appear to the left
-        </div>
 
-        <div class="ui right floated segment basic">
-            Acima de tudo, é fundamental ressaltar que o comprometimento entre as equipes faz parte de um processo de gerenciamento das regras de conduta normativas.
-        </div>
-
-        <div class="ui left floated segment basic">
-            É importante questionar o quanto o desafiador 
-        </div>
-
-        <div class="ui left floated segment basic">
-            cenário globalizado exige a precisão e a definição das novas proposições
+    <div class="ws-message">
+        <div class="ws-message-right">
+            hi
         </div>
     </div>
 </div>
 
-<div class="ui search" style="position: absolute; bottom: 15px; left: 15px; right: 65px;">
-    <input class="prompt" type="text" placeholder="Digite uma mensagem..." style="width: 100%; padding: 15px;">
-</div>
+<div class="ws-send-message-painel">
+    <div class="ui search" style="">
+        <input class="prompt" type="text" placeholder="Digite uma mensagem...">
+    </div>
 
-<div style="position: absolute; bottom: 18px; right: 11px;">
-    <div class="ui button icon circular large blue shadow-button">
-        <i class="icon paper plane"></i>
+    <div class="ui button icon circular blue shadow-button">
+        <span class="material-icons">send</span>
     </div>
 </div>

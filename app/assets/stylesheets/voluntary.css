@@ -36,12 +36,17 @@
     overflow: auto;
 }
 
+
 .ws-container-contacts {
     left: 0px;
     width: 100%;
     max-height: calc(100% - 65px) !important;
     overflow: auto;
 }
+.ws-container-contacts a {
+    color: #333 !important;
+}
+
 
 ::-webkit-scrollbar {
     width: 5px !important;

@@ -23,43 +23,54 @@
 
 <div class="ui middle aligned center aligned three column grid stackable">
     <div class="column">
-        <div class="ui very padded basic segment">
+
+        <div class="ui attached bottom very padded segment" style="border-radius: 8px 8px 0 0;">
 
             <%= image_tag 'researcher.png', class: 'ws-center', width: 100 %>
 
-            <h1 style="margin-top: 10px; font-size: 20px !important; font-weight: 800;">
-                Chat Researcher</b>
-            </h1>
+              <h1 class="ws-font-poppins" style="margin-top: 10px; font-size: 20px !important; font-weight: 700 !important;">
+                  ReChat &nbsp;
+                  
+                  <span style="color: ddd; font-size: 80%; color: grey; font-weight: 500; white-space: nowrap;">
+                      Researcher Chat
+                  </span>
+              </h1>
 
-            <br/>
+              <%#*<div style="color: grey; font-weight: 300; font-size: 14px">%>
+                  <%#*Researcher Chat%>
+              <%#*</div>%>
 
-            <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="user[name]" placeholder="Nome de usuário" value="usuario02" />
-                    </div>
-                </div>
+              <br/>
 
-                <br/>
+              <%= form_with url: '/guest/users/login', class: 'ui large form', local: true do %>
+                  <div class="field">
+                      <div class="ui left icon input">
+                          <i class="user icon"></i>
+                          <input type="text" name="user[name]" placeholder="Nome de usuário" value="usuario02" />
+                      </div>
+                  </div>
 
-                <button class="ui big center blue button" type="submit">
-                    Entrar
-                </button>
-              <% end %>
+                  <br/>
 
-          </div>
+                  <button class="ui big center blue button" type="submit">
+                      Entrar
+                      <i class="icon arrow right"></i>
+                  </button>
+                <% end %>
+            </div>
 
+            <div class="ui bottom attached success message" style="border-radius: 0 0 8px 8px;">
+                <i class="info icon"></i>
+                Ainda não é usuário ?
 
-          <br/>
-          <div class="ui divider fitted" style="width: 70%; margin: 0px auto;"></div>
-          <br/>
+                &nbsp;
 
-          <a href="<%= guest_sign_in_path %>" class="ui big black button">
-              Cadastre-se
-          </a>
-      </div>
-  </div>
+                <a href="<%= guest_sign_in_path %>">
+                    <b>Cadastre-se Agora</b>
+                </a>
+            </div>
+        </div>
+    </div>
 
-  <br/>
+    <br/>
 
