@@ -25,6 +25,8 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :previous_message_id, foreign_key: {to_table: :messages, name: 'rule_fk:messages.previous_message'}
       
       t.integer :contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.contact'}
+      
+      t.decimal :polarity
 
       t.timestamps
     end
