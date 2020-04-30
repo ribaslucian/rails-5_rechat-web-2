@@ -26,7 +26,10 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       
       t.integer :contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.contact'}
       
-      t.decimal :polarity
+      # calculos emocionais
+      t.text :content_en
+      t.string :sentimental_category
+      t.decimal :sentimental_score
 
       t.timestamps
     end
