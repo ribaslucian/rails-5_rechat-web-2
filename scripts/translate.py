@@ -1,4 +1,5 @@
 # example
+# $ pip install googletrans
 # py translate.py "Não estou muito bem."
 
 import sys

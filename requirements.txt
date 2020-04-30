@@ -1,0 +1,1 @@
+googletrans==1.2
