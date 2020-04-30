@@ -43,6 +43,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'rails-erd'
   gem 'sqlite3-ruby'
+#  gem 'sqlite3'
 end
 
 group :test do
