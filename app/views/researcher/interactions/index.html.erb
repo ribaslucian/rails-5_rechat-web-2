@@ -61,6 +61,12 @@
                           <%= Acronym.select(:name).find(m.type_acronym_id).name %>
                           --- 
                           <%= m.content %>
+                          --- 
+                          <%= m.content_en %>
+                          --- 
+                          <%= m.sentimental_category %>
+                          --- 
+                          <%= m.sentimental_score %>
                       </div>
                     <% end %>
                 </td>
