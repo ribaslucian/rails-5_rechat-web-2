@@ -18,7 +18,7 @@ class Message < ApplicationRecord
   
   def translate_and_calc_sentimental
     if self.type_acronym_id == 2
-      self.content_en = `python scripts/translate.py "#{self.content}"`
+      self.content_en = %x(python scripts/translate.py "#{self.content}")
       
       analyzer = Sentimental.new
       analyzer.load_defaults

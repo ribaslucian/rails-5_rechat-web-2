@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
-    
-    return d `python scripts/translate.py "#{self.content}"`
-    
-    
     type_user_namespace = {
       200 => 'researcher',
       201 => 'voluntary'
