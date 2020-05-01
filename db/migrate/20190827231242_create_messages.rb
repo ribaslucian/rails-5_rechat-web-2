@@ -30,6 +30,10 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.text :content_en
       t.string :sentimental_category
       t.decimal :sentimental_score
+      
+      # controle de notificações
+      t.boolean :received, default: false
+      t.boolean :viewed, default: false
 
       t.timestamps
     end

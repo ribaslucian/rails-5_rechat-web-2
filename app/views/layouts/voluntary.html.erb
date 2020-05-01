@@ -27,5 +27,11 @@
         <%= render 'layouts/alerts/alerts' %>
         <%= render 'layouts/partials/loading' %>
 
+        <script>
+          $(document).ready(function () {
+              SESSION_USER_ID = <%= session[:user]['id'] %>;
+              connect(<%= session[:user]['id'] %>)
+          })
+        </script>
     </body>
 </html>

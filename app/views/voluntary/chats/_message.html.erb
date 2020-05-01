@@ -1,0 +1,11 @@
+<div class="ws-message messages">
+    <% if session[:user]['id'] == message.origin_user_id %>
+      <div class="ws-message-right">
+          <%= message.content %>
+      </div>
+    <% else %>
+      <div class="ws-message-left">
+          <%= message.content %>
+      </div>
+    <% end %>
+</div>

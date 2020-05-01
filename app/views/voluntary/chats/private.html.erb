@@ -11,7 +11,6 @@
     .ws-message {
         display: table;
         width: 100%;
-        margin: 10px 0;
     }
 
     .ws-message-left,
@@ -34,8 +33,7 @@
         background-color: #effedd;
     }
 
-
-
+    
     .ws-send-message-painel {
         position: absolute;
         bottom: 0px;
@@ -56,8 +54,7 @@
     }
 </style>
 
-<div class="ws-container-contacts" style="max-height: calc(100% - 110px) !important;">
-
+<div class="ws-container-contacts" style="max-height: calc(100% - 115px) !important; padding-top: 10px;">
     <div class="ws-message">
         <div class="ws-message-right">
             hi
@@ -91,27 +88,43 @@
         </div>
     </div>
 
-
     <div class="ws-message">
         <div class="ws-message-left">
             hi
         </div>
     </div>
 
-
     <div class="ws-message">
         <div class="ws-message-right">
             hi
         </div>
     </div>
+
+    <% last_side = current_side = nil %>
+    <% Message.where("origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}").order(:created).each do |m| %>
+
+      <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
+
+      <%= '<div style="padding: 4px;"></div>'.html_safe if current_side != last_side %>
+
+      <%= render partial: 'message', locals: {message: m} %>
+
+      <% last_side = current_side %>
+    <% end %>
 </div>
 
 <div class="ws-send-message-painel">
-    <div class="ui search" style="">
-        <input class="prompt" type="text" placeholder="Digite uma mensagem...">
+    <div class="ui search" >
+        <input class="prompt behavior-input-type-message" type="text" placeholder="Digite uma mensagem..." />
     </div>
 
-    <div class="ui button icon circular blue shadow-button">
+    <div class="ui button icon circular blue shadow-button behavior-button-send-message">
         <span class="material-icons">send</span>
     </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+      $('.ws-container-contacts').scrollTop(1000000000);
+  });
+</script>
