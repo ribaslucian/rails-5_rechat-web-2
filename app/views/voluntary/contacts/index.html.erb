@@ -1,38 +1,31 @@
-<style>
-    .ws-contact-active .ws-contact-message {
-      font-weight: 800;
-      color: #333;
-    }
-</style>
+<div class="ws-mobile-container-y ws-contacts">
+    <div class="ws-mobile-container-x">
+        <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
+          <a href="<%= voluntary_chat_private_path(c.id) %>" class="ws-mobile-contact-item _ws-contact-active" id="contact_<%= c.id %>">
+              <div class="ws-mobile-column-1">
+                  <%= render partial: 'image', locals: {text: I18n.transliterate(c.name[0..1])} %>
+              </div>
 
-<div class="ws-container-contacts">
-    <% Contact.where(user_id: session[:user]["id"]).each do |c| %>
-      <a href="<%= voluntary_chat_private_path(c.id) %>" class="ws-contact ws-contact-active" id="contact_<%= c.id %>">
-          <div class="ws-contact-column-1">
-            <%= render partial: 'image', locals: {text: I18n.transliterate(c.name[0..1])} %>
-          </div>
+              <div class="ws-mobile-column-2">
+                  <div class="ws-center-absolute-y" style="left: 0px; max-width: 90%;">
+                      <div style="font-weight: 800;">
+                          <%= c.name %>
+                      </div>
 
-          <div class="ws-contact-column-2">
-              <div class="ws-center-absolute-y" style="left: 0px; max-width: 90%;">
-                  <div style="font-weight: 800;">
-                      <%= c.name %>
-                  </div>
-
-                  <div class="ws-contact-message">
-                      <% if c.type_acronym_id == 603 %>
-                        <b style="color: #333">
+                      <div class="ws-contact-message">
+                          <% if c.type_acronym_id == 603 %>
                             Chefe: É claro que a consolidação dquando aslkdj
-                        </b>
-                      <% else %>
-                        A nível organizacional, o fenômeno da Iindignado
-                      <% end %>
+                          <% else %>
+                            A nível organizacional, o fenômeno da Iindignado
+                          <% end %>
+                      </div>
+                  </div>
+
+                  <div style="position: absolute; top: 10px; right: 10px; font-size: 80%; color: grey;">
+                      10:23
                   </div>
               </div>
-
-              <div style="position: absolute; top: 10px; right: 10px; font-size: 80%; color: grey;">
-                  10:23
-              </div>
-          </div>
-      </a>
-    <% end %>
+          </a>
+        <% end %>
+    </div>
 </div>

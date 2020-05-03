@@ -14,8 +14,11 @@ function connect(origin_user_id) {
         disconnected: function () {
         },
         received: function (data) {
-
             current_side = data['message_record']['origin_user_id'] == SESSION_USER_ID ? 'right' : 'left';
+            
+            if ($('.ws-behavior-message').last().is('.ws-message-' + current_side)) {
+                last_side = current_side;
+            }
 
             if (current_side != last_side) {
                 data['message_html'] = '<div style="padding: 4px;"></div>' + data['message_html'];
@@ -23,9 +26,8 @@ function connect(origin_user_id) {
 
             last_side = current_side;
 
-
-            $('.ws-container-contacts').append(data['message_html']);
-            $('.ws-container-contacts').scrollTop(1000000000);
+            $('.ws-behavior-messages').append(data['message_html']);
+            $('.ws-messages').scrollTop(1000000000);
             return;
         },
         // 2
