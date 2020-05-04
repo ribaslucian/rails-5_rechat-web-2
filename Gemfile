@@ -69,3 +69,4 @@ gem 'semantic-ui-sass'
 gem 'nilify_blanks'
 gem 'sentimental'
 gem 'pycall'
+gem 'whenever', require: false
