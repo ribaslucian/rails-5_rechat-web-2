@@ -19,8 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
-#every 3.hours do
+#every 5.seconds do
 #  runner "MyModel.some_process"
 #  rake "my:rake:task"
 #  command "/usr/bin/my_great_command"
 #end
+
+every 5.seconds do
+  runner 'Message.seed_test'
+end
