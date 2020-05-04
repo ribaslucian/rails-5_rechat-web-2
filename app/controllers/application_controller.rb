@@ -10,28 +10,13 @@ class ApplicationController < ActionController::Base
   def logged?
 
     if params[:message_create]
-      Message.create!({
-          origin_user_id: 2,
-          destiny_user_id: 1,
-          content: "A nível organizacional, a revolução dos costumes promove a alavancagem do sistema de formação de quadros que corresponde às necessidades.",
-          contact_id: 1
-      })
-    
-      Message.create!({
-          origin_user_id: 2,
-          destiny_user_id: 1,
-          content: "A nível organizacional, a revolução dos costumes promove a alavancagem",
-          contact_id: 1
-      })
-    
-      Message.create!({
-          origin_user_id: 2,
-          destiny_user_id: 1,
-          content: "aff",
-          contact_id: 1
-      })
-      
+      Message.seed_test
       return d Message.all.count
+    end
+    
+    
+    if params[:messages]
+      return d Message.all
     end
     
     type_user_namespace = {

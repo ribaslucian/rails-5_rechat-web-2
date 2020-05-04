@@ -25,4 +25,27 @@ class Message < ApplicationRecord
       self.sentimental_score = analyzer.score self.content
     end
   end
+  
+  def self.seed_test
+      Message.create!({
+          origin_user_id: 2,
+          destiny_user_id: 1,
+          content: "A nível organizacional, a revolução dos costumes promove a alavancagem do sistema de formação de quadros que corresponde às necessidades.",
+          contact_id: 1
+      })
+    
+      Message.create!({
+          origin_user_id: 2,
+          destiny_user_id: 1,
+          content: "A nível organizacional, a revolução dos costumes promove a alavancagem",
+          contact_id: 1
+      })
+    
+      Message.create!({
+          origin_user_id: 2,
+          destiny_user_id: 1,
+          content: "aff",
+          contact_id: 1
+      })
+  end
 end
