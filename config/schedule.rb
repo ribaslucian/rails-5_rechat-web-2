@@ -28,6 +28,12 @@
 
 
 # necessario renomear no arquivo cron o 'bin/rails' para 'rails'
+# setar ambiente como desenvolvimento
+# whenever --update-crontab --set environment='development'
+
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
+env :GEM_HOME, ENV['GEM_HOME']
 
 every 1.minute do
   runner 'Message.seed_test'
