@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_213831) do
     t.text "content_en"
     t.string "sentimental_category"
     t.decimal "sentimental_score"
+    t.boolean "received", default: false
+    t.boolean "viewed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["interaction_id"], name: "index_messages_on_interaction_id"

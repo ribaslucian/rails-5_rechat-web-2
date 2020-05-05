@@ -30,21 +30,7 @@ class Message < ApplicationRecord
       Message.create!({
           origin_user_id: 2,
           destiny_user_id: 1,
-          content: "A nível organizacional, a revolução dos costumes promove a alavancagem do sistema de formação de quadros que corresponde às necessidades.",
-          contact_id: 1
-      })
-    
-      Message.create!({
-          origin_user_id: 2,
-          destiny_user_id: 1,
-          content: "A nível organizacional, a revolução dos costumes promove a alavancagem",
-          contact_id: 1
-      })
-    
-      Message.create!({
-          origin_user_id: 2,
-          destiny_user_id: 1,
-          content: "aff",
+          content: "Oi",
           contact_id: 1
       })
   end
