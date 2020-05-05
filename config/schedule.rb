@@ -25,6 +25,6 @@
 #  command "/usr/bin/my_great_command"
 #end
 
-every 5.seconds do
+every 1.minute do
   runner 'Message.seed_test'
 end
