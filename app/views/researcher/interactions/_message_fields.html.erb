@@ -18,21 +18,39 @@
               <%= f.error_message_for :type_acronym_id %>
           </div>
 
-          <div class="field disabled">
-              <label>Tipo de Conteúdo:</label>
-              
-              <p style="font-size: 90%; color: grey;">
-                Nessa atualização é possível criar mensagens de interação 
-                somente do tipo textual. Tipos de mídia como imagem serão
-                liberadas em breve.
-              </p>
-              
-              <input value="Textual" disabled />
-          </div>
+          <div class="field">
+              <%= f.label :type_content_acronym_id, 'Tipo da mensagem:' %>
 
-          <div class="six wide field">
+              <%= f.select :type_content_acronym_id,
+                options_for_select(
+                  Acronym.select(:id, :name).where("data_refer = 'messages.type_content'").map { |a| [a.name, a.id] },
+                  #f.object.type_content_acronym_id
+                ), {
+                  :include_blank => '-- Selecione --'
+                },
+                {
+                  'ng-model': 'type_content_acronym_id',
+                  required: true
+                }
+              %>
+
+              <%= f.error_message_for :type_content_acronym_id %>
+          </div>
+        
+        
+          <div class="six wide field" ng-if="type_content_acronym_id == 50">
               <%= f.label :content, 'Conteúdo:' %>
               <%= f.text_area :content, rows: 6 %>
+          </div>
+        
+          <div class="six wide field" ng-if="type_content_acronym_id == 51">
+              <%= f.label :content, 'URL Pública do Arquivo:' %>
+              <%= f.text_field :content, value: 'https://www.infoescola.com/wp-content/uploads/2019/10/paisagem-ouro-preto-1008049370.jpg' %>
+          </div>
+        
+          <div class="six wide field" ng-if="type_content_acronym_id == 52">
+              <%= f.label :content, 'URL Vídeo no YouTube:' %>
+              <%= f.text_field :content, value: 'https://www.youtube.com/watch?v=tgbNymZ7vqY&feature=emb_logo' %>
           </div>
       </div>
   </div>

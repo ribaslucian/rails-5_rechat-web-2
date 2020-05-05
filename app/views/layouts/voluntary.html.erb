@@ -16,12 +16,16 @@
             *:not(.icon):not(.material-icons) {
                 font-family: 'Roboto', sans-serif !important;
             }
+            
+            .ws-message.messages:active {
+                background: #b2cee3 !important;
+            }
         </style>
     </head>
 
-    <body>
+    <body ng-app="ChatResearcher">
         <%= render "layouts/menus/voluntary" %>
-
+        
         <%= yield %>
 
         <%= render 'layouts/alerts/alerts' %>

@@ -1,0 +1,15 @@
+<% if message.type_content_acronym_id == 50 %>
+  <%= message.content %>
+<% end %>
+
+<% if message.type_content_acronym_id == 51 %>
+  <img src="<%= message.content %>" width="100%" style="border-radius: 6px; position: relative; bottom: -2px;" />
+<% end %>
+
+<% if message.type_content_acronym_id == 52 %>
+  <iframe width="100%" src="<%= message.content %>"></iframe>
+<% end %>
+
+<% if message.type_content_acronym_id == 53 %>
+  [renderizando áudio]
+<% end %>

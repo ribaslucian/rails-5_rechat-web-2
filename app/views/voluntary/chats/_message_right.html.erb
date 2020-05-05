@@ -1,5 +1,6 @@
 <div class="ws-message messages">
     <div class="ws-message-right ws-behavior-message">
-        <%= message.content %>
+        ...
+        <%= render partial: 'researcher/messages/message_raw', locals: {message: message} %>
     </div>
 </div>

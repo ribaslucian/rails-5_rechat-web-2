@@ -16,7 +16,7 @@ class Message < ApplicationRecord
   end
 
   def translate_and_calc_sentimental
-    if self.type_acronym_id == 2
+    if self.type_acronym_id == 2 && self.type_content_acronym_id == 50
       self.content_en = %x(python scripts/translate.py "#{self.content}")
       
       analyzer = Sentimental.new
@@ -30,7 +30,23 @@ class Message < ApplicationRecord
       Message.create!({
           origin_user_id: 2,
           destiny_user_id: 1,
-          content: "Oi",
+          content: "Gostaria de enfatizar que o acompanhamento das preferências de consumo assume importantes posições no estabelecimento dos métodos utilizados na avaliação de resultados.",
+          contact_id: 1
+      })
+    
+      Message.create!({
+          origin_user_id: 2,
+          destiny_user_id: 1,
+          type_content_acronym_id: 51,
+          content: "https://www.infoescola.com/wp-content/uploads/2019/10/paisagem-ouro-preto-1008049370.jpg",
+          contact_id: 1
+      })
+    
+      Message.create!({
+          origin_user_id: 1,
+          destiny_user_id: 2,
+          type_content_acronym_id: 52,
+          content: "https://www.youtube.com/watch?v=tgbNymZ7vqY&feature=emb_logo",
           contact_id: 1
       })
   end

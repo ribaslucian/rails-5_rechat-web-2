@@ -13,7 +13,10 @@
 //= require rails-ujs
 //= require jquery
 //= require activestorage
+//= require angularjs/min
+//= require angularjs/init/application
 //= require_tree .
+//
 //= require cocoon
 //= require semantic-ui
 

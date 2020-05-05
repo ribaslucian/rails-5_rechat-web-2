@@ -14,8 +14,8 @@ class Acronym < ApplicationRecord
       # 50...
       {id: 50, name: 'Textual', data_refer: 'messages.type_content'},
       {id: 51, name: 'Imagem', data_refer: 'messages.type_content'},
-      {id: 52, name: 'Vídeo', data_refer: 'messages.type_content'},
-      {id: 53, name: 'Áudio', data_refer: 'messages.type_content'},
+      # {id: 52, name: 'Vídeo', data_refer: 'messages.type_content'},
+      # {id: 53, name: 'Áudio', data_refer: 'messages.type_content'},
 
       # 100... 
       {id: 100, name: 'Pergunta 01', data_refer: 'users.answer'},
