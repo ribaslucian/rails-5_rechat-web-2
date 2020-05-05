@@ -25,6 +25,10 @@
 #  command "/usr/bin/my_great_command"
 #end
 
+
+
+# necessario renomear no arquivo cron o 'bin/rails' para 'rails'
+
 every 1.minute do
   runner 'Message.seed_test'
 end
