@@ -16,7 +16,7 @@
             *:not(.icon):not(.material-icons) {
                 font-family: 'Roboto', sans-serif !important;
             }
-            
+
             .ws-message.messages:active {
                 background: #b2cee3 !important;
             }
@@ -25,17 +25,95 @@
 
     <body ng-app="ChatResearcher">
         <%= render "layouts/menus/voluntary" %>
-        
+
         <%= yield %>
 
         <%= render 'layouts/alerts/alerts' %>
         <%= render 'layouts/partials/loading' %>
 
+        <style>
+            .scroll-item {
+                background-color: blue !important;
+            }
+            .scroll-item.is-active {
+                background-color: #0e8824 !important;
+            }
+        </style>
+
         <script>
           $(document).ready(function () {
               SESSION_USER_ID = <%= session[:user]['id'] %>;
               connect(<%= session[:user]['id'] %>)
-          })
+
+
+
+
+
+
+
+
+              function tt() {
+                  var alturaTela = $(window).height(); // Pega altura da tela
+                  var ajuste = alturaTela / 2; // O elemento vai ativar ao chegar no meio da tela, pode ser um numero customizado também
+                  $('.ws-mobile-container-y').scroll(function (event) { // Detecta o scroll do mouse
+                      console.log('ok');
+
+                      $('.scroll-item').each(function (i) { // Faz um foreach com os elementos que deseja identificar
+                          var status = $(this).hasClass('is-active'); // Usado para identificar se o elemento está ativo.
+                          if (!status) { // Se o elemento NÃO ! estiver ativo
+                              var elementoTop = $(this).offset().top + ajuste; // Pega a posição do elemento no eixo Y (vertical) e soma com o ajuste
+                              var elementoBottom = elementoTop + $(this).outerHeight(); // Soma a posição do elemento com a altura total dele
+                              var viewportTop = $(window).scrollTop(); // Pega a posição atual do scroll no eixo Y (vertical)
+                              var viewportBottom = viewportTop + alturaTela; // Soma a posição atual do scroll com a altura da tela.
+
+                              if (elementoBottom > viewportTop && elementoTop < viewportBottom) {
+                                  $('.scroll-item').removeClass('is-active'); // Remove a classe de todos os elementos
+                                  $(this).addClass('is-active'); // Adiciona a classe ao elemento atual
+                              }
+                          }
+                      })
+                  });
+              }
+
+              function l(l) {
+                  console.log(l);
+              }
+
+
+
+
+              var total_height = $('.ws-mobile-container-y').height();
+              $('.ws-mobile-container-y').scroll(function (event) {
+                  $('.scroll-item').each(function (i) {
+                      var position = $(this).position();
+                      var top = position.top;
+                      var middle = $(this).height() / 2;
+                      var y = top + middle;
+                      
+                      l('top: ' + top + ' | middle: ' + middle + ' | y: ' + y);
+                      
+                      /*if (y > 0 && y < total_height) {
+                        $(this).addClass('is-active');
+                      } else {
+                        $(this).removeClass('is-active');
+                      } */
+    
+                      if (y > 0) {
+                        $(this).addClass('is-active');
+                      } else {
+                        $(this).removeClass('is-active');
+                      }
+    
+                  });
+              });
+
+
+
+
+
+
+
+          });
         </script>
     </body>
 </html>
