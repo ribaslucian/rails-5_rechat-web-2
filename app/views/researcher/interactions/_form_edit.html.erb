@@ -7,6 +7,20 @@
                 <%= f.label :name, 'Título:' %>
                 <%= f.text_field :name %>
             </div>
+            
+            <br/>
+
+            <div class="field">
+                <%= f.label :status_acronym_id, 'Status da Interação:' %>
+
+                <%= f.select :status_acronym_id,
+                  options_for_select(
+                  Acronym.select(:id, :name).where("data_refer = 'interactions.status'").map { |a| [a.name, a.id] },
+                  f.object.status_acronym_id
+                  ) %>
+
+                <%= f.error_message_for :status_acronym_id %>
+            </div>
 
             <div class="field disabled">
                 <label>Tipo:</label>

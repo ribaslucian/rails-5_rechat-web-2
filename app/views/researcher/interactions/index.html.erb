@@ -14,14 +14,16 @@
 
 <div class="ui fitted divider"></div>
 
-<table class="ui table selectable very basic large">
+<table class="ui table selectable very basic large" style="white-space: nowrap !important;">
     <thead>
         <tr>
             <th>Título</th>
             <th>Tipo</th>
             <th>Programação</th>
             <th>Horário</th>
-            <th>Total Mensagens</th>
+            <th>Tot. Mensagens</th>
+            <th>Tot. de Visualizações</th>
+            <th>Tempo tot. de Foco</th>
             <th class="collapsing">
                 <div class="ui button icon" modal="modal_entities_search">
                     <i class="icon search"></i>
@@ -51,24 +53,23 @@
                 </td>
 
                 <td>
-                    <i class="icon time outline grey"></i>
+                    <i class="icon calendar alternate grey"></i>
                     <%= i.number_schedule %> horas
                 </td>
 
                 <td style="color: grey; font-size: 90%;">
-                    <% i.messages.each do |m| %>
-                      <div>
-                          <%= Acronym.select(:name).find(m.type_acronym_id).name %>
-                          --- 
-                          <%= m.content %>
-                          --- 
-                          <%= m.content_en %>
-                          --- 
-                          <%= m.sentimental_category %>
-                          --- 
-                          <%= m.sentimental_score %>
-                      </div>
-                    <% end %>
+                    <%= i.messages.count %>
+                </td>
+
+                
+                <td>
+                    <i class="icon eye grey"></i>
+                   124
+                </td>
+                
+                <td>
+                    <i class="icon time outline grey"></i>
+                   35m
                 </td>
 
                 <td>
@@ -76,15 +77,16 @@
                         <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
                         <div class="menu">
                             <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_interaction_path(i),
-                              class: 'item' %>
+                              class: 'item'
+                            %>
 
                             <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_interaction_path(i),
                               method: :delete,
                               class: 'item',
-                              data: { confirm: 'Tem certeza?' } %>
+                              data: { confirm: 'Tem certeza?' }
+                            %>
                         </div>
                     </div>
-
                 </td>
             </tr>
           <% end %>
