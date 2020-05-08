@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_213831) do
+ActiveRecord::Schema.define(version: 2020_03_19_213832) do
 
   create_table "acronyms", force: :cascade do |t|
     t.string "name", null: false
@@ -32,12 +32,28 @@ ActiveRecord::Schema.define(version: 2020_03_19_213831) do
   create_table "interactions", force: :cascade do |t|
     t.string "name", null: false
     t.json "user_sends"
+    t.integer "status_acronym_id", default: 650, null: false
     t.integer "type_acronym_id", default: 300, null: false
     t.integer "schedule_acronym_id", default: 400, null: false
     t.integer "number_schedule", default: 13, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_interactions_on_name", unique: true
+  end
+
+  create_table "message_interactions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "message_id"
+    t.decimal "time_focus", default: "0.0"
+    t.integer "count_views_id", default: 0
+    t.boolean "favorited", default: false
+    t.integer "next_action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["count_views_id"], name: "index_message_interactions_on_count_views_id"
+    t.index ["message_id"], name: "index_message_interactions_on_message_id"
+    t.index ["next_action_id"], name: "index_message_interactions_on_next_action_id"
+    t.index ["user_id"], name: "index_message_interactions_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|

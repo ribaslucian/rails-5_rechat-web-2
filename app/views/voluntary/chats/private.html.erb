@@ -7,7 +7,7 @@
     }
 
     .ws-messages {
-        padding-top: 10px;
+<%#*padding-top: 10px;%>
         max-height: calc(100% - 115px) !important;
     }
 
@@ -26,6 +26,7 @@
         border-radius: 8px;
         margin: 2px 15px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        position: relative;
     }
 
     .ws-message-left {
@@ -76,11 +77,6 @@
           <% last_side = current_side %>
         <% end %>
     </div>
-    
-    
-    <div class="ws-center-absolute-xy behavior-label" style="background-color: orange; font-family: 'tahoma'; font-weight: bold; font-size: 10px;">
-        teste
-    </div>
 </div>
 
 
@@ -99,5 +95,28 @@
 <script>
   $(document).ready(function () {
       $('.ws-messages').scrollTop(1000000000);
+
+      var container_start = $('.ws-mobile-container-y').position().top;
+      var container_end = container_start + $('.ws-mobile-container-y').height();
+
+      function visible_messages_calc() {
+          var total_height = $('.ws-mobile-container-y').height();
+          $('.ws-mobile-container-y').scroll(function (event) {
+              $('.scroll-item').each(function (i) {
+                  var child_start = $(this).offset().top;
+                  var child_middle = $(this).height() / 2;
+
+                  if (
+                  ((child_start + child_middle) >= container_start) // comparar top do container
+                  && ((child_start + child_middle) <= container_end) // comparar bot do container
+                  ) {
+                      $(this).addClass('is-active');
+                  } else {
+                      $(this).removeClass('is-active');
+                  }
+              });
+          });
+      }
   });
 </script>
+

@@ -4,6 +4,7 @@ class Message < ApplicationRecord
   before_save :translate_and_calc_sentimental
   
   belongs_to :interaction, optional: true
+  belongs_to :contact, optional: true
   
   belongs_to :origin_user, class_name: 'User', foreign_key: :origin_user_id, optional: true
   belongs_to :destiny_user, class_name: 'User', foreign_key: :destiny_user_id, optional: true
