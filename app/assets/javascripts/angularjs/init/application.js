@@ -29,11 +29,21 @@ app.service('$app', function () { });
 /**
  * Centralizador de servicos
  */
-app.run(function ($rootScope, $app, $data) {
-
-    $app.data = $data;
+app.run(function ($rootScope, $app, $basic, $compile) {
 
     // disponibilizacoes no escopo raiz
-    $rootScope.$data = $data;
+    $rootScope.$app = $app;
     $rootScope.$ = $; // crossview jQuery
+    
+    $app.$basic = $basic;
+    $app.$compile = $compile;
+    $app.$rootScope = $rootScope;
+});
+
+
+
+app.controller('InteractionsController', function ($app, $scope) {
+
+    
+
 });

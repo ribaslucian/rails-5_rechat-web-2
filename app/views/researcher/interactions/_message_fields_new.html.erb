@@ -1,0 +1,55 @@
+<div class="nested-fields">
+
+    <div class="four fields">
+        <div class="two wide field" style="padding-top: 23px;">
+            <%= link_to_remove_association f, class: 'ui button ws-center fluid' do %>
+                Remover
+              <% end %>
+          </div>
+
+          <div class="field">
+              <%= f.label :type_acronym_id, 'Tipo da mensagem:' %>
+
+              <%= f.select :type_acronym_id,
+                options_for_select(
+                Acronym.select(:id, :name).where('id = 1 OR id = 2').map { |a| [a.name, a.id] },
+                f.object.type_acronym_id
+                ) %>
+
+              <%= f.error_message_for :type_acronym_id %>
+          </div>
+        
+
+          <div class="field behavior-field" ng-init="type_content_acronym_id = '50'">
+              <%= f.label :type_content_acronym_id, 'Tipo da mensagem:' %>
+
+              <%=
+              f.select(
+                :type_content_acronym_id,
+
+                options_for_select(
+                  Acronym.select(:id, :name).where("data_refer = 'messages.type_content'").map { |a| [a.name, a.id] },
+                  f.object.type_acronym_id
+                ),
+
+                {},
+                'ng-model': 'type_content_acronym_id',
+                )
+            %>
+
+              <%= f.error_message_for :type_content_acronym_id %>
+          </div>
+
+
+
+          <div class="six wide field" ng-if="type_content_acronym_id == 50">
+              <%= f.label :content, 'Conteúdo:' %>
+              <%= f.text_area :content, rows: 6 %>
+          </div>
+
+          <div class="six wide field" ng-if="type_content_acronym_id == 51">
+              <%= f.label :content, 'URL Pública do Arquivo:' %>
+              <%= f.text_field :content, value: 'https://www.infoescola.com/wp-content/uploads/2019/10/paisagem-ouro-preto-1008049370.jpg' %>
+          </div>
+      </div>
+  </div>

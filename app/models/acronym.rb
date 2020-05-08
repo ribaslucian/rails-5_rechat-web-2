@@ -44,7 +44,7 @@ class Acronym < ApplicationRecord
       {id: 603, name: 'Grupo', data_refer: 'contacts.type'},
       
       # 650...
-      {id: 650, name: 'Interação Iniciada', data_refer: 'interactions.status'},
+      {id: 650, name: 'Interação em Execução', data_refer: 'interactions.status'},
       {id: 651, name: 'Interação Concluída', data_refer: 'interactions.status'},
       {id: 652, name: 'Interação Pausada', data_refer: 'interactions.status'},
     ])

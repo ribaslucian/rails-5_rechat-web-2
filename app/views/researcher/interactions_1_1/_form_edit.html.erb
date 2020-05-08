@@ -1,22 +1,11 @@
-<%= form_with model: @interaction, method: :POST, url: researcher_interactions_path, local: true, class: 'ui form' do |f| %>
+<%= form_with model: @interaction, method: :PUT, url: researcher_interaction_path, local: true, class: 'ui form' do |f| %>
+    <%= f.hidden_field :id %>
 
-    <div id='fields' class="ui three columns grid centered">
+    <div class="ui three columns grid centered">
         <div class="column">
             <div class="field">
                 <%= f.label :name, 'Título:' %>
-                <%= f.text_field :name, autofocus: 'autofocus' %>
-            </div>
-
-            <div class="field">
-                <%= f.label :status_acronym_id, 'Status da Interação:' %>
-
-                <%= f.select :status_acronym_id,
-                  options_for_select(
-                  Acronym.select(:id, :name).where("data_refer = 'interactions.status'").map { |a| [a.name, a.id] },
-                  f.object.type_acronym_id
-                  ) %>
-
-                <%= f.error_message_for :status_acronym_id %>
+                <%= f.text_field :name %>
             </div>
 
             <div class="field disabled">
@@ -64,19 +53,13 @@
         <div class="ui divider fitted"></div>
         <br/>
 
-        <div id="messages" ng-init="field = 0">
+        <div id="messages">
             <%= f.fields_for :messages do |message| %>
-
               <%= render 'message_fields', f: message %>
             <% end %>
 
             <div class="links" style="width: 11%; margin-top: 30px;">
-                <%=
-                link_to_add_association 'Adicionar',
-                  f, :messages,
-                  class: 'ui button blue ws-center',
-                  'ng-click': 'field = field + 1'
-                %>
+                <%= link_to_add_association 'Adicionar', f, :messages, class: 'ui button blue ws-center' %>
               </div>
           </div>
 
@@ -85,19 +68,8 @@
           <div class="ui divider fitted"></div>
           <br/>
 
-          <button class="ui huge button ws-center black">
-              Salvar
+          <button class="ui huge button ws-center blue">
+              Editar
           </button>
 
-      </div>
-
-      <script>
-        $('#messages').bind('cocoon:before-insert', function (e, item) {
-            var childScope = angular_scope().$new();
-            
-            childScope.indx = angular_scope().field+1;
-            angular_app().$compile(item)(childScope);
-        });
-      </script>
-
-    <% end %>
+        <% end %>
