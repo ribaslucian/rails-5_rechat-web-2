@@ -18,22 +18,17 @@
 
               <%= f.error_message_for :type_acronym_id %>
           </div>
-        
 
-          <div class="field behavior-field" ng-init="type_content_acronym_id = '50'">
+
+          <div class="field" ng-init="type_content_acronym_id = '50'">
               <%= f.label :type_content_acronym_id, 'Tipo da mensagem:' %>
 
               <%=
               f.select(
                 :type_content_acronym_id,
-
-                options_for_select(
-                  Acronym.select(:id, :name).where("data_refer = 'messages.type_content'").map { |a| [a.name, a.id] },
-                  f.object.type_acronym_id
-                ),
-
+                Acronym.select(:id, :name).where("data_refer = 'messages.type_content'").map { |a| [a.name, a.id] },
                 {},
-                'ng-model': 'type_content_acronym_id',
+                'ng-model': "type_content_acronym_id",
                 )
             %>
 

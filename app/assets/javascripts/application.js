@@ -19,7 +19,7 @@
 //= require angularjs/init/application
 //= require angularjs/services/basic
 // 
-// require_tree .
+//= require_tree .
 //
 //= require cocoon
 //= require semantic-ui

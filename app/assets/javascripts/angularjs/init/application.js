@@ -39,11 +39,3 @@ app.run(function ($rootScope, $app, $basic, $compile) {
     $app.$compile = $compile;
     $app.$rootScope = $rootScope;
 });
-
-
-
-app.controller('InteractionsController', function ($app, $scope) {
-
-    
-
-});

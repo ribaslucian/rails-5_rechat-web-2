@@ -71,5 +71,16 @@
           <button class="ui huge button ws-center blue">
               Editar
           </button>
+      </div>
 
-        <% end %>
+
+      <script>
+        $('#messages').bind('cocoon:before-insert', function (e, item) {
+            var childScope = angular_scope().$new();
+
+            childScope.indx = angular_scope().field + 1;
+            angular_app().$compile(item)(childScope);
+        });
+      </script>
+
+    <% end %>
