@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
+    
+    return d Message.all
+    
 #    Message.create!({
 #      origin_user_id: 0,
 #      destiny_user_id: 2,
