@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213832) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content", null: false
+    t.text "content"
     t.datetime "date_send", null: false
     t.integer "interaction_id"
     t.integer "type_acronym_id"

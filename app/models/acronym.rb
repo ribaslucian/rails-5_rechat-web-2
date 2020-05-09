@@ -10,6 +10,7 @@ class Acronym < ApplicationRecord
       {id: 2, name: 'Mensagem de Alvo', data_refer: 'messages.type'},
       {id: 3, name: 'Resposta de Controle', data_refer: 'messages.type'},
       {id: 4, name: 'Resposta Alvo', data_refer: 'messages.type'},
+      {id: 5, name: '[Aguardar Resposta]', data_refer: 'messages.type'},
       
       # 50...
       {id: 50, name: 'Textual', data_refer: 'messages.type_content'},

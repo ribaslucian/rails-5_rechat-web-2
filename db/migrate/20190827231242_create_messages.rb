@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
     create_table :messages do |t|
 
       # datos basicos de mensagens
-      t.text :content, null: false
+      t.text :content
       t.timestamp :date_send, default: -> { 'CURRENT_TIMESTAMP' }, null: false
 
       ## mensagems de interacoes
