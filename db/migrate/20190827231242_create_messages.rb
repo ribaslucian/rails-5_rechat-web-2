@@ -13,6 +13,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :type_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.type_acronym'}
       t.json :sent_users_id       # usuarios que mensagem da interacao ja foi enviada
       t.json :answered_users_id    # usuarios que responderam essa mensagem de interacao
+      t.integer :interaction_ids
 
       # para mensagens multi-midia
       t.integer :type_content_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.:type_content'}, default: 50

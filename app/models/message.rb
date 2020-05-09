@@ -18,11 +18,18 @@ class Message < ApplicationRecord
     # >>>> selectionar a proxima mensagem da interacao e enviar
     
     if self.destiny_user_id == 0
-      Message.create!({
+      message = Message.create!({
         origin_user_id: 0,
         destiny_user_id: 2,
         content: 'pop'
       })
+    
+      # selecionar a mensagem anterior que eh do usuario 0 (pesquisador)
+      message = find(message.id - 1).
+      message = order(id: :asc).where('interaction_id IS NOT NULL').limit(1).first
+      
+      # verificar se a mensagem eh d
+      
     end
   end
 

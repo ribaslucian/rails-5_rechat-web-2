@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213832) do
     t.integer "type_acronym_id"
     t.json "sent_users_id"
     t.json "answered_users_id"
+    t.integer "interaction_ids"
     t.integer "type_content_acronym_id", default: 50
     t.string "url"
     t.integer "origin_user_id"

@@ -13,8 +13,9 @@ class Researcher::InteractionsController < Researcher::ResearcherController
   
   def create
     params.permit!
+
     @interaction = Interaction.new params[:interaction]
-    
+
     if @interaction.save!
       flash[:green] = 'Interação foi cadastrada, verifique na lista.'
       
