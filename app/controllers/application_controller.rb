@@ -8,33 +8,16 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
+#    Message.create!({
+#      origin_user_id: 0,
+#      destiny_user_id: 2,
+#      content: 'pop'
+#    })
     
-    
-    # > verificar se a mensagem eh de um voluntario | destino_user_id = 0
-    # >> obter ultima mensagem enviada na conversa
-    # >>> verificar se a ultima foi enviada pelo pesquisador e eh de alguma interacao
-    # >>>> selectionar a proxima mensagem da interacao e enviar
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    return d ''
-
     if params[:message_create]
       Message.seed_test
       return d Message.all.count
     end
-    
     
     if params[:messages]
       return d Message.all

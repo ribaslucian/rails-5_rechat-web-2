@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
   # 1
   after_create_commit { broadcast_if_raw_message }
+  after_create :continue_interaction
   before_save :translate_and_calc_sentimental
   
   belongs_to :interaction, optional: true
@@ -9,6 +10,21 @@ class Message < ApplicationRecord
   belongs_to :origin_user, class_name: 'User', foreign_key: :origin_user_id, optional: true
   belongs_to :destiny_user, class_name: 'User', foreign_key: :destiny_user_id, optional: true
   belongs_to :previous_message, class_name: 'User', foreign_key: :previous_message_id, optional: true
+  
+  def continue_interaction
+    # > verificar se a mensagem eh de um voluntario | destino_user_id = 0
+    # >> obter ultima mensagem enviada na conversa
+    # >>> verificar se a ultima foi enviada pelo pesquisador e eh de alguma interacao
+    # >>>> selectionar a proxima mensagem da interacao e enviar
+    
+    if self.destiny_user_id == 0
+      Message.create!({
+        origin_user_id: 0,
+        destiny_user_id: 2,
+        content: 'pop'
+      })
+    end
+  end
 
   def broadcast_if_raw_message
     if self.interaction_id.nil?
