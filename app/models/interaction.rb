@@ -1,5 +1,5 @@
 class Interaction < ApplicationRecord
-  has_many :messages, dependent: :destroy
+  has_many :messages, -> { where('origin_user_id IS NULL AND destiny_user_id IS NULL') }, dependent: :destroy
   before_save :set_message_ids
 
   # belongs_to :type, -> { select :name }, class_name: 'Acronym', foreign_key: :type_acronym_id, optional: true

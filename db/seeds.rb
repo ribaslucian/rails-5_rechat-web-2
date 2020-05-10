@@ -31,12 +31,11 @@ Interaction.create!({
       }, {
         type_acronym_id: 1,
         type_content_acronym_id: 51,
-        content: 'https://conteudo.imguol.com.br/c/noticias/1e/2020/04/12/foto-conceitual-do-medicamento-hidroxicloroquina-que-esta-sendo-usado-no-combate-a-covid-19-cloroquina-contra-o-coronavirus-1586703804119_v2_450x337.jpg',
+        content: 'https://ogimg.infoglobo.com.br/in/24406017-58e-d36/FT1086A/652/x87828951_Sorocaba-SP-11-04-2020Hidroxicloroquina-e-COVID-19Foto-conceitual-do-medicamentoHidr.jpg.pagespeed.ic.WPMG6WucNM.jpg',
       }, {
         type_acronym_id: 2,
         type_content_acronym_id: 50,
-        content: 'Você sabia disso ?
-          Com os serviços de saúde colapsando por causa do grande número de casos de Covid-19, uma medicação eficiente para tratar a doença seria um caminho não só para desafogar os leitos de UTI como também para salvar vidas. É por isso que estudos com medicamentos que já existem estão sendo realizados por todo mundo.',
+        content: 'Você sabia disso ? Com os serviços de saúde colapsando por causa do grande número de casos de Covid-19, uma medicação eficiente para tratar a doença seria um caminho não só para desafogar os leitos de UTI como também para salvar vidas. É por isso que estudos com medicamentos que já existem estão sendo realizados por todo mundo.',
       }, {
         type_acronym_id: 5,
       }, {

@@ -36,6 +36,12 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     params.permit!
     @interaction = Interaction.find params[:interaction][:id]
     
+#    @interaction.messages.each do |m|
+#      if m.content
+#        m.content = m.content.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+#      end
+#    end
+    
     if @interaction.update! params[:interaction]
       flash[:blue] = 'Interação foi editada, verifique na lista.'
       
