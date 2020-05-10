@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   # 1
   after_create_commit { broadcast_if_raw_message }
-  after_create :continue_interaction
+  after_create :start_interaction
   before_save :translate_and_calc_sentimental
   
   belongs_to :interaction, optional: true
@@ -11,117 +11,129 @@ class Message < ApplicationRecord
   belongs_to :destiny_user, class_name: 'User', foreign_key: :destiny_user_id, optional: true
   belongs_to :previous_message, class_name: 'User', foreign_key: :previous_message_id, optional: true
   
-  def continue_interaction
+  def start_interaction
     if self.destiny_user_id == 0
     
-      # selecionar a mensagem anterior que eh do usuario 0 (pesquisador)
-      
-      # selecionar a ultima mensagem enviada de uma transacao
+      # selecionar a ultima mensagem enviada de uma interacao
       last_message = Message.order('id DESC, interaction_ids DESC')
       .where("interaction_id IS NOT NULL AND destiny_user_id = 2")
       .limit(1)
       .first
 
-      
       # verificar se existe uma mensagem de interacao ja iniciada
       if !last_message.nil?
+        puts "\n ------------------ \n"
         
-        
-        last_message = Message.order('id DESC, interaction_ids DESC')
-        .where("interaction_id IS NOT NULL AND destiny_user_id = 2")
+        # antes precisamos ver se a ultima mensagm enviada é a ultima da interacao em questao
+        last_message_interaction = Message
+        .where(interaction_id: last_message.interaction_id)
+        .where('origin_user_id IS NULL')
+        .where('destiny_user_id IS NULL')
+        .order(interaction_ids: :desc)
         .limit(1)
-        .first
-    
-        # obter a proxima mensagem a enviar
-        next_message = Message
-        .where(interaction_id: last_message.interaction_id)
-        .where(interaction_ids: last_message.interaction_ids + 1)
-        .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
-        .where(interaction_id: last_message.interaction_id)
         .first()
-      
-        # pegar a primeira parada para aguardar resposta
-        message_wait = Message
-        .order(:id)
-        .limit(1)
-        .where(type_acronym_id: 5)
-        .where(interaction_id: last_message.interaction_id)
-        .where("id > #{next_message.id}")
-        .first()
-      
-        # buscar todas as mensagens da interacao ate aguarda a resposta
-        if !message_wait.nil?
-          messages = Message.order(:id)
-          .where("id >= #{next_message.id} AND id < #{message_wait.id}")
-          .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
-          .where(interaction_id: last_message.interaction_id)
+
+        if (last_message_interaction.interaction_ids == last_message.interaction_ids)
+          start_or_notify()
         else
-          messages = Message.order(:id)
-          .where("id >= #{next_message.id}")
-          .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
-          .where(interaction_id: last_message.interaction_id)
+          continue_interaction last_message
         end
-      
-        messages.each do |m|
-          Message.create!({
-              origin_user_id: 0,
-              destiny_user_id: 2,
-              content: m.content,
-              interaction_id: m.interaction_id,
-              interaction_ids: m.interaction_ids,
-              type_acronym_id: m.type_acronym_id,
-              type_content_acronym_id: m.type_content_acronym_id
-            })
-        end
-        
+
       else
-        # iniciar uma interacao
-        if self.content == 'start'
+        start_or_notify()
+      end      
+    end
+  end
+  
+  def continue_interaction last_message
+    # obter a proxima mensagem a enviar
+    next_message = Message
+    .where(interaction_id: last_message.interaction_id)
+    .where(interaction_ids: last_message.interaction_ids + 1)
+    .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
+    .where(interaction_id: last_message.interaction_id)
+    .first()
+      
+    # pegar a primeira parada para aguardar resposta
+    message_wait = Message
+    .order(:id)
+    .limit(1)
+    .where(type_acronym_id: 5)
+    .where(interaction_id: last_message.interaction_id)
+    .where("id > #{next_message.id}")
+    .first()
+      
+    # buscar todas as mensagens da interacao ate aguarda a resposta
+    if !message_wait.nil?
+      messages = Message.order(:id)
+      .where("id >= #{next_message.id} AND id < #{message_wait.id}")
+      .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
+      .where(interaction_id: last_message.interaction_id)
+    else
+      messages = Message.order(:id)
+      .where("id >= #{next_message.id}")
+      .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
+      .where(interaction_id: last_message.interaction_id)
+    end
+      
+    messages.each do |m|
+      Message.create!({
+          origin_user_id: 0,
+          destiny_user_id: 2,
+          content: m.content,
+          interaction_id: m.interaction_id,
+          interaction_ids: m.interaction_ids,
+          type_acronym_id: m.type_acronym_id,
+          type_content_acronym_id: m.type_content_acronym_id
+        })
+    end
+  end
+  
+  def start_or_notify
+    # iniciar uma interacao
+    if self.content == 'start'
 
-          i = Interaction.all.first()
+      i = Interaction.all.select(:id).first()
 
-          # pegar a primeira mensagem da interacao a enviar
-          message = Message.order(id: :asc).find_by_interaction_id(i.id)
+      # pegar a primeira mensagem da interacao a enviar
+      message = Message.order(id: :asc).find_by_interaction_id(i.id)
           
-          # pegar a primeira parada para aguardar resposta
-          message_wait = Message
-          .order(:id)
-          .limit(1)
-          .where(type_acronym_id: 5)
-          .where(interaction_id: message.interaction_id)
-          .where("id > #{message.id}")
-          .first()
+      # pegar a primeira parada para aguardar resposta
+      message_wait = Message
+      .select(:id)
+      .order(:id)
+      .limit(1)
+      .where(type_acronym_id: 5)
+      .where(interaction_id: message.interaction_id)
+      .where("id > #{message.id}")
+      .first()
       
-          # buscar todoas as mensagens da interacao ate aguarda a resposta
-          messages = Message.order(:id)
-          .where("id >= #{message.id} AND id < #{message_wait.id}")
-          .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
-          .where(interaction_id: message.interaction_id)
+      # buscar todoas as mensagens da interacao ate aguarda a resposta
+      messages = Message.order(:id)
+      .where("id >= #{message.id} AND id < #{message_wait.id}")
+      .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
+      .where(interaction_id: message.interaction_id)
 
-          messages.each do |m|
-            Message.create!({
-                origin_user_id: 0,
-                destiny_user_id: 2,
-                content: m.content,
-                interaction_id: i.id,
-                interaction_ids: m.interaction_ids,
-                type_acronym_id: m.type_acronym_id,
-                type_content_acronym_id: m.type_content_acronym_id
-              })
-          end
-
-        else
-          # nenhuma interacao em vigor
-          Message.create!({
-              origin_user_id: 0,
-              destiny_user_id: 2,
-              content: 'Oi! <br/> Não posso lhe responder no momento mas assim que possível entro em contato.'
-            })
-        end
+      messages.each do |m|
+        Message.create!({
+            origin_user_id: 0,
+            destiny_user_id: 2,
+            content: m.content,
+            interaction_id: i.id,
+            interaction_ids: m.interaction_ids,
+            # interaction_message_id: message.id,
+            type_acronym_id: m.type_acronym_id,
+            type_content_acronym_id: m.type_content_acronym_id
+          })
       end
-      
-      # verificar se a mensagem eh d
-      
+
+    else
+      # nenhuma interacao em vigor
+      Message.create!({
+          origin_user_id: 0,
+          destiny_user_id: 2,
+          content: 'Oi! <br/> Não posso lhe responder no momento mas assim que possível entro em contato.'
+        })
     end
   end
 
