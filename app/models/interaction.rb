@@ -9,8 +9,10 @@ class Interaction < ApplicationRecord
   def set_message_ids
     i = 1
     self.messages.each do |m|
-      m.interaction_ids = i
-      i = i + 1
+      if (m.type_acronym_id != 5)
+        m.interaction_ids = i
+        i = i + 1
+      end
     end
   end
 end

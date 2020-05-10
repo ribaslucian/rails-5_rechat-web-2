@@ -1,5 +1,5 @@
 <% if message.type_content_acronym_id == 50 %>
-  <%= message.content %>
+  <%= message.content.html_safe %>
 <% end %>
 
 <% if message.type_content_acronym_id == 51 %>
