@@ -22,13 +22,13 @@ Rails.application.routes.draw do
     
     resources :interactions
     resources :users
+    resources :messages
   end
   
   namespace :voluntary do
     get '/', to: 'contacts#index'
     get '/voluntary', to: 'contacts#index'
     get 'users/logout', to: 'users#logout', as: :logout
-    
     
     get '/voluntary/chat/private/:contact_id', to: 'chats#private', as: :chat_private
   end

@@ -1,31 +1,76 @@
 <br/>
 <br/>
 
-<div align="center">
-    <div id="messages">
-        <%= render @messages %>
+<div class="ui main container">
+    <div class="ui grid three columns grid stackable">
+        <div class="column">
+            <div class="ui segment basic padded" style="background: white; border-radius: 8px;">
+                <h3>
+                    Melhor Interação
+                </h3>
+
+                <h1 style="color: #2185d0; margin-top: 0px; margin-bottom: 30px;">
+                    Título da Interação
+                </h1>
+
+                <p style="color: grey; font-size: 90%">
+                    15 mensagens de interação gerados 452 mensagens propagadas, 
+                    30 minutos de foco total, propagado para 92 Voluntários.
+                </p>
+                
+                <a href="#">
+                    <i class="icon star"></i>
+                    Ranking Completo
+                </a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="ui segment basic padded" style="background: white; border-radius: 8px;">
+                <h3>
+                    Mensagem mais Visualizada
+                </h3>
+
+                <h1 style="color: #2185d0; margin-top: 0px; margin-bottom: 30px;">
+                    152 views
+                </h1>
+
+                <p style="color: grey; font-size: 90%">
+                    É claro que a execução dos pontos do programa causa impacto
+                    indireto na reavaliação das diversas correntes de pensamento.
+                </p>
+                
+                <a href="#">
+                    <i class="icon star"></i>
+                    Ranking Completo
+                </a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="ui segment basic padded" style="background: white; border-radius: 8px;">
+                <h3>
+                    Melhor Voluntário
+                </h3>
+
+                <h1 style="color: #2185d0; margin-top: 0px; margin-bottom: 30px;">
+                    Nome do Voluntário
+                </h1>
+
+                <p style="color: grey; font-size: 90%">
+                    É claro que a execução dos pontos do programa causa impacto
+                    indireto na reavaliação das diversas correntes de pensamento.
+                </p>
+                
+                <a href="#">
+                    <i class="icon star"></i>
+                    Ranking Completo
+                </a>
+            </div>
+        </div>
     </div>
-
-    <br/>
-
-    <div>
-        <input id="destiny_user_id" type="text" placeholder="ID do Usuário" />
-    </div>
-
-    <div>
-        <input type="text" placeholder="Mensagem" data-behavior="chat_speaker" />
-    </div>
-
-    <br/>
+    
+    <br/><br/>
+    
+    <div class="ui divider fitted"></div>
 </div>
-
-<!--
-inscricao
-cable.js > chats.js#3 > chat_channel.rb#1
-
-envio
-chat.js#1 > chat.js#2 > chat_channel.rb#1 > message.rb#1 > chat_broadcast_job.rb#1
-
-resposta
-chat.js#1 > chat.js#2 > chat_channel.rb#1 > message.rb#1 > chat_broadcast_job.rb#1
--->
