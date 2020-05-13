@@ -10,7 +10,7 @@
             <br/>
 
             <div class="field">
-                <%= f.label :status_acronym_id, 'Status da Interação:' %>
+                <%= f.label :status_acronym_id, 'Status do Boot:' %>
 
                 <%= f.select :status_acronym_id,
                   options_for_select(
@@ -25,7 +25,7 @@
                 <label>Tipo:</label>
 
                 <p style="font-size: 90%;">
-                    Será possível escolhar entre interações do tipo "Conversa" ou "Questionário".
+                    Será possível escolhar entre boots do tipo "Conversa" ou "Questionário".
                 </p>
                 <input value="Conversa" disabled />
             </div>
@@ -38,7 +38,7 @@
                 <label>Programação:</label>
 
                 <p style="font-size: 90%;">
-                    A programação se tornará uma lista adicionável como as mensagens da interação.
+                    A programação se tornará uma lista adicionável como as mensagens da boot.
                     Mas nessa versão será disponibilizado apenas a opção "Diária".
                 </p>
 

@@ -132,7 +132,7 @@ class Message < ApplicationRecord
       Message.create!({
           origin_user_id: 0,
           destiny_user_id: 2,
-          content: 'Oi! <br/> Não posso lhe responder no momento mas assim que possível entro em contato.'
+          content: 'Oi! Não posso lhe responder no momento mas assim que possível entro em contato.'
         })
     end
   end
