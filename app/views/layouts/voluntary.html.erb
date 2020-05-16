@@ -31,15 +31,6 @@
         <%= render 'layouts/alerts/alerts' %>
         <%= render 'layouts/partials/loading' %>
 
-        <style>
-            .scroll-item {
-                <%#*background-color: blue !important;%>
-            }
-            .scroll-item.is-active {
-                <%#*background-color: #0e8824 !important;%>
-            }
-        </style>
-
         <script>
           $(document).ready(function () {
               SESSION_USER_ID = <%= session[:user]['id'] %>;
