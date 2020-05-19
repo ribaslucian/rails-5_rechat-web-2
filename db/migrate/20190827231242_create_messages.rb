@@ -34,8 +34,13 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.decimal :sentimental_score
       
       # controle de notificações
-      t.boolean :received, default: false
-      t.boolean :viewed, default: false
+     #  t.boolean :received, default: false # para deixar o chat em destaque caso o usuario não tenha lido
+
+      # dados da interação
+      t.decimal :time_focus, default: 0
+      t.integer :count_views, default: 0
+      t.boolean :favorited, default: false
+      t.integer :next_action_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.next_action'}, default: 50
 
       t.timestamps
     end

@@ -14,4 +14,23 @@
     <% if message.type_content_acronym_id == 53 %>
       [renderizando áudio]
     <% end %>
+
+    <% if  message.origin_user_id == 0 %>  
+
+      <div class="ui dropdown icon large" onclick="alert('oi')" style="position: absolute; top: -4px; right: -2px">
+          <i class="sort down icon grey small"></i>
+
+          <div class="menu shadow-button">
+              <div class="item">
+                  <i class="icon star outline grey"></i>
+                  Favoritar
+              </div>
+
+              <div class="item">
+                  <i class="icon share grey"></i>
+                  Compartilhar
+              </div>
+          </div>
+      </div>
+    <% end %>  
 </div>

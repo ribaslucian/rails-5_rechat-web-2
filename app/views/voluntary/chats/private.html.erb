@@ -95,10 +95,10 @@
 
 <style>
     .scroll-item {
-        background-color: blue !important;
+        <%#*background-color: blue !important;%>
     }
     .scroll-item.is-active {
-        background-color: #0e8824 !important;
+        <%#*background-color: #0e8824 !important;%>
     }
 </style>
 
@@ -119,11 +119,6 @@
                   var child_start = $(this).offset().top;
                   var child_middle = $(this).height() / 2;
                   var id = $('[message-id]', $(this)).attr('message-id');
-                  
-                  // verificar se eh uma mensagem a esquerda
-                  <%#*if ($('.ws-message-left', (this))[0] == undefined) {%>
-                    <%#*return;%>
-                  <%#*}%>
 
                   if (
                           ((child_start + child_middle) >= container_start) // comparar top do container
@@ -141,7 +136,7 @@
                       if ($(this).hasClass('is-active')) {
                           time = ((new Date()) - times[id]) / 1000;
 
-                          l(id + ': TEMPO VISUALIZADO: ' + time);
+                          // l(id + ': TEMPO VISUALIZADO: ' + time);
                           times[id] = 0;
 
                           $(this).removeClass('is-active');

@@ -30,6 +30,7 @@ function connect(origin_user_id) {
             $('.ws-messages').scrollTop(1000000000);
             
             $('.ws-loading-global').fadeOut();
+            $('.dropdown').dropdown();
             return;
         },
         // 2

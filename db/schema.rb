@@ -45,14 +45,12 @@ ActiveRecord::Schema.define(version: 2020_03_19_213832) do
     t.integer "user_id"
     t.integer "message_id"
     t.decimal "time_focus", default: "0.0"
-    t.integer "count_views_id", default: 0
+    t.integer "count_views", default: 0
     t.boolean "favorited", default: false
-    t.integer "next_action_id"
+    t.integer "next_action_acronym_id", default: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["count_views_id"], name: "index_message_interactions_on_count_views_id"
     t.index ["message_id"], name: "index_message_interactions_on_message_id"
-    t.index ["next_action_id"], name: "index_message_interactions_on_next_action_id"
     t.index ["user_id"], name: "index_message_interactions_on_user_id"
   end
 
@@ -73,8 +71,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_213832) do
     t.text "content_en"
     t.string "sentimental_category"
     t.decimal "sentimental_score"
-    t.boolean "received", default: false
-    t.boolean "viewed", default: false
+    t.decimal "time_focus", default: "0.0"
+    t.integer "count_views", default: 0
+    t.boolean "favorited", default: false
+    t.integer "next_action_acronym_id", default: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["interaction_id"], name: "index_messages_on_interaction_id"

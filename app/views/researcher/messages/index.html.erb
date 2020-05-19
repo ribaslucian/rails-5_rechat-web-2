@@ -1,1 +1,124 @@
-Lista de Mensagens
+<br/>
+
+<h1 class="ui header">
+    <i class="mail icon"></i>
+
+    <div class="content" style="position: relative; bottom: -5px">
+        Mensagens
+    </div>
+</h1>
+
+<div class="ui fitted divider"></div>
+
+<br/>
+
+<div style="overflow: auto !important; max-width: 100%;">
+    <table class="ui table selectable very basic large unstackable" style="white-space: nowrap !important;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Conteúdo</th>
+                <th>Usuário Orig.</th>
+                <th>Usuário Dest.</th>
+                <th>Boot/Sequência</th>
+                <th>Tipo</th>
+                <th>Favoritada</th>
+                <th>Visualizado</th>
+                <th>Tot. de Visua.</th>
+                <th>Tempo tot. de Foco</th>
+                <th>Polaridade Emocional</th>
+                <th class="collapsing">
+                    <div class="ui button icon" modal="modal_entities_search">
+                        <i class="icon search"></i>
+                    </div>
+
+                    <%= link_to new_researcher_interaction_path, class: 'ui icon blue button' do %>
+                        <i class="add icon"></i>
+                      <% end %>
+                  </th>
+              </tr>
+          </thead>
+
+          <tbody>
+              <% Message.order('id, interaction_ids').all.each do |m| %>
+                <tr>
+                    <td>
+                        <%= m.id %>
+                    </td>
+
+                    <td>
+                        <%= m.created_at %>
+                    </td>
+
+                    <td>
+                        <%#= m.content[0:5] %>
+                        <%= Acronym.select(:name).find(m.type_content_acronym_id).name %>
+                        [...]
+                    </td>
+
+                    <td>
+                        <%= m.origin_user_id %>
+                    </td>
+
+                    <td>
+                        <%= m.destiny_user_id %>
+                    </td>
+
+                    <td>
+                        <%= m.interaction.name if m.interaction_id %>
+                        /
+                        <%= m.interaction_ids %>
+                    </td>
+
+                    <td>
+                        <%= Acronym.select(:name).find(m.type_acronym_id).name if m.type_acronym_id %>
+                    </td>
+
+                    <td>
+                        <%= m.favorited %>
+                        Sim/Não
+                    </td>
+
+                    <td>
+                        <%= m.count_views %>
+                        CV 0
+                    </td>
+
+                    <td>
+                        Sim/Não
+                    </td>
+
+                    <td>
+                        <%= m.time_focus %>
+                        TF 1s
+                    </td>
+
+                    <td>
+                        <% if m.sentimental_category %>
+                          <%= m.sentimental_category %>:
+                          <%= m.sentimental_score %>
+                        <%  end %>
+                    </td>
+
+                    <td>
+                        <div class="ui dropdown ws-center ">
+                            <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
+                            <div class="menu">
+                                <%= link_to '<i class="icon edit"></i> Editar'.html_safe, edit_researcher_interaction_path(m),
+                                  class: 'item'
+                                %>
+
+                                  <%= link_to '<i class="icon delete"></i> Deletar'.html_safe, researcher_interaction_path(m),
+                                    method: :delete,
+                                    class: 'item',
+                                      data: { confirm: 'Tem certeza?' }
+                                  %>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                  <% end %>
+              </tbody>
+          </table>
+      </div>

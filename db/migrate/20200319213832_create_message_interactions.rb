@@ -7,12 +7,12 @@ class CreateMessageInteractions < ActiveRecord::Migration[5.2]
       
       # calcs
       t.decimal :time_focus, default: 0
-      t.belongs_to :count_views, default: 0
+      t.integer :count_views, default: 0
       t.boolean :favorited, default: false
       
       # se a mensagem for "alvo", sera armazenado a proxima acao
       # somente apos a na primeira visualizacao da mensagem
-      t.belongs_to :next_action, foreign_key: true
+      t.integer :next_action_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages_interactions.next_action'}, default: 50
       
       t.timestamps
     end
