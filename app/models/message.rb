@@ -169,13 +169,5 @@ class Message < ApplicationRecord
         content: "https://www.infoescola.com/wp-content/uploads/2019/10/paisagem-ouro-preto-1008049370.jpg",
         contact_id: 1
       })
-    
-    Message.create!({
-        origin_user_id: 1,
-        destiny_user_id: 2,
-        type_content_acronym_id: 52,
-        content: "https://www.youtube.com/watch?v=tgbNymZ7vqY&feature=emb_logo",
-        contact_id: 1
-      })
   end
 end
