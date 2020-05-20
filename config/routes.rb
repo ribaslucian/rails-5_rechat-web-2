@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :researcher do
     get '/', to: 'dashboard#index'
     get '/researcher', to: 'users#login'
+    get '/chats/:user_id', to: 'chats#private'
     get 'dashboard/index', to: 'dashboard#index'
     
     get 'users/logout', to: 'users#logout', as: :logout

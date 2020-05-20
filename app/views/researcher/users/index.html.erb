@@ -80,16 +80,16 @@
                     <% i.contacts.each do |c| %>
                       <span class="ui label" style="margin-top: 5px;">
                           <i class="icon mail"></i>
-                          
+
                           <%= Acronym.select(:name).find(c.type_acronym_id).name %>:
-                          
+
                           <%= c.name %>
                       </span>
                     <% end %>
                 </td>
 
                 <td>
-                    <div class="ui dropdown ws-center ">
+                    <div class="ui dropdown ws-center">
                         <i class="icon ellipsis vertical grey" style="font-size: 20px;"></i>
                         <div class="menu">
 
@@ -100,10 +100,13 @@
                                 method: :delete,
                                 class: 'item',
                                   data: { confirm: 'Tem certeza?' } %>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-              <% end %>
-          </tbody>
-      </table>
+
+                                <%= link_to '<i class="icon chat"></i> Chat'.html_safe, "/researcher/chats/#{i.id}",
+                                  class: 'item' %>
+                              </div>
+                          </div>
+                      </td>
+                  </tr>
+                <% end %>
+            </tbody>
+        </table>
