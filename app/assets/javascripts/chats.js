@@ -1,3 +1,4 @@
+var CONTACT_ID = 0;
 
 // 3
 function connect(origin_user_id) {
@@ -40,6 +41,7 @@ function connect(origin_user_id) {
                 origin_user_id: origin_user_id,
                 destiny_user_id: 0,
                 content: message,
+                contact_id: CONTACT_ID,
             });
         }
     });

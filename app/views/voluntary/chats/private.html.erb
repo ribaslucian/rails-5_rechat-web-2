@@ -65,7 +65,7 @@
     <div class="ws-mobile-container-x ws-behavior-messages">
 
         <% last_side = current_side = nil %>
-        <% Message.where("origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}").order(:created).each do |m| %>
+        <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(:created).each do |m| %>
 
           <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
 
@@ -95,15 +95,17 @@
 
 <style>
     .scroll-item {
-        <%#*background-color: blue !important;%>
+        background-color: blue !important;
     }
     .scroll-item.is-active {
-        <%#*background-color: #0e8824 !important;%>
+        background-color: #0e8824 !important;
     }
 </style>
 
 <script>
   $(document).ready(function () {
+      CONTACT_ID = <%= params[:contact_id] %>;
+    
       $('.ws-messages').scrollTop(1000000000);
 
       var container_start = $('.ws-mobile-container-y').position().top;

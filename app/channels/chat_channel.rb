@@ -18,7 +18,8 @@ class ChatChannel < ApplicationCable::Channel
     Message.create!({
         origin_user_id: data['origin_user_id'],
         destiny_user_id: data['destiny_user_id'],
-        content: data['content']
+        content: data['content'],
+        contact_id: data['contact_id'],
       })
     #  	Message.create! content: data['message'], room: data['room']
   end

@@ -84,7 +84,8 @@ class Message < ApplicationRecord
           interaction_id: m.interaction_id,
           interaction_ids: m.interaction_ids,
           type_acronym_id: m.type_acronym_id,
-          type_content_acronym_id: m.type_content_acronym_id
+          type_content_acronym_id: m.type_content_acronym_id,
+          contact_id: self.contact_id
         })
     end
   end
@@ -123,7 +124,8 @@ class Message < ApplicationRecord
             interaction_ids: m.interaction_ids,
             # interaction_message_id: message.id,
             type_acronym_id: m.type_acronym_id,
-            type_content_acronym_id: m.type_content_acronym_id
+            type_content_acronym_id: m.type_content_acronym_id,
+            contact_id: self.contact_id
           })
       end
 
@@ -132,7 +134,8 @@ class Message < ApplicationRecord
       Message.create!({
           origin_user_id: 0,
           destiny_user_id: 2,
-          content: 'Oi! Não posso lhe responder no momento mas assim que possível entro em contato.'
+          content: 'Oi! Não posso lhe responder no momento mas assim que possível entro em contato.',
+          contact_id: self.contact_id
         })
     end
   end
