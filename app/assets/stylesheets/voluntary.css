@@ -146,6 +146,7 @@ a:active { color: inherit; }
 
 .ws-mobile-container-y {
     width: 100%;
+    height: calc(100% - 65px) !important;
     max-height: calc(100% - 65px) !important;
     overflow: auto;
 }

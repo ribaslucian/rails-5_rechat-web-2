@@ -63,8 +63,8 @@
 
 <div class="ws-mobile-container-y ws-messages">
     <div class="ws-mobile-container-x ws-behavior-messages">
-
         <% last_side = current_side = nil %>
+
         <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(:created).each do |m| %>
 
           <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
@@ -105,7 +105,7 @@
 <script>
   $(document).ready(function () {
       CONTACT_ID = <%= params[:contact_id] %>;
-    
+
       $('.ws-messages').scrollTop(1000000000);
 
       var container_start = $('.ws-mobile-container-y').position().top;
@@ -149,6 +149,54 @@
       }
 
       visible_messages_calc();
+
+      // onload
+      // iniciar contagem de interação (foco e visualização) da ultima mensagem
+      // (caso ela seja do pesquisado e caso ainda não tenha sido visualizada).
+      // 
+      // scroll
+      // iniciar contagem de interação (foco e visualização) das mensagens visiveis.
+      //
+      // onexit
+      // enviar informações de visualização e tempo de foco para o painel
+
+      /*
+       ordenar
+       https://stackoverflow.com/questions/21267120/sort-by-id-element-using-jquery 
+       $("#cat li").sort(function (a, b) {
+       return parseInt(a.id) > parseInt(b.id);
+       }).each(function () {
+       var elem = $(this);
+       elem.remove();
+       $(elem).appendTo("#cat");
+       });*/
   });
 </script>
 
+<div class="ui modal ws-behavior-modal-favorite">
+    <i class="close icon"></i>
+    <div class="header">
+        Compartilhar
+    </div>
+    
+    <div class="image content">
+        <div class="ui medium image">
+            <img src="/images/avatar/large/chris.jpg">
+        </div>
+        <div class="description">
+            <div class="ui header">We've auto-chosen a profile image for you.</div>
+            <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+            <p>Is it okay to use this photo?</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Cancelar
+        </div>
+        
+        <div class="ui positive right labeled icon button">
+            Compartilhar
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

@@ -17,16 +17,16 @@
 
     <% if  message.origin_user_id == 0 %>  
 
-      <div class="ui dropdown icon large" onclick="alert('oi')" style="position: absolute; top: -4px; right: -2px">
+      <div class="ui dropdown icon large"style="position: absolute; top: -4px; right: -2px">
           <i class="sort down icon grey small"></i>
 
           <div class="menu shadow-button">
-              <div class="item">
+              <div class="item" onclick="$('.ws-behavior-modal-favorite').modal('show')">
                   <i class="icon star outline grey"></i>
                   Favoritar
               </div>
 
-              <div class="item">
+              <div class="item" onclick="$('.ws-behavior-modal-share').modal('show')">
                   <i class="icon share grey"></i>
                   Compartilhar
               </div>
