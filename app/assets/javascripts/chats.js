@@ -32,6 +32,7 @@ function connect(origin_user_id) {
             
             $('.ws-loading-global').fadeOut();
             $('.dropdown').dropdown();
+            capture_interaction_start();
             return;
         },
         // 2

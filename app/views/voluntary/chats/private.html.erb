@@ -103,67 +103,56 @@
 </style>
 
 <script>
+  function capture_interaction_start() {
+      var time;
+
+      $('.scroll-item').each(function (i) {
+          var child_start = $(this).offset().top;
+          var child_middle = $(this).height() / 2;
+          var id = $('[message-id]', $(this)).attr('message-id');
+
+          if (!(id in total_times))
+              total_times[id] = 0;
+
+          if (
+                  ((child_start + child_middle) >= container_start) // comparar top do container
+                  && ((child_start + child_middle) <= container_end) // comparar bot do container
+                  ) {
+
+              // verificar se já nao estava ativo
+              if (!$(this).hasClass('is-active')) {
+
+                  // iniciar tempo do foco atual
+                  times[id] = new Date();
+
+                  $(this).addClass('is-active');
+              }
+
+          } else {
+              // verificar se estava ativo de fato
+              if ($(this).hasClass('is-active')) {
+                  time = ((new Date()) - times[id]) / 1000;
+                  total_times[id] = total_times[id] + time;
+
+                  l(id + ': TEMPO VISUALIZADO: ' + total_times[id]);
+
+                  // zerar tempo do foco atua
+                  times[id] = 0;
+
+                  $(this).removeClass('is-active');
+              }
+          }
+      });
+  }
+
+  var total_times = [];
+  var times = [];
+  var container_start = $('.ws-mobile-container-y').position().top;
+  var container_end = container_start + $('.ws-mobile-container-y').height();
+
+
   $(document).ready(function () {
       CONTACT_ID = <%= params[:contact_id] %>;
-
-<%#*$('.ws-messages').scrollTop(1000000000);%>
-
-      /*var container_start = $('.ws-mobile-container-y').position().top;
-       var container_end = container_start + $('.ws-mobile-container-y').height();
-       
-       function visible_messages_calc() {
-       var total_times = [];
-       var times = [];
-       var time;
-       
-       $('.ws-mobile-container-y').scroll(function (event) {
-       $('.scroll-item').each(function (i) {
-       var child_start = $(this).offset().top;
-       var child_middle = $(this).height() / 2;
-       var id = $('[message-id]', $(this)).attr('message-id');
-       
-       if (!(id in total_times))
-       total_times[id] = 0;
-       
-       if (
-       ((child_start + child_middle) >= container_start) // comparar top do container
-       && ((child_start + child_middle) <= container_end) // comparar bot do container
-       ) {
-       
-       // verificar se já nao estava ativo
-       if (!$(this).hasClass('is-active')) {
-       times[id] = new Date();
-       $(this).addClass('is-active');
-       }
-       
-       } else {
-       // verificar se estava ativo de fato
-       if ($(this).hasClass('is-active')) {
-       time = ((new Date()) - times[id]) / 1000;
-       total_times[id] = total_times[id] + time;
-       
-       l(id + ': TEMPO VISUALIZADO: ' + total_times[id]);
-       times[id] = 0;
-       
-       $(this).removeClass('is-active');
-       }
-       }
-       });
-       });
-       }
-       
-       visible_messages_calc();*/
-
-      // onload
-      // iniciar contagem de interação (foco e visualização) da ultima mensagem
-      // (caso ela seja do pesquisado e caso ainda não tenha sido visualizada).
-      // 
-      // scroll
-      // iniciar contagem de interação (foco e visualização) das mensagens visiveis.
-      //
-      // onexit
-      // enviar informações de visualização e tempo de foco para o painel
-
       /*
        ordenar
        https://stackoverflow.com/questions/21267120/sort-by-id-element-using-jquery 
@@ -175,58 +164,10 @@
        $(elem).appendTo("#cat");
        });*/
 
-
-      function capture_interaction_start() {
-          var time;
-
-          $('.scroll-item').each(function (i) {
-              var child_start = $(this).offset().top;
-              var child_middle = $(this).height() / 2;
-              var id = $('[message-id]', $(this)).attr('message-id');
-
-              if (!(id in total_times))
-                  total_times[id] = 0;
-
-              if (
-                      ((child_start + child_middle) >= container_start) // comparar top do container
-                      && ((child_start + child_middle) <= container_end) // comparar bot do container
-                      ) {
-
-                  // verificar se já nao estava ativo
-                  if (!$(this).hasClass('is-active')) {
-
-                      // iniciar tempo do foco atual
-                      times[id] = new Date();
-
-                      $(this).addClass('is-active');
-                  }
-
-              } else {
-                  // verificar se estava ativo de fato
-                  if ($(this).hasClass('is-active')) {
-                      time = ((new Date()) - times[id]) / 1000;
-                      total_times[id] = total_times[id] + time;
-
-                      l(id + ': TEMPO VISUALIZADO: ' + total_times[id]);
-
-                      // zerar tempo do foco atua
-                      times[id] = 0;
-
-                      $(this).removeClass('is-active');
-                  }
-              }
-          });
-      }
-
-      var total_times = [];
-      var times = [];
-      var container_start = $('.ws-mobile-container-y').position().top;
-      var container_end = container_start + $('.ws-mobile-container-y').height();
-
       $('.ws-mobile-container-y').scroll(function () {
           capture_interaction_start();
       });
-      
+
       capture_interaction_start();
   });
 </script>
