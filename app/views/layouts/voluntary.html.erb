@@ -37,5 +37,16 @@
               connect(<%= session[:user]['id'] %>)
           });
         </script>
+        
+        <div ng-init="
+          $app.$entity.load('contacts', {
+            $reload: true,
+            'Contact': {
+              all: ''
+            }
+          });
+        "></div>
+        
+        {{$app.data['ws']['contacts']}}
     </body>
 </html>

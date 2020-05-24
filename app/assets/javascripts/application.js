@@ -17,7 +17,16 @@
 //
 //= require angularjs/min
 //= require angularjs/init/application
+//= require angularjs/init/toastr
+//= require angularjs/vendor/toastr/angular-toastr.tpls.min
+//
 //= require angularjs/services/basic
+//= require angularjs/services/api
+//= require angularjs/services/basic
+//= require angularjs/services/entity
+//= require angularjs/services/error
+//= require angularjs/services/flash
+//= require angularjs/directives/ng-confirm-click
 // 
 //= require_tree .
 //
@@ -26,7 +35,6 @@
 
 $(document).ready(function () {
     $('.dropdown').dropdown();
-
     certer_content_visible();
     $('.ws-loading-global').fadeOut();
 });

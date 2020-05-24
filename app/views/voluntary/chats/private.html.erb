@@ -169,33 +169,70 @@
       });
 
       capture_interaction_start();
+
+      $('.ws-behavior-modal-share').modal('show');
   });
+  
+  function star() {
+    $.toast({
+        text: 'Mensagem salva nas favoritas',
+        position: 'top-center',
+        hideAfter: 5000,
+        loaderBg: '#777',
+        // icon: 'warning',
+        // showHideTransition: 'fade',
+        bgColor: '#3c763d',
+        textColor: 'white',
+        // loaderBg: '#c9ba9b'
+        // allowToastClose: true
+    });
+  }
+  
+  function unstar() {
+    $.toast({
+        text: 'Mensagem removida das favoritas.',
+            position: 'top-center',
+            hideAfter: 5000,
+            loaderBg: '#666'
+                    // icon: 'warning',
+                    // showHideTransition: 'fade',
+                    // bgColor: '#fffaf3',
+                    // textColor: '#8e6628',
+                    // loaderBg: '#c9ba9b'
+                    // allowToastClose: true
+    });
+  }
 </script>
 
-<div class="ui modal ws-behavior-modal-favorite">
+<div class="ui modal ws-behavior-modal-share">
     <i class="close icon"></i>
     <div class="header">
         Compartilhar
     </div>
 
-    <div class="image content">
-        <div class="ui medium image">
-            <img src="/images/avatar/large/chris.jpg">
-        </div>
-        <div class="description">
-            <div class="ui header">We've auto-chosen a profile image for you.</div>
-            <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-        </div>
+    <div class="content">
+        <% Contact.where(user_id: session[:user]['id']).each do |c| %>
+          <div style="padding: 10px;">
+              <input type="checkbox" name="contact[<%= c.id %>]" />
+
+              &nbsp;
+              
+              <span style="position: relative; top: -2px;">
+                  <%= c.name %>
+              </span>
+          </div>
+
+          <div class="ui divider fitted"></div>
+        <% end %>
+
     </div>
     <div class="actions">
-        <div class="ui black deny button">
+        <div class="ui deny button">
             Cancelar
         </div>
 
-        <div class="ui positive right labeled icon button">
+        <div class="ui blue button">
             Compartilhar
-            <i class="checkmark icon"></i>
         </div>
     </div>
 </div>

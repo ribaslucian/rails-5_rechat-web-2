@@ -1,8 +1,5 @@
-/**
- * iniciando aplicacao e informando quais metodos serao utializados
- */
-
-var app = angular.module('ChatResearcher', []);
+var API_URL = 'http://localhost:3000/api/authorize.json';
+var app = angular.module('ChatResearcher', ['toastr']);
 
 app.service('$data', function () {
     this.reset = function () {
@@ -29,7 +26,7 @@ app.service('$app', function () { });
 /**
  * Centralizador de servicos
  */
-app.run(function ($rootScope, $app, $basic, $compile) {
+app.run(function ($rootScope, $http, $app, $flash, $api, $entity, $data, $basic, $compile) {
 
     // disponibilizacoes no escopo raiz
     $rootScope.$app = $app;
@@ -38,4 +35,10 @@ app.run(function ($rootScope, $app, $basic, $compile) {
     $app.$basic = $basic;
     $app.$compile = $compile;
     $app.$rootScope = $rootScope;
+    
+    $app.$http = $http;
+    $app.flash = $flash;
+    $app.$api = $api;
+    $app.$entity = $entity;
+    $app.data = $data;
 });

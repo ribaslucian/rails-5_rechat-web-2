@@ -21,9 +21,14 @@
           <i class="sort down icon grey small"></i>
 
           <div class="menu shadow-button">
-              <div class="item" onclick="$('.ws-behavior-modal-favorite').modal('show')">
-                  <i class="icon star outline grey"></i>
+              <div class="item" onclick="unstar()">
+                  <i class="icon star grey"></i>
                   Favoritar
+              </div>
+              
+              <div class="item" onclick="unstar()">
+                  <i class="icon star outline grey"></i>
+                  Remover das Favoritas
               </div>
 
               <div class="item" onclick="$('.ws-behavior-modal-share').modal('show')">

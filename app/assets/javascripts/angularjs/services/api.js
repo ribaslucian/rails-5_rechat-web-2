@@ -6,8 +6,7 @@ app.service('$api', function ($app) {
     this.process = function (params, callable_success) {
         loading();
         l('$api process');
-
-        var action = params.action ? params.action : 'zyMvMvYaSLAq8qZR';
+        
 
         $app.$http({
             url: API_URL,

@@ -395,7 +395,7 @@ app.service('$entity', function ($app) {
     this.load = function (data_key, options) {
         loading();
 
-        var id = 'office';
+        var id = 'ws';
 
         // necessario recarregamento ?
         if (options.$reload == true) {

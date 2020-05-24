@@ -30,3 +30,11 @@ function angular_controller_apply(controller) {
 function random() {
     return Math.random().toString(36).substr(2);
 }
+
+function loading() {
+    $('.ws-loading-global').fadeIn();
+}
+
+function loaded() {
+    $('.ws-loading-global').fadeOut();
+}

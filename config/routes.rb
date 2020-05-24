@@ -34,5 +34,8 @@ Rails.application.routes.draw do
     get '/voluntary/chat/private/:contact_id', to: 'chats#private', as: :chat_private
   end
   
+  namespace :api, defaults: { format: :json } do
+    post 'authorize' => 'authorizers#authorize'
+  end
 end
 
