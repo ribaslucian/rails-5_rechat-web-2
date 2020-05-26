@@ -11,6 +11,8 @@ class Message < ApplicationRecord
   belongs_to :destiny_user, class_name: 'User', foreign_key: :destiny_user_id, optional: true
   belongs_to :previous_message, class_name: 'User', foreign_key: :previous_message_id, optional: true
   
+  has_many :message_share
+  
   def start_interaction
     if self.destiny_user_id == 0
     
@@ -184,5 +186,27 @@ class Message < ApplicationRecord
     message = Message.find(params['id'])
     message.favorited = false
     return message.save!
+  end
+  
+  def self.share params
+    
+    if !params['contacts_id'].nil?
+      params['contacts_id'].each do |contact_id, value|
+        #      puts "------------"
+        #      puts "#{contact_id} -- #{value}"
+      
+        if value == true
+          MessageShare.create!({
+              contact_id: contact_id,
+              user_id: params['user_id'],
+              interaction_id: params['interaction_id'],
+              interaction_message_id: params['interaction_message_id'],
+              propagation_message_id: params['propagation_message_id'],
+            })
+        end
+      end
+    end
+    
+    return params
   end
 end

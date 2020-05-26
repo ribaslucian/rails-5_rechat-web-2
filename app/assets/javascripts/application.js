@@ -39,6 +39,8 @@ $(document).ready(function () {
     $('.dropdown').dropdown();
     certer_content_visible();
     $('.ws-loading-global').fadeOut();
+    
+    $('.checkbox').checkbox();
 });
 
 $(window).on('beforeunload', function () {

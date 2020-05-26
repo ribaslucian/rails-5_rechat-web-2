@@ -24,6 +24,7 @@
             <th>Tot. Mensagens</th>
             <th>Tot. de Visualizações</th>
             <th>Tempo tot. de Foco</th>
+            <th>Compartilhamentos</th>
             <th class="collapsing">
                 <div class="ui button icon" modal="modal_entities_search">
                     <i class="icon search"></i>
@@ -70,6 +71,10 @@
                 <td>
                     <i class="icon time outline grey"></i>
                    35m
+                </td>
+                
+                <td>
+                   <%= MessageShare.where(interaction_id: i.id).count %>
                 </td>
 
                 <td>

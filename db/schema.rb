@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_213832) do
+ActiveRecord::Schema.define(version: 2020_03_19_213833) do
 
   create_table "acronyms", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 2020_03_19_213832) do
     t.datetime "updated_at", null: false
     t.index ["message_id"], name: "index_message_interactions_on_message_id"
     t.index ["user_id"], name: "index_message_interactions_on_user_id"
+  end
+
+  create_table "message_shares", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "contact_id"
+    t.integer "interaction_id"
+    t.integer "interaction_message_id"
+    t.integer "propagation_message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_message_shares_on_contact_id"
+    t.index ["interaction_id"], name: "index_message_shares_on_interaction_id"
+    t.index ["user_id"], name: "index_message_shares_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|

@@ -59,6 +59,14 @@
         padding-right: 10px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     }
+
+
+    .scroll-item {
+        background-color: blue !important;
+    }
+    .scroll-item.is-active {
+        background-color: #0e8824 !important;
+    }
 </style>
 
 <div class="ws-mobile-container-y ws-messages">
@@ -67,7 +75,6 @@
 
 
         <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(id: :desc).limit(30).reverse.each do |m| %>
-
           <div class="sub-message" id="<%= m.id %>">
               <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
 
@@ -78,25 +85,8 @@
               <% last_side = current_side %>
           </div>
         <% end %>
-
     </div>
 </div>
-
-<script>
-  $(document).ready(function () {
-      // ordenar
-      // https://stackoverflow.com/questions/21267120/sort-by-id-element-using-jquery 
-
-
-  /*var main = document.getElementById('messages');
-   
-   [].map.call(main.children, Object).sort(function (a, b) {
-   return +a.id.match(/\d+/) - +b.id.match(/\d+/);
-   }).forEach(function (elem) {
-   main.appendChild(elem);
-   });*/
-  });
-</script>
 
 
 <div class="ws-send-message-painel">
@@ -110,17 +100,6 @@
         </div>
     </div>
 </div>
-
-
-
-<style>
-    .scroll-item {
-        background-color: blue !important;
-    }
-    .scroll-item.is-active {
-        background-color: #0e8824 !important;
-    }
-</style>
 
 <script>
   function capture_interaction_start() {
@@ -180,8 +159,6 @@
 
       capture_interaction_start();
 
-<%#*$('.ws-behavior-modal-share').modal('show');%>
-
       $('.ws-mobile-container-y').animate({scrollTop: 100000000});
   });
 </script>
@@ -194,14 +171,10 @@
 
     <div class="content">
         <% Contact.where(user_id: session[:user]['id']).each do |c| %>
-          <div style="padding: 10px;">
-              <input type="checkbox" name="contact[<%= c.id %>]" />
 
-              &nbsp;
-
-              <span style="position: relative; top: -2px;">
-                  <%= c.name %>
-              </span>
+          <div class="ui checkbox" style="padding: 10px;">
+              <input type="checkbox" name="contacts_ids[<%= c.id %>]" ng-model="contacts_ids[<%= c.id %>]" />
+              <label><%= c.name %></label>
           </div>
 
           <div class="ui divider fitted"></div>
@@ -213,7 +186,7 @@
             Cancelar
         </div>
 
-        <div class="ui blue button">
+        <div class="ui blue button" ng-click="message_share(contacts_ids, share)">
             Compartilhar
         </div>
     </div>

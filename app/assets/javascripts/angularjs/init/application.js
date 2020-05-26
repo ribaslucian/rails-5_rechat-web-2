@@ -30,7 +30,7 @@ app.run(function ($rootScope, $http, $app, $flash, $api, $entity, $data, $basic,
 
     // disponibilizacoes no escopo raiz
     $rootScope.$app = $app;
-    $rootScope.$ = $; // crossview jQuery
+    $app.$jQuery = $; // crossview jQuery
     
     $app.$basic = $basic;
     $app.$compile = $compile;

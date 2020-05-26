@@ -28,6 +28,8 @@
                 <th>Tot. de Visua.</th>
                 <th>Tempo tot. de Foco</th>
                 <th>Polaridade Emocional</th>
+                <th>Compartilhamentos</th>
+                
                 <th class="collapsing">
                     <div class="ui button icon" modal="modal_entities_search">
                         <i class="icon search"></i>
@@ -99,6 +101,10 @@
                           <%= m.sentimental_category %>:
                           <%= m.sentimental_score %>
                         <%  end %>
+                    </td>
+                    
+                    <td>
+                      <%= MessageShare.where(propagation_message_id: m.id).count %>
                     </td>
 
                     <td>

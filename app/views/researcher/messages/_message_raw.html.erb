@@ -1,6 +1,5 @@
 <div message-id="<%= message.id %>">
     <% if message.type_content_acronym_id == 50 %>
-      <%= message.id %>:
       <%= message.content.gsub(/\R+/, '<br/>').html_safe %>
     <% end %>
 
@@ -16,7 +15,7 @@
       [renderizando áudio]
     <% end %>
 
-    <% if  message.origin_user_id == 0 %>  
+    <% if message.origin_user_id == 0 %>  
 
       <div class="ui dropdown icon large"style="position: absolute; top: -4px; right: -2px">
           <i class="sort down icon grey small"></i>
@@ -24,8 +23,8 @@
           <div
               class="menu shadow-button"
               ng-init="
-                $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
-                $app.messages[<%= message.id %>] = message;
+              $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
+              $app.messages[<%= message.id %>] = message;
               ">
 
               <div
@@ -48,7 +47,14 @@
                   Remover das Favoritas
               </div>
 
-              <div class="item" onclick="$('.ws-behavior-modal-share').modal('show')">
+              <div
+                  class="item"
+                  ng-click="
+                    share.interaction_id = <%= message.interaction_id ? message.interaction_id : 0 %>;
+                    share.propagation_message_id = <%= message.id ? message.id : 0 %>;
+                    share.interaction_message_id = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
+                  "
+                  onclick="$('.ws-behavior-modal-share').modal('show')">
                   <i class="icon share grey"></i>
                   Compartilhar
               </div>
