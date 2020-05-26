@@ -28,16 +28,16 @@ function connect(origin_user_id) {
             last_side = current_side;
 
             $('.ws-behavior-messages').append(data['message_html']);
-            $('.ws-messages').scrollTop(1000000000);
             
-            $('.ws-loading-global').fadeOut();
+            
             $('.dropdown').dropdown();
             capture_interaction_start();
+            
+            order();
             return;
         },
         // 2
         speak: function (message) {
-            $('.ws-loading-global').fadeIn();
             return this.perform('speak', {
                 origin_user_id: origin_user_id,
                 destiny_user_id: 0,

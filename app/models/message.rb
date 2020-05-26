@@ -173,4 +173,16 @@ class Message < ApplicationRecord
         contact_id: 1
       })
   end
+  
+  def self.star params
+    message = Message.find(params['id'])
+    message.favorited = true
+    return message.save!
+  end
+  
+  def self.unstar params
+    message = Message.find(params['id'])
+    message.favorited = false
+    return message.save!
+  end
 end

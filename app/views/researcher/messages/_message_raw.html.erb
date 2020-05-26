@@ -1,5 +1,6 @@
 <div message-id="<%= message.id %>">
     <% if message.type_content_acronym_id == 50 %>
+      <%= message.id %>:
       <%= message.content.gsub(/\R+/, '<br/>').html_safe %>
     <% end %>
 
@@ -20,13 +21,29 @@
       <div class="ui dropdown icon large"style="position: absolute; top: -4px; right: -2px">
           <i class="sort down icon grey small"></i>
 
-          <div class="menu shadow-button">
-              <div class="item" onclick="unstar()">
+          <div
+              class="menu shadow-button"
+              ng-init="
+                $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
+                $app.messages[<%= message.id %>] = message;
+              ">
+
+              <div
+                  class="item"
+                  ng-click="message_star(<%= message.id %>)"
+                  ng-init="$app.messages[<%= message.id %>].favorited = false"
+                  ng-show="!$app.messages[<%= message.id %>].favorited">
+
                   <i class="icon star grey"></i>
                   Favoritar
               </div>
-              
-              <div class="item" onclick="unstar()">
+
+              <div
+                  class="item"
+                  ng-click="message_unstar(<%= message.id %>)"
+                  ng-init="$app.messages[<%= message.id %>].favorited = true"
+                  ng-show="$app.messages[<%= message.id %>].favorited">
+
                   <i class="icon star outline grey"></i>
                   Remover das Favoritas
               </div>

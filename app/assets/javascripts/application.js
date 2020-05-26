@@ -27,6 +27,8 @@
 //= require angularjs/services/error
 //= require angularjs/services/flash
 //= require angularjs/directives/ng-confirm-click
+//
+//= require angularjs/controllers/global
 // 
 //= require_tree .
 //

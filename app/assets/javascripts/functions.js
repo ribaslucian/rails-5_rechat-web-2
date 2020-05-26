@@ -38,3 +38,15 @@ function loading() {
 function loaded() {
     $('.ws-loading-global').fadeOut();
 }
+
+function order() {
+    $("#messages .sub-message").sort(function (a, b) {
+        return parseInt(a.id) - parseInt(b.id);
+    }).each(function () {
+        var elem = $(this);
+        elem.remove();
+        $(elem).appendTo("#messages");
+    });
+    
+    $('.ws-messages').scrollTop(1000000000);
+}

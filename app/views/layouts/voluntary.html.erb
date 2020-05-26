@@ -23,7 +23,7 @@
         </style>
     </head>
 
-    <body ng-app="ChatResearcher">
+    <body ng-app="ChatResearcher" ng-controller="GlobalController">
         <%= render "layouts/menus/voluntary" %>
 
         <%= yield %>
@@ -38,15 +38,19 @@
           });
         </script>
         
-        <div ng-init="
-          $app.$entity.load('contacts', {
-            $reload: true,
-            'Contact': {
-              all: ''
-            }
-          });
-        "></div>
+        <%#*<div ng-init="message_star(1)"></div>%>
         
-        {{$app.data['ws']['contacts']}}
+        <%#*<div ng-init="%>
+          <%#*$app.$entity.load('contacts', {%>
+            <%#*$reload: true,%>
+            <%#*$conclude: success,%>
+            <%#*'Contact': {%>
+              <%#*all: ''%>
+            <%#*}%>
+          <%#*});%>
+        <%#*"></div>%>
+
+        <%#*{{$app.data['ws']['contacts']}}%>
+        
     </body>
 </html>

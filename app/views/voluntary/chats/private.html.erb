@@ -62,21 +62,41 @@
 </style>
 
 <div class="ws-mobile-container-y ws-messages">
-    <div class="ws-mobile-container-x ws-behavior-messages">
+    <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
         <% last_side = current_side = nil %>
 
-        <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(:created).each do |m| %>
 
-          <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
+        <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(id: :desc).limit(30).reverse.each do |m| %>
 
-          <%= '<div style="padding: 4px;"></div>'.html_safe if current_side != last_side %>
+          <div class="sub-message" id="<%= m.id %>">
+              <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
 
-          <%= render partial: 'message', locals: {message: m} %>
+              <%= '<div style="padding: 4px;"></div>'.html_safe if current_side != last_side %>
 
-          <% last_side = current_side %>
+              <%= render partial: 'message', locals: {message: m} %>
+
+              <% last_side = current_side %>
+          </div>
         <% end %>
+
     </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+      // ordenar
+      // https://stackoverflow.com/questions/21267120/sort-by-id-element-using-jquery 
+
+
+  /*var main = document.getElementById('messages');
+   
+   [].map.call(main.children, Object).sort(function (a, b) {
+   return +a.id.match(/\d+/) - +b.id.match(/\d+/);
+   }).forEach(function (elem) {
+   main.appendChild(elem);
+   });*/
+  });
+</script>
 
 
 <div class="ws-send-message-painel">
@@ -153,16 +173,6 @@
 
   $(document).ready(function () {
       CONTACT_ID = <%= params[:contact_id] %>;
-      /*
-       ordenar
-       https://stackoverflow.com/questions/21267120/sort-by-id-element-using-jquery 
-       $("#cat li").sort(function (a, b) {
-       return parseInt(a.id) > parseInt(b.id);
-       }).each(function () {
-       var elem = $(this);
-       elem.remove();
-       $(elem).appendTo("#cat");
-       });*/
 
       $('.ws-mobile-container-y').scroll(function () {
           capture_interaction_start();
@@ -170,38 +180,10 @@
 
       capture_interaction_start();
 
-      $('.ws-behavior-modal-share').modal('show');
+<%#*$('.ws-behavior-modal-share').modal('show');%>
+
+      $('.ws-mobile-container-y').animate({scrollTop: 100000000});
   });
-  
-  function star() {
-    $.toast({
-        text: 'Mensagem salva nas favoritas',
-        position: 'top-center',
-        hideAfter: 5000,
-        loaderBg: '#777',
-        // icon: 'warning',
-        // showHideTransition: 'fade',
-        bgColor: '#3c763d',
-        textColor: 'white',
-        // loaderBg: '#c9ba9b'
-        // allowToastClose: true
-    });
-  }
-  
-  function unstar() {
-    $.toast({
-        text: 'Mensagem removida das favoritas.',
-            position: 'top-center',
-            hideAfter: 5000,
-            loaderBg: '#666'
-                    // icon: 'warning',
-                    // showHideTransition: 'fade',
-                    // bgColor: '#fffaf3',
-                    // textColor: '#8e6628',
-                    // loaderBg: '#c9ba9b'
-                    // allowToastClose: true
-    });
-  }
 </script>
 
 <div class="ui modal ws-behavior-modal-share">
@@ -216,7 +198,7 @@
               <input type="checkbox" name="contact[<%= c.id %>]" />
 
               &nbsp;
-              
+
               <span style="position: relative; top: -2px;">
                   <%= c.name %>
               </span>
@@ -224,8 +206,8 @@
 
           <div class="ui divider fitted"></div>
         <% end %>
-
     </div>
+
     <div class="actions">
         <div class="ui deny button">
             Cancelar

@@ -427,7 +427,7 @@ app.service('$entity', function ($app) {
                 $app.data[id][data_key] = response.results;
             else
                 $app.flash.error('API Error', 'API Error')
-
+            
             if (conclude)
                 conclude();
 
