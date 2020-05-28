@@ -2,7 +2,6 @@
 
 <h1 class="ui header">
 <%#*<i class="home icon"></i>%>
-
     <span class="material-icons" style="font-size: 50px;">library_books</span>
 
     <div class="content" style="position: relative; bottom: -5px">
@@ -36,6 +35,7 @@
               </th>
           </tr>
       </thead>
+
       <tbody>
           <% @interactions.each do |i| %>
             <tr>
@@ -89,6 +89,11 @@
                               method: :delete,
                               class: 'item',
                               data: { confirm: 'Tem certeza?' }
+                            %>
+
+                            <%= link_to '<i class="icon play"></i> Iniciar'.html_safe, "interactions/start/#{i.id}",
+                              class: 'item',
+                              data: { confirm: 'Isso irá parar as interações em vigor e irá iniciar essa.' }
                             %>
                         </div>
                     </div>
