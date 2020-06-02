@@ -49,7 +49,7 @@ app.controller('GlobalController', function ($app, $scope) {
     }
 
     $scope.message_share = function (contacts_ids, share) {
-        
+
         $app.$api.process({
             Message: {
                 share: {
@@ -70,10 +70,22 @@ app.controller('GlobalController', function ($app, $scope) {
                 bgColor: '#3c763d',
                 textColor: 'white',
             });
-        
+
             $app.$jQuery('.ws-behavior-modal-share').modal('hide');
 
         });
     }
 
+
+    $scope.save_times = function (times) {
+        $app.$api.process({
+            Interaction: {
+                save_times: {
+                    times: times
+                }
+            },
+        }, function () {
+            return;
+        });
+    }
 });

@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
-    return params[:action] == 'authorize'
-      
+    return if params[:action] == 'authorize'
+    
+#    Message.sql("UPDATE messages SET time_focus = 0;")
 #     Message.where('origin_user_id = 2 OR destiny_user_id = 2').destroy_all
 #     return d Message.order('id DESC, interaction_ids DESC').where("interaction_id IS NOT NULL AND destiny_user_id = 2").limit(1).first
     

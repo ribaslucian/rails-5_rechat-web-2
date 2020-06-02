@@ -2,7 +2,7 @@ var CONTACT_ID = 0;
 
 // 3
 function connect(origin_user_id) {
-    
+
     var last_side = null;
     var current_side = null;
 
@@ -16,7 +16,7 @@ function connect(origin_user_id) {
         },
         received: function (data) {
             current_side = data['message_record']['origin_user_id'] == SESSION_USER_ID ? 'right' : 'left';
-            
+
             if ($('.ws-behavior-message').last().is('.ws-message-' + current_side)) {
                 last_side = current_side;
             }
@@ -28,17 +28,21 @@ function connect(origin_user_id) {
             last_side = current_side;
 
             $('.ws-behavior-messages').append(data['message_html']);
-            
-            
+
+
             $('.dropdown').dropdown();
             capture_interaction_start();
-            
+
             order();
+            loaded();
+
             return;
         },
         // 2
         speak: function (message) {
-            return this.perform('speak', {
+            loading();
+
+            this.perform('speak', {
                 origin_user_id: origin_user_id,
                 destiny_user_id: 0,
                 content: message,

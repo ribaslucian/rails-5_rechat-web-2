@@ -19,6 +19,7 @@ class Message < ApplicationRecord
       # selecionar a ultima mensagem enviada de uma interacao
       last_message = Message.order('id DESC, interaction_ids DESC')
       .where("interaction_id IS NOT NULL AND destiny_user_id = 2")
+      .where(contact_id: self.contact_id)
       .limit(1)
       .first
 
@@ -111,7 +112,7 @@ class Message < ApplicationRecord
       .where("id > #{message.id}")
       .first()
       
-      # buscar todoas as mensagens da interacao ate aguarda a resposta
+      # buscar todas as mensagens da interacao ate aguarda a resposta
       messages = Message.order(:id)
       .where("id >= #{message.id} AND id < #{message_wait.id}")
       .where('origin_user_id IS NULL AND destiny_user_id IS NULL')

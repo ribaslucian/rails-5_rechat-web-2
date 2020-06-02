@@ -15,4 +15,15 @@ class Interaction < ApplicationRecord
       end
     end
   end
+  
+  def self.save_times params
+    params['times'].each do |id, time|
+      message = Message.find(id)
+      message.time_focus = message.time_focus + time;
+      message.count_views = message.count_views + 1;
+      message.save!
+    end
+    
+    params
+  end
 end

@@ -71,3 +71,4 @@ gem 'sentimental'
 gem 'pycall'
 gem 'whenever', require: false
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
+# gem 'angularjs-rails'

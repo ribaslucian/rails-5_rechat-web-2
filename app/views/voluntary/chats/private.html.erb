@@ -69,7 +69,7 @@
     }
 </style>
 
-<div class="ws-mobile-container-y ws-messages">
+<div class="ws-mobile-container-y ws-messages" onclick="end_times()">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
         <% last_side = current_side = nil %>
 
@@ -133,7 +133,7 @@
                   time = ((new Date()) - times[id]) / 1000;
                   total_times[id] = total_times[id] + time;
 
-                  l(id + ': TEMPO VISUALIZADO: ' + total_times[id]);
+                  //l(id + ': TEMPO VISUALIZADO: ' + total_times[id]);
 
                   // zerar tempo do foco atua
                   times[id] = 0;
@@ -144,7 +144,21 @@
       });
   }
 
-  var total_times = [];
+  function end_times() {
+      $.each(total_times, function (id) {
+          var time = ((new Date()) - times[id]) / 1000;
+          total_times[parseInt(id)] = parseFloat(total_times[id] + time);
+      });
+      
+      l(total_times);
+  }
+  
+  function send_times() {
+      end_times();
+      angular_controller('GlobalController').save_times(total_times);
+  }
+
+  var total_times = {};
   var times = [];
   var container_start = $('.ws-mobile-container-y').position().top;
   var container_end = container_start + $('.ws-mobile-container-y').height();
@@ -161,6 +175,11 @@
 
       $('.ws-mobile-container-y').animate({scrollTop: 100000000});
   });
+
+  window.onbeforeunload = function () {
+      end_times();
+      angular_controller('GlobalController').save_times(total_times);
+  };
 </script>
 
 <div class="ui modal ws-behavior-modal-share">
