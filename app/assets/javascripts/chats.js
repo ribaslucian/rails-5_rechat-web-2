@@ -15,20 +15,11 @@ function connect(origin_user_id) {
         disconnected: function () {
         },
         received: function (data) {
-            current_side = data['message_record']['origin_user_id'] == SESSION_USER_ID ? 'right' : 'left';
+            var pathname = window.location.pathname;
 
-            if ($('.ws-behavior-message').last().is('.ws-message-' + current_side)) {
-                last_side = current_side;
-            }
-
-            if (current_side != last_side) {
-                data['message_html'] = '<div style="padding: 4px;"></div>' + data['message_html'];
-            }
-
-            last_side = current_side;
+            l(pathname);
 
             $('.ws-behavior-messages').append(data['message_html']);
-
 
             $('.dropdown').dropdown();
             capture_interaction_start();

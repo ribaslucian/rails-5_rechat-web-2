@@ -41,7 +41,7 @@ function loaded() {
 
 function order() {
     $("#messages .sub-message").sort(function (a, b) {
-        return parseInt(a.id) - parseInt(b.id);
+        return parseFloat(a.id) - parseFloat(b.id);
     }).each(function () {
         var elem = $(this);
         elem.remove();

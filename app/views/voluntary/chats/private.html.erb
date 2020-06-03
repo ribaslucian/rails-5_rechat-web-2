@@ -79,16 +79,9 @@
             </div>
         </div>
 
-
         <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(id: :desc).limit(30).reverse.each do |m| %>
           <div class="sub-message" id="<%= m.id %>">
-              <% current_side = m.origin_user_id == session[:user]['id'] ? 'right' : 'left' %>
-
-              <%= '<div style="padding: 4px;"></div>'.html_safe if current_side != last_side %>
-
               <%= render partial: 'message', locals: {message: m} %>
-
-              <% last_side = current_side %>
           </div>
         <% end %>
     </div>
@@ -174,7 +167,7 @@
       PAGE_SCROLL_COUNT = 0;
 
       capture_interaction_start();
-      
+
       $('.ws-mobile-container-y').animate({scrollTop: 100000000});
 
       $('.ws-mobile-container-y').scroll(function () {
@@ -190,11 +183,11 @@
           angular_controller('GlobalController').save_times(total_times);
       }
   };
-  
+
   $(document).ready(function () {
-      <%#*$('.ws-message-left [message-id]').click(function() {%>
-        <%#*$('[click-behavior]', $(this)).trigger('click');%>
-      <%#*});%>
+<%#*$('.ws-message-left [message-id]').click(function() {%>
+<%#*$('[click-behavior]', $(this)).trigger('click');%>
+<%#*});%>
   });
 </script>
 
