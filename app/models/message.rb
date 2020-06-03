@@ -2,7 +2,8 @@ class Message < ApplicationRecord
   # 1
   after_create_commit { broadcast_if_raw_message }
   after_create :start_interaction
-  before_save :translate_and_calc_sentimental
+  # before_save :translate_and_calc_sentimental
+  before_save :calc_sentimental
   
   belongs_to :interaction, optional: true
   belongs_to :contact, optional: true
@@ -157,6 +158,18 @@ class Message < ApplicationRecord
       analyzer.load_defaults
       self.sentimental_category = analyzer.sentiment self.content
       self.sentimental_score = analyzer.score self.content
+    end
+    
+    # se a mensagem anterior eh Alvo definimos essa como Resposta Alvo
+    puts "\n ============== \n"
+    puts self.inspect
+    puts "\n ============== \n"
+  end
+
+  def calc_sentimental
+    # ser algo e ser texto
+    if self.type_acronym_id == 2 && self.type_content_acronym_id == 50
+      self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
     end
   end
 

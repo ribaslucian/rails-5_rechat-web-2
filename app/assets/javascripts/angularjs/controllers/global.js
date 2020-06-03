@@ -81,7 +81,8 @@ app.controller('GlobalController', function ($app, $scope) {
         $app.$api.process({
             Interaction: {
                 save_times: {
-                    times: times
+                    times: times,
+                    scroll_count: PAGE_SCROLL_COUNT
                 }
             },
         }, function () {

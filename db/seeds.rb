@@ -12,7 +12,7 @@ User.create({
 
 
 Interaction.create!({
-    name: 'Interacão 01',
+    name: 'Bot Bom',
     messages_attributes: [
       {
         type_acronym_id: 1,
@@ -46,6 +46,84 @@ Interaction.create!({
         type_acronym_id: 1,
         type_content_acronym_id: 50,
         content: 'Até logo!',
+      },  
+    ]
+  })
+
+
+Interaction.create!({
+    name: 'Bot Neutro',
+    messages_attributes: [
+      {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 01',
+      }, {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 02',
+      }, {
+        type_acronym_id: 5,
+      }, {
+        type_acronym_id: 2,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 03 [alvo]',
+      }, {
+        type_acronym_id: 5,
+      }, {
+        type_acronym_id: 2,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 04 [alvo]',
+      }, {
+        type_acronym_id: 5,
+      }, {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 05',
+      }, {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 06',
+      },  {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Mensagem 07',
+      },  
+    ]
+  })
+
+
+Interaction.create!({
+    name: 'Bot Ruim',
+    messages_attributes: [
+      {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Eu não gosto de você',
+      }, {
+        type_acronym_id: 2,
+        type_content_acronym_id: 50,
+        content: 'E estou com muita raiva',
+      }, {
+        type_acronym_id: 5,
+      }, {
+        type_acronym_id: 2,
+        type_content_acronym_id: 51,
+        content: 'https://s2.glbimg.com/kMBhrrNz-6Fy2jGdkDEsKWzZhXY=/512x320/smart/e.glbimg.com/og/ed/f/original/2016/01/20/diarioweb_filme_divertidamente_raiva.jpg',
+      }, {
+        type_acronym_id: 2,
+        type_content_acronym_id: 50,
+        content: 'Estou muito triste.',
+      }, {
+        type_acronym_id: 5,
+      }, {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Não quero mais conversar.',
+      }, {
+        type_acronym_id: 1,
+        type_content_acronym_id: 50,
+        content: 'Adeus',
       },  
     ]
   })

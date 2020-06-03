@@ -131,20 +131,29 @@
                   <td>
                       <% if m.time_focus > 0 %>
                         <div style="color: #1b68a3;">
-                            <%= m.time_focus %>ms
+                            <%= '%.2f' % m.time_focus %>ms
                         </div>
                       <% else %>
                         <div style="font-size: 90%; color: grey;">
-                            0.00m
+                            0.00ms
                         </div>
                       <% end %>
                   </td>
 
                   <td>
-                      <% if m.sentimental_category %>
-                        <%= m.sentimental_category %>:
-                        <%= m.sentimental_score %>
-                      <%  end %>
+                      <% if m.sentimental_score == nil || m.sentimental_score == 0 %>
+                        <div style="color: grey">
+                            0
+                        </div>
+                      <% elsif m.sentimental_score < 0 %>
+                        <div style="color: red; font-weight: bold;">
+                            <%= '%.2f' % m.sentimental_score %>
+                        </div>
+                      <% else %>
+                        <div style="color: green; font-weight: bold;">
+                            <%= '%.2f' % m.sentimental_score %>
+                        </div>
+                      <% end %>
                   </td>
 
                   <td>

@@ -17,21 +17,19 @@
 
     <% if message.origin_user_id == 0 %>  
 
-      <div class="ui dropdown icon large"style="position: absolute; top: -4px; right: -2px">
-          <i class="sort down icon grey small"></i>
+      <div class="ui dropdown icon large"style="position: absolute; top: -6px; right: -2px">
+          <i click-behavior class="sort down icon small" style="color: #ddd"></i>
 
           <div
               class="menu shadow-button"
               ng-init="
               $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
-              $app.messages[<%= message.id %>] = message;
               ">
 
               <div
                   class="item"
                   ng-click="message_star(<%= message.id %>)"
-                  ng-init="$app.messages[<%= message.id %>].favorited = false"
-                  ng-show="!$app.messages[<%= message.id %>].favorited">
+                  ng-if="!$app.messages[<%= message.id %>].favorited">
 
                   <i class="icon star grey"></i>
                   Favoritar
@@ -40,8 +38,7 @@
               <div
                   class="item"
                   ng-click="message_unstar(<%= message.id %>)"
-                  ng-init="$app.messages[<%= message.id %>].favorited = true"
-                  ng-show="$app.messages[<%= message.id %>].favorited">
+                  ng-if="$app.messages[<%= message.id %>].favorited">
 
                   <i class="icon star outline grey"></i>
                   Remover das Favoritas

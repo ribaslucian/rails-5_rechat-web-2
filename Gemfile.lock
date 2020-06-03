@@ -44,6 +44,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    angularjs-rails (1.6.8)
     arel (9.0.0)
     bindex (0.8.1)
     bootsnap (1.4.6)
@@ -206,6 +207,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  angularjs-rails
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)

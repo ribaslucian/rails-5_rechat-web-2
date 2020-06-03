@@ -61,17 +61,23 @@
     }
 
 
-    .scroll-item {
+    /*.scroll-item {
         background-color: blue !important;
     }
     .scroll-item.is-active {
         background-color: #0e8824 !important;
-    }
+    }*/
 </style>
 
-<div class="ws-mobile-container-y ws-messages" onclick="end_times()">
+<div class="ws-mobile-container-y ws-messages">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
         <% last_side = current_side = nil %>
+
+        <div class="ws-message messages" style="margin-top: 15px;">
+            <div class="ws-message-left ws-behavior-message" style="float: none; margin: 0px auto; background-color: #faebcc">
+                Aqui é o início da conversa
+            </div>
+        </div>
 
 
         <% Message.where("(origin_user_id = #{session[:user]['id']} OR destiny_user_id = #{session[:user]['id']}) AND (contact_id = '#{params[:contact_id]}')").order(id: :desc).limit(30).reverse.each do |m| %>
@@ -145,41 +151,51 @@
   }
 
   function end_times() {
-      $.each(total_times, function (id) {
-          var time = ((new Date()) - times[id]) / 1000;
-          total_times[parseInt(id)] = parseFloat(total_times[id] + time);
+      $.each(times, function (id, value) {
+          // todo tempo de foco menor que 0.1ms sera ignorado
+          // ninguém le uma mensagem tao rapido, foi apenas um scroll
+          if (value >= 0.5) {
+              var time = ((new Date()) - times[id]) / 1000;
+              total_times[id] = parseFloat(total_times[id] + time);
+          } else {
+              total_times[id] = 0;
+          }
       });
-      
-      l(total_times);
-  }
-  
-  function send_times() {
-      end_times();
-      angular_controller('GlobalController').save_times(total_times);
   }
 
   var total_times = {};
-  var times = [];
+  var times = {};
   var container_start = $('.ws-mobile-container-y').position().top;
   var container_end = container_start + $('.ws-mobile-container-y').height();
 
 
   $(document).ready(function () {
       CONTACT_ID = <%= params[:contact_id] %>;
+      PAGE_SCROLL_COUNT = 0;
+
+      capture_interaction_start();
+      
+      $('.ws-mobile-container-y').animate({scrollTop: 100000000});
 
       $('.ws-mobile-container-y').scroll(function () {
           capture_interaction_start();
+          PAGE_SCROLL_COUNT++;
       });
-
-      capture_interaction_start();
-
-      $('.ws-mobile-container-y').animate({scrollTop: 100000000});
   });
 
   window.onbeforeunload = function () {
       end_times();
-      angular_controller('GlobalController').save_times(total_times);
+
+      if (total_times != {}) {
+          angular_controller('GlobalController').save_times(total_times);
+      }
   };
+  
+  $(document).ready(function () {
+      <%#*$('.ws-message-left [message-id]').click(function() {%>
+        <%#*$('[click-behavior]', $(this)).trigger('click');%>
+      <%#*});%>
+  });
 </script>
 
 <div class="ui modal ws-behavior-modal-share">

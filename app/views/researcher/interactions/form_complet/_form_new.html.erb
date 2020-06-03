@@ -6,6 +6,29 @@
                 <%= f.label :name, 'Título:' %>
                 <%= f.text_field :name, autofocus: 'autofocus' %>
             </div>
+            
+            <br/>
+
+            <div class="field">
+                <%= f.label :status_acronym_id, 'Status do bot:' %>
+
+                <%= f.select :status_acronym_id,
+                  options_for_select(
+                  Acronym.select(:id, :name).where("data_refer = 'interactions.status'").map { |a| [a.name, a.id] },
+                  f.object.type_acronym_id
+                  ) %>
+
+                <%= f.error_message_for :status_acronym_id %>
+            </div>
+
+            <div class="field disabled">
+                <label>Tipo:</label>
+
+                <p style="font-size: 90%;">
+                    Será possível escolhar entre bots do tipo "Conversa" ou "Questionário".
+                </p>
+                <input value="Conversa" disabled />
+            </div>
 
             <br/>
             <div class="ui divider fitted"></div>
@@ -15,23 +38,23 @@
                 <label>Programação:</label>
 
                 <p style="font-size: 90%;">
-                    A programação se tornará uma lista adicionável como as mensagens do bot.
+                    A programação se tornará uma lista adicionável como as mensagens da bot.
                     Mas nessa versão será disponibilizado apenas a opção "Diária".
                 </p>
 
                 <input value="Diário" disabled />
             </div>
 
-            <div class="field disabled">
-                <%= f.label :number_schedule, 'Horários (de 00 até 23):' %>
+            <%#*<div class="field">%>
+                <%#= f.label :number_schedule, 'Horários (de 00 até 23):' %>
 
-                <p style="font-size: 90%; color: grey;">
-                    Nessa versão é possível efetuar um agendamento
-                    somente para uma horá específica, válida todo dia.
-                </p>
+                <%#*<p style="font-size: 90%; color: grey;">%>
+                    <%#*Nessa versão é possível efetuar um agendamento%>
+                    <%#*somente para uma horá específica, válida todo dia.%>
+                <%#*</p>%>
 
-                <%= f.text_field :number_schedule, value: '13' %>
-            </div>
+                <%#= f.text_field :number_schedule, value: '13' %>
+            <%#*</div>%>
         </div>
     </div>
 

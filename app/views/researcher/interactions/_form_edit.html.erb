@@ -7,29 +7,6 @@
                 <%= f.label :name, 'Título:' %>
                 <%= f.text_field :name %>
             </div>
-            
-            <br/>
-
-            <div class="field">
-                <%= f.label :status_acronym_id, 'Status do Bot:' %>
-
-                <%= f.select :status_acronym_id,
-                  options_for_select(
-                  Acronym.select(:id, :name).where("data_refer = 'interactions.status'").map { |a| [a.name, a.id] },
-                  f.object.status_acronym_id
-                  ) %>
-
-                <%= f.error_message_for :status_acronym_id %>
-            </div>
-
-            <div class="field disabled">
-                <label>Tipo:</label>
-
-                <p style="font-size: 90%;">
-                    Será possível escolhar entre bots do tipo "Conversa" ou "Questionário".
-                </p>
-                <input value="Conversa" disabled />
-            </div>
 
             <br/>
             <div class="ui divider fitted"></div>
@@ -46,7 +23,7 @@
                 <input value="Diário" disabled />
             </div>
 
-            <div class="field">
+            <div class="field disabled">
                 <%= f.label :number_schedule, 'Horários (de 00 até 23):' %>
 
                 <p style="font-size: 90%; color: grey;">
