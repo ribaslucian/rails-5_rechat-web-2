@@ -1,17 +1,4 @@
-<%
-last_message = Message
-.where(contact_id: message.contact_id)
-.where("id < #{message.id}")
-.order(id: :desc).limit(1).first()
-%>
-
-<div
-    message-id="<%= message.id %>"
-    <% if last_message.destiny_user_id != message.destiny_user_id %>
-      __class="__behavior-pad-previuous"
-    <% end %>
-
-    >
+<div message-id="<%= message.id %>">
     
     <% if message.type_content_acronym_id == 50 %>
       <%= message.content.gsub(/\R+/, '<br/>').html_safe %>

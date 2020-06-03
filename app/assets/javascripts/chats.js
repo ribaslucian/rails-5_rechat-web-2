@@ -15,21 +15,27 @@ function connect(origin_user_id) {
         disconnected: function () {
         },
         received: function (data) {
+            // quando chegar notifica se o usuario nao estiver na conversa
             var pathname = window.location.pathname;
-
             l(pathname);
 
             $('.ws-behavior-messages').append(data['message_html']);
-
             $('.dropdown').dropdown();
+
             capture_interaction_start();
-
             order();
-            set_padding();
             scroll();
-            loaded();
 
-            return;
+            $.toast({
+                text: 'Você tem uma nova mensagem!',
+                position: 'top-center',
+                hideAfter: 5000,
+                loaderBg: '#777',
+                bgColor: '#f2711c',
+                textColor: 'white',
+            });
+
+            loaded();
         },
         // 2
         speak: function (message) {

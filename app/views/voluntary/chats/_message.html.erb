@@ -5,7 +5,9 @@ last_message = Message
 .where("id < #{message.id}")
 .order(id: :desc).limit(1).first()
 
-_class = 'style="margin-top: 6px !important;"' if last_message.destiny_user_id != message.destiny_user_id
+if last_message && (last_message.destiny_user_id != message.destiny_user_id)
+  _class = 'style="margin-top: 6px !important;"'
+end
 %>
 
 <div class="ws-message messages" <%= _class.html_safe %>>

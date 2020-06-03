@@ -69,9 +69,8 @@
     }*/
 </style>
 
-<div class="ws-mobile-container-y ws-messages" onclick="set_padding()">
+<div class="ws-mobile-container-y ws-messages">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
-        <% last_side = current_side = nil %>
 
         <div class="ws-message messages" style="margin-top: 15px;">
             <div class="ws-message-left ws-behavior-message" style="float: none; margin: 0px auto; background-color: #faebcc">
@@ -173,8 +172,6 @@
           capture_interaction_start();
           PAGE_SCROLL_COUNT++;
       });
-      
-      set_padding();
   });
 
   window.onbeforeunload = function () {

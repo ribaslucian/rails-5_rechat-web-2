@@ -15,7 +15,8 @@
 
 <br/>
 
-<div style="overflow: auto !important; max-width: 100%;">
+<%#*<div style="overflow: auto !important; max-width: 100%;">%>
+<div>
     <table class="ui table selectable very basic large unstackable" style="white-space: nowrap !important;">
         <thead>
             <tr>
@@ -183,8 +184,8 @@
       AND destiny_user_id IS NOT NULL
       AND type_acronym_id = 2
                         ").first['count(*)'] %>
-
-                        <% responses_avg = responses_total_alvos != 0 ? (responses_sum_polarity/responses_total_alvos) : 0%>
+                        
+                        <% responses_avg = (responses_total_alvos != 0 && responses_total_alvos != nil && responses_sum_polarity != nil) ? (responses_sum_polarity/responses_total_alvos) : 0%>
 
                         <% if responses_avg < 0 %>
                           <div class="ui label red">

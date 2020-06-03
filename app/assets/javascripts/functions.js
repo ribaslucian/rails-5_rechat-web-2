@@ -47,8 +47,6 @@ function order() {
         elem.remove();
         $(elem).appendTo("#messages");
     });
-
-    $('.ws-messages').scrollTop(1000000000);
 }
 
 function set_padding() {
