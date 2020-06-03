@@ -25,6 +25,8 @@ function connect(origin_user_id) {
             capture_interaction_start();
 
             order();
+            set_padding();
+            scroll();
             loaded();
 
             return;

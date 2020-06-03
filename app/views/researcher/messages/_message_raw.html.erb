@@ -1,4 +1,18 @@
-<div message-id="<%= message.id %>">
+<%
+last_message = Message
+.where(contact_id: message.contact_id)
+.where("id < #{message.id}")
+.order(id: :desc).limit(1).first()
+%>
+
+<div
+    message-id="<%= message.id %>"
+    <% if last_message.destiny_user_id != message.destiny_user_id %>
+      __class="__behavior-pad-previuous"
+    <% end %>
+
+    >
+    
     <% if message.type_content_acronym_id == 50 %>
       <%= message.content.gsub(/\R+/, '<br/>').html_safe %>
     <% end %>
@@ -23,7 +37,7 @@
           <div
               class="menu shadow-button"
               ng-init="
-              $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
+                    $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
               ">
 
               <div
@@ -47,9 +61,9 @@
               <div
                   class="item"
                   ng-click="
-                    share.interaction_id = <%= message.interaction_id ? message.interaction_id : 0 %>;
-                    share.propagation_message_id = <%= message.id ? message.id : 0 %>;
-                    share.interaction_message_id = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
+                          share.interaction_id = <%= message.interaction_id ? message.interaction_id : 0 %>;
+                          share.propagation_message_id = <%= message.id ? message.id : 0 %>;
+                          share.interaction_message_id = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
                   "
                   onclick="$('.ws-behavior-modal-share').modal('show')">
                   <i class="icon share grey"></i>

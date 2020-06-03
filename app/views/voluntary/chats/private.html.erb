@@ -69,7 +69,7 @@
     }*/
 </style>
 
-<div class="ws-mobile-container-y ws-messages">
+<div class="ws-mobile-container-y ws-messages" onclick="set_padding()">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
         <% last_side = current_side = nil %>
 
@@ -167,13 +167,14 @@
       PAGE_SCROLL_COUNT = 0;
 
       capture_interaction_start();
-
-      $('.ws-mobile-container-y').animate({scrollTop: 100000000});
+      scroll();
 
       $('.ws-mobile-container-y').scroll(function () {
           capture_interaction_start();
           PAGE_SCROLL_COUNT++;
       });
+      
+      set_padding();
   });
 
   window.onbeforeunload = function () {
@@ -183,12 +184,6 @@
           angular_controller('GlobalController').save_times(total_times);
       }
   };
-
-  $(document).ready(function () {
-<%#*$('.ws-message-left [message-id]').click(function() {%>
-<%#*$('[click-behavior]', $(this)).trigger('click');%>
-<%#*});%>
-  });
 </script>
 
 <div class="ui modal ws-behavior-modal-share">

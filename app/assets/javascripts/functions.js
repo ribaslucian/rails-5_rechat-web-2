@@ -47,6 +47,14 @@ function order() {
         elem.remove();
         $(elem).appendTo("#messages");
     });
-    
+
     $('.ws-messages').scrollTop(1000000000);
+}
+
+function set_padding() {
+    $('.behavior-pad-previuous').parents('.ws-message').attr('style', 'margin-top: 5px !important;');
+}
+
+function scroll() {
+    $('.ws-mobile-container-y').animate({scrollTop: 100000000});
 }
