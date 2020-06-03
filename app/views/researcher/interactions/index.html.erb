@@ -146,7 +146,7 @@
                       AND type_acronym_id = 2
                     ").first['count(*)'] %>
 
-                    <% bot_avg = bot_total_alvos != 0 ? (bot_sum_polarity/bot_total_alvos) : 0%>
+                    <% bot_avg = (bot_total_alvos != 0 && bot_total_alvos != nil && bot_sum_polarity != nil) ? (bot_sum_polarity/bot_total_alvos) : 0%>
 
                     <% if bot_avg < 0 %>
                       <div class="ui label red">

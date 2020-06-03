@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   after_create_commit { broadcast_if_raw_message }
   after_create :start_interaction
   # before_save :translate_and_calc_sentimental
-  before_save :calc_sentimental
+  before_save [:calc_sentimental, :check_target_response]
   
   belongs_to :interaction, optional: true
   belongs_to :contact, optional: true
@@ -19,7 +19,7 @@ class Message < ApplicationRecord
     
       # selecionar a ultima mensagem enviada de uma interacao
       last_message = Message.order('id DESC, interaction_ids DESC')
-      .where("interaction_id IS NOT NULL AND destiny_user_id = 2")
+      .where("interaction_id IS NOT NULL AND destiny_user_id = #{self.origin_user_id}")
       .where(contact_id: self.contact_id)
       .limit(1)
       .first
@@ -169,7 +169,20 @@ class Message < ApplicationRecord
   def calc_sentimental
     # ser algo e ser texto
     if self.type_acronym_id == 2 && self.type_content_acronym_id == 50
-      self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
+      # self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
+    end
+  end
+  
+  def check_target_response
+    # verificamos se eh uma mensagem enviado para o pesquisador
+    if self.destiny_user_id == 0
+      # obtemos a ultima mensagem de bot na conversa
+      last_message = Message.where(
+        destiny_user_id self.origin_user_id,
+        contact_id: self.contact_id
+      ).order(id: desc).limit(1).first
+      
+      # checar se mensagem eh alvo e atualizar tipo da resposta
     end
   end
 
