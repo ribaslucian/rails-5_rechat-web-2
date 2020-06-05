@@ -17,23 +17,35 @@ function connect(origin_user_id) {
         received: function (data) {
             // quando chegar notifica se o usuario nao estiver na conversa
             var pathname = window.location.pathname;
-            l(pathname);
+            var contact_id = pathname.slice(-1);
+            var flash = true;
 
-            $('.ws-behavior-messages').append(data['message_html']);
-            $('.dropdown').dropdown();
+            // verificar se o usuario esta no chat
+            if (pathname.substring(0, 20) == '/voluntary/voluntary') {
 
-            capture_interaction_start();
-            order();
-            scroll();
+                // verificar se a mensagm eh do chat em questao
+                if (contact_id == data['message_record']['contact_id']) {
 
-            $.toast({
-                text: 'Você tem uma nova mensagem!',
-                position: 'top-center',
-                hideAfter: 5000,
-                loaderBg: '#777',
-                bgColor: '#f2711c',
-                textColor: 'white',
-            });
+                    $('.ws-behavior-messages').append(data['message_html']);
+                    $('.dropdown').dropdown();
+
+                    capture_interaction_start();
+                    order();
+                    scroll();
+                    flash = false;
+                }
+            }
+
+            if (flash) {
+                $.toast({
+                    text: 'Nova mensagem: ' + data['message_record']['content'],
+                    position: 'top-center',
+                    hideAfter: 5000,
+                    loaderBg: '#777',
+                    bgColor: '#31708f',
+                    textColor: 'white',
+                });
+            }
 
             loaded();
         },

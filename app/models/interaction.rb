@@ -27,7 +27,7 @@ class Interaction < ApplicationRecord
         message.save!
       end
     else
-      
+    
       # salvar o tempo de foco apenas da ultima
       id = params['times'].keys.last
       message = Message.find(id)
