@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   after_create_commit { broadcast_if_raw_message }
   after_create :start_interaction
   # before_save :translate_and_calc_sentimental
-  #before_save :calc_sentimental#, :check_target_response
+  before_save :calc_sentimental
   
   belongs_to :interaction, optional: true
   belongs_to :contact, optional: true
@@ -89,9 +89,14 @@ class Message < ApplicationRecord
           interaction_ids: m.interaction_ids,
           type_acronym_id: m.type_acronym_id,
           type_content_acronym_id: m.type_content_acronym_id,
-          contact_id: self.contact_id
+          contact_id: self.contact_id,
+          reference_interaction_id: last_message.interaction_id
         })
     end
+      
+    # atualizar a mensagem atual para informar a interacao em questao
+    self.reference_interaction_id = last_message.interaction_id
+    self.save!
   end
   
   def start_or_notify
@@ -129,9 +134,14 @@ class Message < ApplicationRecord
             # interaction_message_id: message.id,
             type_acronym_id: m.type_acronym_id,
             type_content_acronym_id: m.type_content_acronym_id,
-            contact_id: self.contact_id
+            contact_id: self.contact_id,
+            reference_interaction_id: message.interaction_id
           })
       end
+      
+      # atualizar a mensagem atual para informar a interacao em questao
+      self.reference_interaction_id = message.interaction_id
+      self.save!
 
     else
       # nenhuma interacao em vigor
@@ -167,24 +177,27 @@ class Message < ApplicationRecord
   end
 
   def calc_sentimental
-    # ser algo e ser texto
-    if self.type_acronym_id == 2 && self.type_content_acronym_id == 50
-      # self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
+    # ser texto e nao ser [aguardar resposta]
+    if self.type_content_acronym_id == 50 && self.type_acronym_id != 5
+      self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
     end
   end
   
-  def check_target_response
-    # verificamos se eh uma mensagem enviado para o pesquisador
-    if self.destiny_user_id == 0
-      # obtemos a ultima mensagem de bot na conversa
-      last_message = Message.where(
-        destiny_user_id self.origin_user_id,
-        contact_id: self.contact_id
-      ).order(id: desc).limit(1).first
-      
-      # checar se mensagem eh alvo e atualizar tipo da resposta
-    end
-  end
+#  def check_target_response
+#    # verificamos se eh uma mensagem enviado para o pesquisador
+#    if self.destiny_user_id == 0
+#      # obtemos a ultima mensagem de bot na conversa
+#      last_message = Message.where(
+#        destiny_user_id self.origin_user_id,
+#        contact_id: self.contact_id
+#      ).order(id: desc).limit(1).first
+#      
+#      # checar se mensagem eh alvo e atualizar tipo da resposta
+#      if last_message && last_message.type_acronym_id == 50
+#        self.type_acronym_id == 54
+#      end
+#    end
+#  end
 
   def self.seed_test
     Message.create!({

@@ -94,9 +94,18 @@
                           / <%= m.interaction_ids %>
                         <% end %>
                       <% else %>
-                        <div style="color: grey; font-size: 90%;">
-                            Msg. da Conversa
-                        </div>
+                        <% if !m.reference_interaction_id %>
+                          <div style="color: grey; font-size: 90%;">
+                              Não vinculada a Bot
+                          </div>
+                        <% else %>
+                          <div style="color: grey; font-size: 90%;">
+                              Referente ao Bot
+                              <b>
+                                <%= Interaction.find(m.reference_interaction_id).name %>
+                              </b>
+                          </div>
+                        <% end %>
                       <% end %>
                   </td>
 

@@ -174,7 +174,7 @@
       SELECT sum(sentimental_score)
       FROM messages
       WHERE interaction_id = '#{i.id}'
-      AND destiny_user_id IS NOT NULL
+      AND destiny_user_id = 0
                         ").first['sum(sentimental_score)'] %>
 
                         <% responses_total_alvos = Message.sql("
@@ -182,7 +182,7 @@
       FROM messages
       WHERE interaction_id = '#{i.id}'
       AND destiny_user_id IS NOT NULL
-      AND type_acronym_id = 2
+      AND destiny_user_id = 0
                         ").first['count(*)'] %>
                         
                         <% responses_avg = (responses_total_alvos != 0 && responses_total_alvos != nil && responses_sum_polarity != nil) ? (responses_sum_polarity/responses_total_alvos) : 0%>
