@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
   create_table "interactions", force: :cascade do |t|
     t.string "name", null: false
     t.json "user_sends"
-    t.integer "status_acronym_id", default: 650, null: false
+    t.integer "status_acronym_id", default: 654, null: false
     t.integer "type_acronym_id", default: 300, null: false
     t.integer "schedule_acronym_id", default: 400, null: false
     t.integer "number_schedule", default: 13, null: false

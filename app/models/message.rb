@@ -40,7 +40,7 @@ class Message < ApplicationRecord
         if (last_message_interaction.interaction_ids == last_message.interaction_ids)
           start_or_notify()
         else
-          continue_interaction last_message
+          continue_interaction last_message, last_message_interaction
         end
 
       else
@@ -49,7 +49,7 @@ class Message < ApplicationRecord
     end
   end
   
-  def continue_interaction last_message
+  def continue_interaction last_message, last_message_interaction
     # obter a proxima mensagem a enviar
     next_message = Message
     .where(interaction_id: last_message.interaction_id)
@@ -92,6 +92,13 @@ class Message < ApplicationRecord
           contact_id: self.contact_id,
           reference_interaction_id: last_message.interaction_id
         })
+      
+#      # verificar se a mensagem eh a ultima da interacao para setar seu status como concluida
+#      if m.id == last_message_interaction.id
+#        i = Interaction.select(:id, :status_acronym_id).find(m.interaction_id)
+#        i.status_acronym_id = 651
+#        i.save!
+#      end
     end
       
     # atualizar a mensagem atual para informar a interacao em questao
@@ -103,7 +110,7 @@ class Message < ApplicationRecord
     # iniciar uma interacao
     if self.content == 'start'
 
-      i = Interaction.all.select(:id).first()
+      i = Interaction.all.select(:id, :status_acronym_id).first()
 
       # pegar a primeira mensagem da interacao a enviar
       message = Message.order(id: :asc).find_by_interaction_id(i.id)
@@ -142,6 +149,10 @@ class Message < ApplicationRecord
       # atualizar a mensagem atual para informar a interacao em questao
       self.reference_interaction_id = message.interaction_id
       self.save!
+      
+      # mudar status da interacao para "iniciada"
+      i.status_acronym_id = 650
+      i.save!
 
     else
       # nenhuma interacao em vigor

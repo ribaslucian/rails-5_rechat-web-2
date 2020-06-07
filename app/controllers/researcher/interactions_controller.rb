@@ -40,6 +40,15 @@ class Researcher::InteractionsController < Researcher::ResearcherController
       end
     end
     
+    # mudar status da interacao para "iniciada" ou reiniciada
+    if i.status_acronym_id == 650
+      i.status_acronym_id = 653 # reiniciada
+    else
+      i.status_acronym_id = 650 # iniciada
+    end
+    
+    i.save!
+    
     
     flash[:green] = 'Bot iniciado para todos os voluntários.'
     
@@ -47,7 +56,7 @@ class Researcher::InteractionsController < Researcher::ResearcherController
   end
 
   def index
-    @interactions = Interaction.all
+    @interactions = Interaction.order(created_at: :asc).all
   end
   
   def new
