@@ -17,18 +17,16 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Data</th>
                 <th>Conteúdo</th>
-                <th>Usuário Orig.</th>
-                <th>Usuário Dest.</th>
-                <th>Bot/Sequência</th>
+                <th>Usuário orig.<br/>Usuário dest.</th>
+                <th>Bot <br/> Sequência</th>
                 <th>Tipo</th>
-                <th>Favoritada</th>
-                <th>Visualizado</th>
-                <th>Visualizações</th>
-                <th>Tempo tot. <br/> de Foco</th>
-                <th>Polaridade <br/> Emocional</th>
-                <th>Compartilhamentos</th>
+                <th>Favoritada<br/>Compartilhamentos</th>
+                <th>Visualizado<br/>Visualizações</th>                
+                <th>
+                    Tempo tot. de Foco <br/>
+                    Polaridade Emocional
+                </th>
 
                 <th class="collapsing">
                     <div class="ui button icon" modal="modal_entities_search">
@@ -39,23 +37,25 @@
         </thead>
 
         <tbody>
-            <% Message.order('id, interaction_ids').all.each do |m| %>
+            <% View::Message.order('id, interaction_ids').all.each do |m| %>
               <tr>
                   <td style="font-size: 90%;">
                       <b><%= m.id %></b>
                   </td>
 
-                  <td style="font-size: 90%; color: grey;">
-                      <%= m.created_at %>
-                  </td>
+
 
                   <td style="max-width: 200px !important;">
                       <div class="text-overflow">
                           <b>
-                              <%= Acronym.select(:name).find(m.type_content_acronym_id).name %>:
+                              <%= m.type_content_acronym_name %>:
                           </b>
 
                           <%= m.content %>                   
+                      </div>
+
+                      <div style="font-size: 90%; color: grey; margin: 5px;">
+                          <%= m.created_at %>
                       </div>
                   </td>
 
@@ -64,21 +64,19 @@
                         <% if m.origin_user_id == 0 %>
                           Pesquisador
                         <% else %>
-                          <%= User.find(m.origin_user_id).name %>
+                          <%= user_origin_name %>
                         <% end %>
                       <% else %>
                         <div style="color: grey; font-size: 90%;">
                             Msg. de Bot
                         </div>
                       <% end %>
-                  </td>
 
-                  <td>
                       <% if m.destiny_user_id %>
                         <% if m.destiny_user_id == 0 %>
                           Pesquisador
                         <% else %>
-                          <%= User.find(m.destiny_user_id).name %>
+                          <%= destiny_user_name %>
                         <% end %>
                       <% else %>
                         <div style="color: grey; font-size: 90%;">
@@ -89,9 +87,9 @@
 
                   <td>
                       <% if m.interaction_id %>
-                        <%= m.interaction.name %> 
-                        <% if  m.interaction_ids %>
-                          / <%= m.interaction_ids %>
+                        <%= m.interaction_name %>
+                        <% if m.interaction_ids %>
+                          <br/> Sequência: <%= m.interaction_ids %>
                         <% end %>
                       <% else %>
                         <% if !m.reference_interaction_id %>
@@ -102,54 +100,58 @@
                           <div style="color: grey; font-size: 90%;">
                               Referente ao Bot
                               <b>
-                                <%= Interaction.find(m.reference_interaction_id).name %>
+                                  <%= m.reference_interaction_name %>
                               </b>
                           </div>
                         <% end %>
                       <% end %>
                   </td>
 
-                  <td>
-                      <%= Acronym.select(:name).find(m.type_acronym_id).name if m.type_acronym_id %>
+                  <td style="font-size: 90%; color: grey;">
+                      <%= m.type_acronym_name %>
                   </td>
 
                   <td>
                       <% if m.favorited %>
                         <i class="star yellow icon"></i>
                       <% else %>
-                        <div style="color: grey; font-size: 90%;">
+                        <div style="color: grey;">
                             Não
                         </div>
                       <% end %>
+
+                      <div>
+                          <%= MessageShare.where(propagation_message_id: m.id).count %>
+                      </div>
                   </td>
 
                   <td>
-                      <% if m.count_views > 0 %>
-                        <i class="green check icon"></i>
-                      <% else %>
-                        <div style="color: grey; font-size: 90%;">
-                            Não
-                        </div>
-                      <% end %>
-                  </td>
+                      <div>
+                          <% if m.count_views > 0 %>
+                            <i class="green check icon"></i>
+                          <% else %>
+                            <span style="color: grey;">
+                                Não
+                            </span>
+                          <% end %>
+                      </div>
 
-                  <td>
                       <%= m.count_views %>
                   </td>
 
                   <td>
-                      <% if m.time_focus > 0 %>
-                        <div style="color: #1b68a3;">
-                            <%= '%.2f' % m.time_focus %>ms
-                        </div>
-                      <% else %>
-                        <div style="font-size: 90%; color: grey;">
-                            0.00ms
-                        </div>
-                      <% end %>
-                  </td>
+                      <div>
+                          <% if m.time_focus > 0 %>
+                            <div style="color: #1b68a3;">
+                                <%= '%.2f' % m.time_focus %>ms
+                            </div>
+                          <% else %>
+                            <div style="color: grey;">
+                                0.00ms
+                            </div>
+                          <% end %>
+                      </div>
 
-                  <td>
                       <% if m.sentimental_score == nil || m.sentimental_score == 0 %>
                         <div style="color: grey">
                             0
@@ -163,10 +165,6 @@
                             <%= '%.2f' % m.sentimental_score %>
                         </div>
                       <% end %>
-                  </td>
-
-                  <td>
-                      <%= MessageShare.where(propagation_message_id: m.id).count %>
                   </td>
 
                   <td>

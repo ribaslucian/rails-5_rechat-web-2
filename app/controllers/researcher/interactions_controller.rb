@@ -41,13 +41,16 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     end
     
     # mudar status da interacao para "iniciada" ou reiniciada
-    if i.status_acronym_id == 650
-      i.status_acronym_id = 653 # reiniciada
+    if i.status_acronym_id == 654 # pendente
+      i.status_acronym_id = 350 # iniciada
     else
-      i.status_acronym_id = 650 # iniciada
+      i.status_acronym_id = 653 # reiniciada
     end
     
     i.save!
+    
+    # atualizar todas os bots com ID menor
+    Interaction.sql("UPDATE interactions SET status_acronym_id = 651 WHERE id < #{i.id}")
     
     
     flash[:green] = 'Bot iniciado para todos os voluntários.'

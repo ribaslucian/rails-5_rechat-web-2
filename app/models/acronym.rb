@@ -45,10 +45,10 @@ class Acronym < ApplicationRecord
       {id: 603, name: 'Grupo', data_refer: 'contacts.type'},
       
       # 650...
-      {id: 650, name: 'Iniciada', data_refer: 'interactions.status'},
-      {id: 651, name: 'Concluída', data_refer: 'interactions.status'},
-      {id: 652, name: 'Pausada', data_refer: 'interactions.status'},
-      {id: 653, name: 'Reiniciada', data_refer: 'interactions.status'},
+      {id: 650, name: 'Iniciado', data_refer: 'interactions.status'},
+      {id: 651, name: 'Concluído', data_refer: 'interactions.status'},
+      {id: 652, name: 'Pausado', data_refer: 'interactions.status'},
+      {id: 653, name: 'Reiniciado', data_refer: 'interactions.status'},
       {id: 654, name: 'Pendente', data_refer: 'interactions.status'},
     ])
 

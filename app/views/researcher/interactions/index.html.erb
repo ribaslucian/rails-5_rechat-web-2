@@ -30,7 +30,7 @@
 <%#*<th>Programação</th>%>
 <%#*<th>Horário</th>%>
                 <th style="text-align: center !important;">Tot. Mensagens</th>
-                <th style="text-align: center !important;">Tot. de Visualizações</th>
+                <th style="text-align: center !important;">Tot. de <br/> Visualizações</th>
                 <th style="text-align: center !important;">Tempo tot. de Foco</th>
                 <th style="text-align: center !important;">
                     Favoritadas &<br/>
@@ -67,6 +67,16 @@
                     </td>
 
                     <td style="color: grey; font-size: 90%">
+                        <% if i.status_acronym_id == 650 %>
+                          <i class="icon play"></i>
+                        <% elsif i.status_acronym_id == 651 %>
+                          <i class="icon check"></i>
+                        <% elsif i.status_acronym_id == 653 %>
+                          <i class="icon refresh"></i>
+                        <% elsif i.status_acronym_id == 654 %>
+                          <i class="icon time"></i>
+                        <% end %>
+
                         <%= Acronym.find(i.status_acronym_id).name %>
                     </td>
 
@@ -103,7 +113,7 @@
                     <td style="text-align: center !important;">
                         <% time_focus = Message.sql("SELECT sum(time_focus) FROM messages WHERE interaction_id = '#{i.id}'").first['sum(time_focus)'] %>
 
-                        <% if time_focus > 0 %>
+                        <% if time_focus != nil && time_focus > 0 %>
                           <div style="color: #1b68a3;">
                               <%= '%.2f' % time_focus %>ms
                           </div>
@@ -165,19 +175,21 @@
 
                         <% bot_avg = (bot_total_alvos != 0 && bot_total_alvos != nil && bot_sum_polarity != nil) ? (bot_sum_polarity/bot_total_alvos) : 0%>
 
-                        <% if bot_avg < 0 %>
-                          <div class="ui label red">
-                              Bot: <%= '%.2f' % bot_avg %>
-                          </div>
-                        <% elsif bot_avg == 0 %>
-                          <div class="ui label grey">
-                              Bot: 0
-                          </div>
-                        <% else %>
-                          <div class="ui label green">
-                              Bot: <%=  '%.2f' % bot_avg %>
-                          </div>
-                        <% end %>
+                        <div>
+                            <% if bot_avg < 0 %>
+                              <div class="ui label red">
+                                  Bot: <%= '%.2f' % bot_avg %>
+                              </div>
+                            <% elsif bot_avg == 0 %>
+                              <div class="ui label grey">
+                                  Bot: 0
+                              </div>
+                            <% else %>
+                              <div class="ui label green">
+                                  Bot: <%=  '%.2f' % bot_avg %>
+                              </div>
+                            <% end %>
+                        </div>
 
 
 
@@ -199,22 +211,24 @@
 
                         <% responses_avg = (responses_total_alvos != 0 && responses_total_alvos != nil && responses_sum_polarity != nil) ? (responses_sum_polarity/responses_total_alvos) : 0%>
 
-                        <% if responses_avg < 0 %>
-                          <div class="ui label red">
-                              <i class="icon heart"></i>
-                              Respostas: <%= '%.2f' % responses_avg %>
-                          </div>
-                        <% elsif responses_avg == 0 %>
-                          <div class="ui label grey">
-                              <i class="icon heart"></i>
-                              Respostas: 0
-                          </div>
-                        <% else %>
-                          <div class="ui label green">
-                              <i class="icon heart"></i>
-                              Respostas: <%= '%.2f' % responses_avg %>
-                          </div>
-                        <% end %>
+                        <div style="margin-top: 5px;">
+                            <% if responses_avg < 0 %>
+                              <div class="ui label red">
+                                  <i class="icon heart"></i>
+                                  Respostas: <%= '%.2f' % responses_avg %>
+                              </div>
+                            <% elsif responses_avg == 0 %>
+                              <div class="ui label grey">
+                                  <i class="icon heart"></i>
+                                  Respostas: 0
+                              </div>
+                            <% else %>
+                              <div class="ui label green">
+                                  <i class="icon heart"></i>
+                                  Respostas: <%= '%.2f' % responses_avg %>
+                              </div>
+                            <% end %>
+                        </div>
                     </td>
 
                     <td>

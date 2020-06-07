@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_213833) do
+ActiveRecord::Schema.define(version: 2020_03_19_213834) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "acronyms", force: :cascade do |t|
     t.string "name", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name", null: false
     t.integer "type_acronym_id", null: false
     t.datetime "created_at", null: false
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
   end
 
   create_table "message_interactions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "message_id"
+    t.bigint "user_id"
+    t.bigint "message_id"
     t.decimal "time_focus", default: "0.0"
     t.integer "count_views", default: 0
     t.boolean "favorited", default: false
@@ -55,9 +58,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
   end
 
   create_table "message_shares", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "contact_id"
-    t.integer "interaction_id"
+    t.bigint "user_id"
+    t.bigint "contact_id"
+    t.bigint "interaction_id"
     t.integer "interaction_message_id"
     t.integer "propagation_message_id"
     t.datetime "created_at", null: false
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.datetime "date_send", null: false
-    t.integer "interaction_id"
+    t.datetime "date_send", default: -> { "now()" }, null: false
+    t.bigint "interaction_id"
     t.integer "type_acronym_id"
     t.json "sent_users_id"
     t.json "answered_users_id"
@@ -104,4 +107,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_213833) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "contacts", "users"
+  add_foreign_key "message_interactions", "messages"
+  add_foreign_key "message_interactions", "users"
+  add_foreign_key "message_shares", "contacts"
+  add_foreign_key "message_shares", "users"
+  add_foreign_key "messages", "interactions"
 end
