@@ -9,7 +9,7 @@ class CreateViewMessages < ActiveRecord::Migration[5.2]
           user_origin.name AS user_origin_name,
           user_destiny.name AS user_destiny_name,
           contacts.name AS contact_name,
-          type_acronym.name AS type_acronym_name,
+          type_acronym.name AS type_name,
           type_content_acronym.name AS type_content_name,
           m.*
 

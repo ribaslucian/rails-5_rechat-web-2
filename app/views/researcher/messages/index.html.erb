@@ -37,7 +37,8 @@
         </thead>
 
         <tbody>
-            <% View::Message.order('id, interaction_ids').all.each do |m| %>
+            <%# View::Message.order('id, interaction_ids').all.each do |m| %>
+            <% @messages.each do |m| %>
               <tr>
                   <td style="font-size: 90%;">
                       <b><%= m.id %></b>
@@ -48,7 +49,7 @@
                   <td style="max-width: 200px !important;">
                       <div class="text-overflow">
                           <b>
-                              <%= m.type_content_acronym_name %>:
+                              <%= m.type_content_name %>:
                           </b>
 
                           <%= m.content %>                   
@@ -108,7 +109,7 @@
                   </td>
 
                   <td style="font-size: 90%; color: grey;">
-                      <%= m.type_acronym_name %>
+                      <%= m.type_name %>
                   </td>
 
                   <td>
