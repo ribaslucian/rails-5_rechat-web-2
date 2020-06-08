@@ -180,20 +180,28 @@ class Message < ApplicationRecord
       self.sentimental_category = analyzer.sentiment self.content
       self.sentimental_score = analyzer.score self.content
     end
-    
-    # se a mensagem anterior eh Alvo definimos essa como Resposta Alvo
-    puts "\n ============== \n"
-    puts self.inspect
-    puts "\n ============== \n"
-#    if self.type_acronym_id == 3 # resposta de controle
-#      
-#    end
   end
 
   def calc_sentimental
     # ser texto e nao ser [aguardar resposta]
     if self.type_content_acronym_id == 50 && self.type_acronym_id != 5
       self.sentimental_score = %x(python scripts/polarity.py "#{self.content}")
+    end
+    
+    
+    
+    # atualizar resposta de controle para resposta alvo
+    if self.destiny_user_id == 0
+      previous_message = Message
+      .select(:type_acronym_id)
+      .where(contact_id: self.contact_id)
+      .order(id: :desc)
+      .limit(1)
+      .first()
+      
+      if previous_message && previous_message.type_acronym_id == 2
+        self.type_acronym_id = 4
+      end
     end
   end
   
