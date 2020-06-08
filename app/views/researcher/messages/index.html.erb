@@ -14,7 +14,7 @@
 
     <div class="ui button disabled">
         <span style="color: #888;">
-          Ordenação
+            Ordenação
         </span>
         &nbsp;&nbsp; Data de Criação &nbsp; <i class="icon arrow up"></i>
     </div>
@@ -73,29 +73,33 @@
                   </td>
 
                   <td>
-                      <% if m.destiny_user_id %>
-                        <% if m.origin_user_id == 0 %>
-                          Pesquisador
-                        <% else %>
-                          <%= m.origin_user_name %>
-                        <% end %>
-                      <% else %>
-                        <div style="color: grey; font-size: 90%;">
-                            Msg. de Bot
-                        </div>
-                      <% end %>
+                      <div>
+                          <% if m.destiny_user_id %>
+                            <% if m.origin_user_id == 0 %>
+                              Pesquisador
+                            <% else %>
+                              <%= m.origin_user_name %>
+                            <% end %>
+                          <% else %>
+                            <span style="color: grey; font-size: 90%;">
+                                Msg. de Bot
+                            </span>
+                          <% end %>
+                      </div>
 
-                      <% if m.destiny_user_id %>
-                        <% if m.destiny_user_id == 0 %>
-                          Pesquisador
-                        <% else %>
-                          <%= m.destiny_user_name %>
-                        <% end %>
-                      <% else %>
-                        <div style="color: grey; font-size: 90%;">
-                            Msg. de Bot
-                        </div>
-                      <% end %>
+                      <div>
+                          <% if m.destiny_user_id %>
+                            <% if m.destiny_user_id == 0 %>
+                              Pesquisador
+                            <% else %>
+                              <%= m.destiny_user_name %>
+                            <% end %>
+                          <% else %>
+                            <span style="color: grey; font-size: 90%;">
+                                Msg. de Bot
+                            </span>
+                          <% end %>
+                      </div>
                   </td>
 
                   <td>

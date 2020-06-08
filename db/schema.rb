@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213834) do
     t.text "content"
     t.datetime "date_send", null: false
     t.integer "interaction_id"
-    t.integer "type_acronym_id"
+    t.integer "type_acronym_id", default: 3, null: false
     t.json "sent_users_id"
     t.json "answered_users_id"
     t.integer "interaction_ids"

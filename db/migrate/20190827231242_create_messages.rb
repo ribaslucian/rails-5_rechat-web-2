@@ -10,7 +10,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       # para criacao de interacoes
       # t.integer :sequence
       t.belongs_to :interaction, foreign_key: true
-      t.integer :type_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.type_acronym'}
+      t.integer :type_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.type_acronym'}, default: 3, null: false
       t.json :sent_users_id       # usuarios que mensagem da interacao ja foi enviada
       t.json :answered_users_id    # usuarios que responderam essa mensagem de interacao
       t.integer :interaction_ids

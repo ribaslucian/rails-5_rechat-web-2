@@ -185,6 +185,9 @@ class Message < ApplicationRecord
     puts "\n ============== \n"
     puts self.inspect
     puts "\n ============== \n"
+#    if self.type_acronym_id == 3 # resposta de controle
+#      
+#    end
   end
 
   def calc_sentimental
