@@ -1,6 +1,7 @@
 class Researcher::InteractionsController < Researcher::ResearcherController
   
   def start
+    
     i = Interaction.find(params[:id])
     
     first_message = i.messages.order(:id).first
@@ -42,7 +43,7 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     
     # mudar status da interacao para "iniciada" ou reiniciada
     if i.status_acronym_id == 654 # pendente
-      i.status_acronym_id = 350 # iniciada
+      i.status_acronym_id = 650 # iniciada
     else
       i.status_acronym_id = 653 # reiniciada
     end

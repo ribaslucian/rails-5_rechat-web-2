@@ -11,7 +11,7 @@
 <div class="ui fitted divider"></div>
 
 <div class="ui segment basic right aligned" style="background: none; padding-left: 0; padding-right: 0;">
-    <div class="ui button white">
+    <div class="ui button white disabled">
         <i class="icon check green"></i>
         Permitir Botão "Cadastre-se"
     </div>
@@ -23,6 +23,7 @@
     <thead>
         <tr>
             <th>Usuário</th>
+            <th>Status Chat</th>
             <th>Tipo</th>
             <th>Nome</th>
             <th>Senha</th>
@@ -45,13 +46,21 @@
                     </b>
                 </td>
 
+                <td style="text-align: center;">
+                    <% if i.chat_connected %>
+                      <i class="icon circle green"></i>
+                    <% else %>
+                      <i class="icon circle red"></i>
+                    <% end %>
+                </td>
+
                 <td class="ws-no-white" style="color: grey; font-size: 90%;">
                     <% if i.type_acronym_id == 200 %>
-                      <label class="ui label black">
+                      <label class="ui label blue">
                           Pesquisador
                       </label>
                     <% else %>
-                      <label class="ui label red">
+                      <label class="ui label purple">
                           Voluntário
                       </label>
                     <% end %>
