@@ -15,7 +15,13 @@ class Researcher::MessagesController < Researcher::ResearcherController
       if !params[:content].nil? && params[:content] != ''
         @messages = @messages.where("content LIKE '%#{params[:content]}%'")
 #        @messages = @messages.where("content ~* '#{params[:content]}'")
-        
+      end
+
+      if !params[:user_chat].nil? && params[:user_chat] != ''
+        @messages = @messages.where("(
+          origin_user_name LIKE '%#{params[:user_chat]}%'
+          OR destiny_user_name LIKE '%#{params[:user_chat]}%'
+        )")
       end
       
       if !params[:origin_user_name].nil? && params[:origin_user_name] != ''

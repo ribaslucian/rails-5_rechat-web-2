@@ -8,7 +8,7 @@
 
           <%= hidden_field_tag 'search', true %>
 
-          <div class="two fields">
+          <div class="three fields">
               <div class="field">
                   <label>
                       <span
@@ -32,7 +32,18 @@
               <div class="field">
                   <label>
                       <i class="icon user"></i>
-                      Usuário Origem:
+                      Buscar Conversa do Usuário:
+                  </label>
+
+                  <div class="ui input">
+                      <%= text_field_tag 'user_chat', params[:user_chat], rows: 4, placeholder: 'Digite o nome...' %>
+                  </div>
+              </div>
+
+              <div class="field">
+                  <label>
+                      <i class="icon user"></i>
+                      Apenas Usuário Origem:
                   </label>
 
                   <div class="ui input">
@@ -43,7 +54,7 @@
               <div class="field">
                   <label>
                       <i class="icon user"></i>
-                      Usuário Destino:
+                      Apenas Usuário Destino:
                   </label>
 
                   <div class="ui input">
