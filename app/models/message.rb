@@ -83,7 +83,7 @@ class Message < ApplicationRecord
     messages.each do |m|
       Message.create!({
           origin_user_id: 0,
-          destiny_user_id: 2,
+          destiny_user_id: self.origin_user_id,
           content: m.content,
           interaction_id: m.interaction_id,
           interaction_ids: m.interaction_ids,
@@ -134,7 +134,7 @@ class Message < ApplicationRecord
       messages.each do |m|
         Message.create!({
             origin_user_id: 0,
-            destiny_user_id: 2,
+            destiny_user_id: self.origin_user_id,
             content: m.content,
             interaction_id: i.id,
             interaction_ids: m.interaction_ids,
@@ -158,7 +158,7 @@ class Message < ApplicationRecord
       # nenhuma interacao em vigor
       Message.create!({
           origin_user_id: 0,
-          destiny_user_id: 2,
+          destiny_user_id: self.origin_user_id,
           content: 'Oi! Não posso lhe responder no momento mas assim que possível entro em contato.',
           contact_id: self.contact_id
         })

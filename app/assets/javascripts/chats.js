@@ -17,9 +17,10 @@ function connect(origin_user_id) {
         received: function (data) {
             // quando chegar notifica se o usuario nao estiver na conversa
             var pathname = window.location.pathname;
-            var contact_id = pathname.slice(-1);
+            var contact_id = pathname.split('/');
+            contact_id = contact_id[contact_id.length-1];
             var flash = true;
-
+            
             // verificar se o usuario esta no chat
             if (pathname.substring(0, 20) == '/voluntary/voluntary') {
 

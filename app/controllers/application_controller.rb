@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   def logged?
     return if params[:action] == 'authorize'
     
-#    return d Message.all
+    #    return d Message.all
     
-#    Message.sql("UPDATE messages SET time_focus = 0;")
-#     Message.where('origin_user_id = 2 OR destiny_user_id = 2').destroy_all
-#     return d Message.order('id DESC, interaction_ids DESC').where("interaction_id IS NOT NULL AND destiny_user_id = 2").limit(1).first
+    #    Message.sql("UPDATE messages SET time_focus = 0;")
+    #     Message.where('origin_user_id = 2 OR destiny_user_id = 2').destroy_all
+    #     return d Message.order('id DESC, interaction_ids DESC').where("interaction_id IS NOT NULL AND destiny_user_id = 2").limit(1).first
     
     if params[:message_create]
       Message.seed_test
@@ -31,6 +31,13 @@ class ApplicationController < ActionController::Base
 
     # obter hirarquia do usuario
     if session[:user] != nil
+      
+      # verificar se o usuario existe
+      if !User.exists? session[:user]['id']
+        session[:user] = nil
+        return redirect_to "/voluntary" 
+      end
+      
       user_hierarchy = type_user_namespace[session[:user]['type_acronym_id']]
     else
       user_hierarchy = 'guest'
