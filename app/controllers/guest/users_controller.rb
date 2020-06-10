@@ -35,6 +35,10 @@ class Guest::UsersController < Guest::GuestController
       end
     
       flash[:red] = 'Verifique o formulário e tente novamente.'
+    else
+      @user.contacts.build
+      @user.contacts.build
+      @user.contacts.build
     end
   end
 
