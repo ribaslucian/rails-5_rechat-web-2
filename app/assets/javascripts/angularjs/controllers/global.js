@@ -85,6 +85,10 @@ app.controller('GlobalController', function ($app, $scope) {
 
 
     $scope.save_times = function (times) {
+        
+        if (times == {});
+            return;
+        
         $app.$api.process({
             Interaction: {
                 save_times: {
