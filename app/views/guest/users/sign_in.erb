@@ -32,13 +32,11 @@
                     <%= f.text_field(:name, placeholder: '* Nome de usuário:') %>
                 </div>
 
-                <div class="field">
+                <div class="field disabled">
                     <%= f.label(:type_acronym_id, '* Tipo de usuário:') %>
 
                     <select class="ui dropdown" name="user[type_acronym_id]" id="user_type_acronym_id">
-                        <% Acronym.where(data_refer: 'users.type').each do |a| %>
-                          <option value="<%= a.id %>" <%= 'selected' if a.id == 201 %>><%= a.name %></option>
-                        <% end %>
+                          <option value="201">Voluntário</option>
                     </select>
                 </div>
 

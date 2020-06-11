@@ -46,7 +46,7 @@
                     </b>
 
                     <div style="font-size: 80%; color: grey; margin-top: 5px">
-                        Registro <%= i.created_at.strftime('%d/%m/%Y %H:%M') %>
+                        Registro <%= i.created_at.in_time_zone('America/Sao_Paulo').strftime('%d/%m/%Y %H:%M') %>
                     </div>
                 </td>
 

@@ -265,6 +265,22 @@ class Message < ApplicationRecord
               interaction_message_id: params['interaction_message_id'],
               propagation_message_id: params['propagation_message_id'],
             })
+          
+          Message.create!({
+              origin_user_id: params['user_id'],
+              destiny_user_id: params['user_id'],
+              contact_id: contact_id,
+              type_acronym_id: 6, # compartilhamento
+              
+#              interaction_message_id: params['interaction_message_id'],
+#              propagation_message_id: params['propagation_message_id'],
+
+              # passar nos parametros
+              content: params['content'],
+              interaction_ids: params['interaction_ids'],
+              type_content_acronym_id: params['type_content_acronym_id'],
+              interaction_id: params['reference_interaction_id'],
+            })
         end
       end
     end
