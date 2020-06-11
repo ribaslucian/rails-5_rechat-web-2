@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213834) do
     t.integer "destiny_user_id"
     t.integer "previous_message_id"
     t.integer "contact_id"
+    t.integer "destiny_contact_id"
     t.text "content_en"
     t.string "sentimental_category"
     t.decimal "sentimental_score"

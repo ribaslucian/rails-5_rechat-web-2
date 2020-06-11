@@ -44,13 +44,24 @@
                   <i class="icon star outline grey"></i>
                   Remover das Favoritas
               </div>
+              
+              
+              <%#*content: params['content'],%>
+              <%#*interaction_ids: params['interaction_ids'],%>
+              <%#*type_content_acronym_id: params['type_content_acronym_id'],%>
+              <%#*interaction_id: params['reference_interaction_id'],%>
 
               <div
                   class="item"
                   ng-click="
-                          share.interaction_id = <%= message.interaction_id ? message.interaction_id : 0 %>;
-                          share.propagation_message_id = <%= message.id ? message.id : 0 %>;
-                          share.interaction_message_id = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
+                    share.interaction_id = <%= message.interaction_id ? message.interaction_id : 0 %>;
+                    share.propagation_message_id = <%= message.id ? message.id : 0 %>;
+                    share.interaction_message_id = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
+                    
+                    share.content = '<%= message.content ? message.content : 0 %>';
+                    share.interaction_ids = <%= message.interaction_ids ? message.interaction_ids : 0 %>;
+                    share.type_content_acronym_id = <%= message.type_content_acronym_id ? message.type_content_acronym_id : 0 %>;
+                    share.reference_interaction_id = <%= message.reference_interaction_id ? message.reference_interaction_id : 0 %>;
                   "
                   onclick="$('.ws-behavior-modal-share').modal('show')">
                   <i class="icon share grey"></i>

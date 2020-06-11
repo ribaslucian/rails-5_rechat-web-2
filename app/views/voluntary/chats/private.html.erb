@@ -69,6 +69,7 @@
     }*/
 </style>
 
+
 <div class="ws-mobile-container-y ws-messages">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
 
@@ -100,6 +101,9 @@
 </div>
 
 <script>
+  
+  ORIGIN_CONTACT_ID = <%= params[:contact_id].to_i %>;
+  
   function capture_interaction_start() {
       var time;
 

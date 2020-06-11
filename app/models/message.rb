@@ -166,7 +166,7 @@ class Message < ApplicationRecord
   end
 
   def broadcast_if_raw_message
-    if !self.origin_user_id.nil? && !self.destiny_user_id.nil?
+    if !self.origin_user_id.nil? && !self.destiny_user_id.nil? && self.type_acronym_id != 6
       ChatBroadcastJob.perform_later self
     end
   end
@@ -269,17 +269,19 @@ class Message < ApplicationRecord
           Message.create!({
               origin_user_id: params['user_id'],
               destiny_user_id: params['user_id'],
-              contact_id: contact_id,
-              type_acronym_id: 6, # compartilhamento
+              contact_id: params['origin_contact_id'],
+              type_acronym_id: 6,
               
 #              interaction_message_id: params['interaction_message_id'],
 #              propagation_message_id: params['propagation_message_id'],
 
               # passar nos parametros
               content: params['content'],
+              destiny_contact_id: contact_id,
+              interaction_id: params['interaction_id'],
               interaction_ids: params['interaction_ids'],
               type_content_acronym_id: params['type_content_acronym_id'],
-              interaction_id: params['reference_interaction_id'],
+              reference_interaction_id: params['reference_interaction_id'],
             })
         end
       end

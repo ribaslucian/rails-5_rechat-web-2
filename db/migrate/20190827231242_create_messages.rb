@@ -27,6 +27,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :previous_message_id, foreign_key: {to_table: :messages, name: 'rule_fk:messages.previous_message'}
       
       t.integer :contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.contact'}
+      t.integer :destiny_contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.destiny_contact_id'}
       
       # calculos emocionais
       t.text :content_en
