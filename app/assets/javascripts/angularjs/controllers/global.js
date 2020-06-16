@@ -63,7 +63,7 @@ app.controller('GlobalController', function ($app, $scope) {
                     content: share.content,
                     interaction_ids: share.interaction_ids,
                     type_content_acronym_id: share.type_content_acronym_id,
-                    reference_interaction_id: share.reference_interaction_id
+                    reference_interaction_id: share.reference_interaction_id,
                 }
             },
         }, function (data) {
@@ -86,12 +86,13 @@ app.controller('GlobalController', function ($app, $scope) {
     $scope.save_times = function (times) {
         if (times == {})
             return;
-
+        
         $app.$api.process({
             Interaction: {
                 save_times: {
                     times: times,
-                    scroll_count: PAGE_SCROLL_COUNT
+                    scroll_count: PAGE_SCROLL_COUNT,
+                    has_scroll: ($('.ws-mobile-container-y').hasScrollBar() ? true : false)
                 }
             },
         }, function () {

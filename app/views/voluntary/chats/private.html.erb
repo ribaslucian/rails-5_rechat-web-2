@@ -61,16 +61,16 @@
     }
 
 
-    <%#*.scroll-item {%>
-        <%#*background-color: blue !important;%>
-    <%#*}%>
-    <%#*.scroll-item.is-active {%>
-        <%#*background-color: #0e8824 !important;%>
-    <%#*}%>
+<%#*.scroll-item {%>
+<%#*background-color: blue !important;%>
+<%#*}%>
+<%#*.scroll-item.is-active {%>
+<%#*background-color: #0e8824 !important;%>
+<%#*}%>
 </style>
 
 
-<div class="ws-mobile-container-y ws-messages">
+<div class="ws-mobile-container-y ws-messages" onclick="angular_controller('GlobalController').save_times(total_times);">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
 
         <div class="ws-message messages" style="margin: 15px 0;">
@@ -101,8 +101,14 @@
 </div>
 
 <script>
+  (function ($) {
+      $.fn.hasScrollBar = function () {
+          return this.get(0).scrollHeight > this.height();
+      }
+  })(jQuery);
+
   ORIGIN_CONTACT_ID = <%= params[:contact_id].to_i %>;
-  
+
   function capture_interaction_start() {
       var time;
 

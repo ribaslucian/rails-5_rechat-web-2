@@ -17,7 +17,12 @@ class Interaction < ApplicationRecord
   end
   
   def self.save_times params
-    if params["scroll_count"] > 1
+    
+    puts "\n ================ \n"
+    puts params.inspect
+    puts "\n ================ \n"
+    
+    if params["scroll_count"] > 1 || params["has_scroll"] == false
       # salvar o tempo de foco de todas as mensagens
       params['times'].each do |id, time|
         message = Message.find(id)
