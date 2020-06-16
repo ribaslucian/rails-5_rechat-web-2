@@ -17,7 +17,6 @@ class Interaction < ApplicationRecord
   end
   
   def self.save_times params
-    
     if params["scroll_count"] > 1
       # salvar o tempo de foco de todas as mensagens
       params['times'].each do |id, time|
@@ -27,7 +26,6 @@ class Interaction < ApplicationRecord
         message.save!
       end
     else
-    
       # salvar o tempo de foco apenas da ultima
       id = params['times'].keys.last
       message = Message.find(id)

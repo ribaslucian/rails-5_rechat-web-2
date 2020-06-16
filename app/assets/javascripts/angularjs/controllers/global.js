@@ -59,8 +59,7 @@ app.controller('GlobalController', function ($app, $scope) {
                     interaction_id: share.interaction_id,
                     interaction_message_id: share.interaction_message_id,
                     propagation_message_id: share.propagation_message_id,
-                    
-                    
+
                     content: share.content,
                     interaction_ids: share.interaction_ids,
                     type_content_acronym_id: share.type_content_acronym_id,
@@ -85,10 +84,9 @@ app.controller('GlobalController', function ($app, $scope) {
 
 
     $scope.save_times = function (times) {
-        
-        if (times == {});
+        if (times == {})
             return;
-        
+
         $app.$api.process({
             Interaction: {
                 save_times: {

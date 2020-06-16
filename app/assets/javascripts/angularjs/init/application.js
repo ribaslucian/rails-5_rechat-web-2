@@ -1,4 +1,5 @@
-var API_URL = 'http://localhost:3000/api/authorize.json';
+//var API_URL = 'http://localhost:3000/api/authorize.json';
+var API_URL = 'http://192.168.0.5:3000/api/authorize.json';
 var app = angular.module('ChatResearcher', ['toastr']);
 
 app.service('$data', function () {

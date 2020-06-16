@@ -61,12 +61,12 @@
     }
 
 
-    /*.scroll-item {
-        background-color: blue !important;
-    }
-    .scroll-item.is-active {
-        background-color: #0e8824 !important;
-    }*/
+    <%#*.scroll-item {%>
+        <%#*background-color: blue !important;%>
+    <%#*}%>
+    <%#*.scroll-item.is-active {%>
+        <%#*background-color: #0e8824 !important;%>
+    <%#*}%>
 </style>
 
 
@@ -101,7 +101,6 @@
 </div>
 
 <script>
-  
   ORIGIN_CONTACT_ID = <%= params[:contact_id].to_i %>;
   
   function capture_interaction_start() {

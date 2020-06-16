@@ -46,8 +46,6 @@ class Researcher::MessagesController < Researcher::ResearcherController
 #  end
   
   def index
-    
-    
     if params[:search]
       @messages = View::Message
 

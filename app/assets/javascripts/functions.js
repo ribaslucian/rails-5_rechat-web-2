@@ -31,12 +31,24 @@ function random() {
     return Math.random().toString(36).substr(2);
 }
 
+
+LOADING = true;
+
 function loading() {
+    LOADING = true;
+
     $('.ws-loading-global').fadeIn();
+
+    setTimeout(function () {
+        if (LOADING == true) 
+            $('#loading-reload').show();
+    }, 8000);
 }
 
 function loaded() {
+    LOADING = false;
     $('.ws-loading-global').fadeOut();
+    $('#loading-reload').hide();
 }
 
 function order() {

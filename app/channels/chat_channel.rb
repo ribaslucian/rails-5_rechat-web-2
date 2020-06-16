@@ -10,10 +10,10 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    puts "\nsaindo"
-    puts "\n--------------\n"
-    puts params
-    puts "\n--------------\n"
+#    puts "\nsaindo"
+#    puts "\n--------------\n"
+#    puts params
+#    puts "\n--------------\n"
     # Any cleanup needed when channel is unsubscribed
     
     u = User.find params[:user_id]
