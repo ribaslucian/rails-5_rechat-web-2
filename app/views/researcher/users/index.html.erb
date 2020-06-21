@@ -226,7 +226,7 @@
                         count_shared = Message.sql("
           SELECT count(*)
           FROM message_shares
-          WHERE user_id = #{i.id}
+          WHERE user_id = #{i.id};
                         ").first['count(*)']
                       %>
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
@@ -254,7 +254,7 @@
           SELECT count(*)
           FROM messages
           WHERE destiny_user_id = #{i.id}
-          AND favorited = TRUE
+          AND favorited = true;
                         ").first['count(*)']
                       %>
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
