@@ -8,7 +8,7 @@ class Voluntary::ChatsController < Voluntary::VoluntaryController
 #    Contact.sql("UPDATE messages SET chat_open = TRUE WHERE contact_id = #{params[:contact_id]}")
     
     
-    Contact.where(contact_id: params[:contact_id]).update_all(chat_open: true)
+    Message.where(contact_id: params[:contact_id]).update_all(chat_open: true)
   end
   
 end
