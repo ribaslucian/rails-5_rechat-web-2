@@ -1,4 +1,4 @@
-var API_URL = 'http://ec2-18-228-22-62.sa-east-1.compute.amazonaws.com';
+var API_URL = 'http://ec2-18-228-22-62.sa-east-1.compute.amazonaws.com/api/authorize.json';
 //var API_URL = 'http://192.168.0.5:3000/api/authorize.json';
 var app = angular.module('ChatResearcher', ['toastr']);
 
