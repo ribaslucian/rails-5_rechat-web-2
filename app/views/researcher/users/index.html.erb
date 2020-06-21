@@ -257,13 +257,10 @@
           #AND favorited = true;
                         #").first['count(*)']
                         
-                        
-                        count_stars_params = Message.sql_with_params("
-                          SELECT count(*)
-                          FROM messages
-                          WHERE destiny_user_id = #{i.id}
-                          AND favorited = ?;
-                        ", 'true').first['count(*)']
+                        count_stars_params = Message.select('count(*)')
+                          .where(destiny_user_id: i.id)
+                          .where(favorited: true)
+                          .first['count(*)']
                       %>
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
                             Favoritas
