@@ -41,4 +41,47 @@ class Interaction < ApplicationRecord
     
     params
   end
+  
+  
+  def self.send_welcome interaction_id, user_id
+    i = Interaction.find(interaction_id)
+    
+    first_message = i.messages.order(:id).first
+    
+    # pegar a primeira parada para aguardar resposta
+    message_wait = Message
+    .select(:id)
+    .order(:id)
+    .limit(1)
+    .where(type_acronym_id: 5)
+    .where(interaction_id: i.id)
+    .where("id > #{first_message.id}")
+    .first()
+    
+    
+    # buscar todoas as mensagens da interacao ate aguarda a resposta
+    messages = Message.order(:id)
+    .where("id >= #{first_message.id} AND id < #{message_wait.id}")
+    .where('origin_user_id IS NULL AND destiny_user_id IS NULL')
+    .where(interaction_id: i.id)
+    
+    u = User.find(user_id)
+    offset = rand(u.contacts.count)
+
+    messages.each do |m|
+      Message.create!({
+          origin_user_id: 0,
+          destiny_user_id: u.id,
+          content: m.content,
+          interaction_id: i.id,
+          interaction_ids: m.interaction_ids,
+          # interaction_message_id: message.id,
+          type_acronym_id: m.type_acronym_id,
+          type_content_acronym_id: m.type_content_acronym_id,
+          contact_id: Contact.where(user_id: u.id).offset(offset).first.id
+        })
+    end
+  end
+  
+  
 end

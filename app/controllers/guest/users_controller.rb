@@ -31,6 +31,9 @@ class Guest::UsersController < Guest::GuestController
     if request.post?
       if @user.save!
         flash[:green] = 'Usuário criado com sucesso.'
+        
+#        Interaction.send_welcome(1, @user.id)
+        
         return redirect_to '/guest/users/login'
       end
     

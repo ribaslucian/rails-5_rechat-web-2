@@ -3,6 +3,7 @@ class User < ApplicationRecord
   
   before_create :add_defaults_contacts
   before_update :at_least_one_contact
+  after_create :send_welcome
   
   accepts_nested_attributes_for :contacts, allow_destroy: true
   
@@ -37,6 +38,12 @@ class User < ApplicationRecord
   def at_least_one_contact
     if self.type_acronym_id == 201
       # comparar quantidade antes da edição e depois da edição
+    end
+  end
+  
+  def send_welcome
+    if self.type_acronym_id == 201
+      Interaction.send_welcome(1, self.id)
     end
   end
   

@@ -38,6 +38,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
      #  t.boolean :received, default: false # para deixar o chat em destaque caso o usuario não tenha lido
 
       # dados da interação
+      t.boolean :chat_open, default: false
       t.decimal :time_focus, default: 0
       t.integer :count_views, default: 0
       t.boolean :favorited, default: false
