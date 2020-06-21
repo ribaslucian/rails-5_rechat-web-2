@@ -27,7 +27,7 @@
             <th>Tipo</th>
             <th>Nome</th>
             <th>Senha</th>
-            <th>Contatos</th>
+            <th>Contatos(views)</th>
             <th>Dados Interativos</th>
             <th class="collapsing">
                 <%= link_to new_researcher_user_path, class: 'ui icon blue button' do %>
@@ -99,6 +99,8 @@
                                 <%= Acronym.select(:name).find(c.type_acronym_id).name %>:
 
                                 <%= c.name %>
+                                /
+                                <%= c.count_views %>
                             </span>
                           <% end %>
                       </div>

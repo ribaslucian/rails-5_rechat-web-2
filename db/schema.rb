@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213834) do
     t.integer "user_id"
     t.string "name", null: false
     t.integer "type_acronym_id", null: false
+    t.integer "count_views", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_contacts_on_user_id"
