@@ -250,12 +250,12 @@
                       <!-- favoritas -->
                       <% if count_messages_received > 0 %>
                         <%
-                        count_stars = Message.sql("
-          SELECT count(*)
-          FROM messages
-          WHERE destiny_user_id = #{i.id}
-          AND favorited = true;
-                        ").first['count(*)']
+                        #count_stars = Message.sql("
+          #SELECT count(*)
+          #FROM messages
+          #WHERE destiny_user_id = #{i.id}
+          #AND favorited = true;
+                        #").first['count(*)']
                         
                         
                         count_stars_params = Message.sql_with_params("
@@ -268,7 +268,7 @@
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
                             Favoritas
                             <div class="detail">
-                                <%= count_stars %>
+                                <%#= count_stars %>
                                 /
                                 <%= count_stars_params %>
                             </div>
