@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
+    
+#    results = Message.sql_with_params("
+#      SELECT count(*)
+#      FROM messages
+#      WHERE destiny_user_id = 2
+#      AND favorited = ?;
+    #", 'true').first['count(*)']
+#    
+#    return d results
+    
     return if params[:action] == 'authorize'
     
     #    return d Message.all

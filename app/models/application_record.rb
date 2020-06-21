@@ -15,4 +15,12 @@ class ApplicationRecord < ActiveRecord::Base
   def self.select_except columns
     select(column_names - columns.map(&:to_s))
   end
+  
+  def self.sql_with_params sql, params
+    st = ActiveRecord::Base.connection.raw_connection.prepare(sql)
+    results = st.execute(params)
+#    st.close
+    
+    return results
+  end
 end
