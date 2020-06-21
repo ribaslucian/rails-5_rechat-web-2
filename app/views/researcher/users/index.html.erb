@@ -254,7 +254,7 @@
           SELECT count(*)
           FROM messages
           WHERE destiny_user_id = #{i.id}
-          AND favorited IS TRUE
+          AND favorited = TRUE
                         ").first['count(*)']
                       %>
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
