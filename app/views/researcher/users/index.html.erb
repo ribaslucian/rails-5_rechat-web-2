@@ -134,10 +134,16 @@
                       <% if count_messages_received > 0 %>
                         <%
                         polarity_received = Message.sql("
-          SELECT sum(sentimental_score)
-          FROM messages
-          WHERE destiny_user_id = #{i.id}
-                        ").first['sum(sentimental_score)'] / count_messages_received
+                          SELECT sum(sentimental_score)
+                          FROM messages
+                          WHERE destiny_user_id = #{i.id}
+                        ").first['sum(sentimental_score)']
+                        
+                        if (polarity_received != nil)
+                          polarity_received = polarity_received / count_messages_received
+                        else
+                          polarity_received = 0
+                        end
                       %>
 
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
@@ -183,10 +189,16 @@
                       <% if count_messages_send > 0 %>
                         <%
                         polarity_send = Message.sql("
-          SELECT sum(sentimental_score)
-          FROM messages
-          WHERE origin_user_id = #{i.id}
-                        ").first['sum(sentimental_score)'] / count_messages_send
+                          SELECT sum(sentimental_score)
+                          FROM messages
+                          WHERE origin_user_id = #{i.id}
+                        ").first['sum(sentimental_score)']
+                        
+                        if (polarity_send != nil)
+                          polarity_send = polarity_send / count_messages_send
+                        else
+                          polarity_send = 0
+                        end
                       %>
 
                         <div class="ui label ws-no-white" style="margin-top: 5px;">
