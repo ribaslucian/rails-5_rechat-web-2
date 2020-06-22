@@ -68,6 +68,12 @@
                   <b>Cadastre-se Agora</b>
               </a>
           </div>
+
+
+          <br/>
+          <div class="ws-center" style="color: grey; cursor: pointer;" onclick="$('.ws-behavior-modal-rechat').modal('show')">
+              Sobre o Rechat
+          </div>
       </div>
   </div>
 
@@ -90,17 +96,48 @@
     $(document).ready(function () {
         $('#form-login').submit(function () {
             if ($('#user-name').val() != 'ppgca' && !isMobile()) {
-              $.toast({
-                text: '\
+                $.toast({
+                    text: '\
         Para acessar o chat utilize a versão Mobile (Aplicativo Android).\n\
         <br/><br/> Baixe o aplicativo \n\
         <a target="_blank" style="color: #bce8f1;" href="https://github.com/ribaslucian/whatsapp-researcher-androidapp/blob/master/Rechat.apk">clicando aqui.</a>',
-                position: 'top-center',
-                hideAfter: 5000,
-                loaderBg: '#666'
-              });
-              return false;
+                    position: 'top-center',
+                    hideAfter: 5000,
+                    loaderBg: '#666'
+                });
+                return false;
             }
         });
     })
   </script>
+
+
+
+  <div class="ui basic modal ws-behavior-modal-rechat" style="text-align: center;">
+      <div class="ui icon header">
+          Rechat Pesquisa em Chats
+      </div>
+      
+      <div class="content">
+          <p>
+              A plataforma Rechat é um projeto com objetivo de estudar
+              comportamentos em aplicativos de conversa. Considerando a 
+              integridade dos voluntários, os dados capturados são enviados
+              de maneira anônima, também , não há coleta externa a plataforma,
+              ou seja, seu celular não está sendo monitorado.
+          </p>
+          
+          <br/>
+      </div>
+      
+      <div class="actions">
+          <div class="ui red basic cancel inverted button">
+              Ok
+          </div>
+          
+          <div class="ui green ok inverted button">
+              <i class="checkmark icon"></i>
+              Entendi
+          </div>
+      </div>
+  </div>
