@@ -40,7 +40,7 @@ function loading() {
     $('.ws-loading-global').fadeIn();
 
     setTimeout(function () {
-        if (LOADING == true) 
+        if (LOADING == true)
             $('#loading-reload').show();
     }, 8000);
 }
@@ -67,4 +67,12 @@ function set_padding() {
 
 function scroll() {
     $('.ws-mobile-container-y').animate({scrollTop: 100000000});
+}
+
+function isMobile() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true;
+    }
+    
+    return false;
 }

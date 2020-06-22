@@ -7,5 +7,9 @@ app.service('$basic', function () {
     this.random = function () {
         return random();
     };
+    
+    this.isMobile = function () {
+        return isMobile();
+    };
 
 });
