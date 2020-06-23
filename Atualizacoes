@@ -1,2 +1,4 @@
-- Atualizar agendamento da APK para notificar o dia todo e não apenas depois das 10h.
-- Desmarcar mensagens como lidas também quando sair da conversa.
+- Atualizar agendamento da APK para notificar o dia todo e não apenas depois de um horário específico.
+- Marcar mensagens como lidas também quando sair da conversa.
+- Criar opção para "desfazer envio" do bot.
+- Criar lista de usuário que visualizaram o Bot em questão.
