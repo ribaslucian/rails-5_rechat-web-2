@@ -19,7 +19,7 @@
     <% if message.origin_user_id == 0 %>  
 
       <div class="ui dropdown icon large"style="position: absolute; top: -6px; right: -2px">
-          <i click-behavior class="sort down icon small" style="color: #ddd"></i>
+          <i click-behavior class="sort down icon small" style="color: #ddd" onclick="$(this).parents('.dropdown').dropdown()"></i>
 
           <div
               class="menu shadow-button"

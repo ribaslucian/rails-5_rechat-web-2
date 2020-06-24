@@ -18,17 +18,31 @@ function connect(origin_user_id) {
             // quando chegar notifica se o usuario nao estiver na conversa
             var pathname = window.location.pathname;
             var contact_id = pathname.split('/');
-            contact_id = contact_id[contact_id.length-1];
+            contact_id = contact_id[contact_id.length - 1];
             var flash = true;
-            
+
             // verificar se o usuario esta no chat
             if (pathname.substring(0, 20) == '/voluntary/voluntary') {
 
                 // verificar se a mensagm eh do chat em questao
                 if (contact_id == data['message_record']['contact_id']) {
 
-                    $('.ws-behavior-messages').append(data['message_html']);
-                    $('.dropdown').dropdown();
+//                    $('.ws-behavior-messages').append(data['message_html']);
+//                    $('.dropdown').dropdown();
+
+                    var an_app = angular_app();
+                    var an_scope = angular.element('[ng-controller="GlobalController"]').scope();
+                    
+//                    l(an_app);
+//                    l(an_scope);
+
+                    var compiledHtml = an_app.$compile(data['message_html'])(an_scope);
+                    $('.ws-behavior-messages').append(compiledHtml);
+                    an_scope.$apply();
+                    
+//                    angular
+//                        .element(document.getElementById('messages'))
+//                        .append(an_app.$compile(data['message_html'])(an_scope));
 
                     capture_interaction_start();
                     order();
