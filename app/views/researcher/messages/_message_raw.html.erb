@@ -18,11 +18,13 @@
 
     <% if message.origin_user_id == 0 %>  
 
-      <div class="ui dropdown icon large"style="position: absolute; top: -6px; right: -2px">
+      <%#*<div class="ui dropdown icon large"style="position: absolute; top: -6px; right: -2px">%>
+      <div class="ui icon bottom right pointing dropdown"style="position: absolute; top: -6px; right: -2px; z-index: 999 !important;">
           <i click-behavior class="sort down icon small" style="color: #ddd" onclick="$(this).parents('.dropdown').dropdown()"></i>
 
           <div
               class="menu shadow-button"
+              style="bottom: 6px !important; right: -9px !important;"
               ng-init="
                     $app.messages[<%= message.id %>].favorited = <%= message.favorited == true ? 'true' : 'false' %>;
               ">

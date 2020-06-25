@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     
     return if params[:action] == 'authorize'
     
+#    if params[:contact_access]
+#      return d 'oi'
+#    end
+    
     #    return d Message.all
     
     #    Message.sql("UPDATE messages SET time_focus = 0;")
