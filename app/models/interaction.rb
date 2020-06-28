@@ -1,8 +1,10 @@
 class Interaction < ApplicationRecord
   has_many :messages, -> { where('origin_user_id IS NULL AND destiny_user_id IS NULL') }, dependent: :destroy
-  before_save :set_message_ids
 
-  # belongs_to :type, -> { select :name }, class_name: 'Acronym', foreign_key: :type_acronym_id, optional: true
+  before_save :set_message_ids
+  before_create :set_message_ids
+
+  belongs_to :type, -> { select :name }, class_name: 'Acronym', foreign_key: :type_acronym_id, optional: true
   
   accepts_nested_attributes_for :messages, allow_destroy: true  
   
@@ -18,16 +20,13 @@ class Interaction < ApplicationRecord
   
   def self.save_times params
     
-    puts "\n ================ \n"
-    puts params.inspect
-    puts "\n ================ \n"
-    
-    if params["scroll_count"] > 1 || params["has_scroll"] == false
+    if params["scroll_count"] > 0 || params["has_scroll"] == false
       # salvar o tempo de foco de todas as mensagens
       params['times'].each do |id, time|
         message = Message.find(id)
         message.time_focus = message.time_focus + time;
         message.count_views = message.count_views + 1;
+        message.chat_open = true
         message.save!
       end
     else
@@ -36,6 +35,7 @@ class Interaction < ApplicationRecord
       message = Message.find(id)
       message.time_focus = message.time_focus + params['times'][id];
       message.count_views = message.count_views + 1;
+      message.chat_open = true
       message.save!
     end
     

@@ -87,6 +87,14 @@ app.controller('GlobalController', function ($app, $scope) {
         if (times == {})
             return;
         
+        l({save_times: {
+                    times: times,
+                    scroll_count: PAGE_SCROLL_COUNT,
+                    has_scroll: ($('.ws-mobile-container-y').hasScrollBar() ? true : false)
+                }});
+        
+        return false;
+        
         $app.$api.process({
             Interaction: {
                 save_times: {

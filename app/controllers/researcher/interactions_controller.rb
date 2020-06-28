@@ -93,6 +93,11 @@ class Researcher::InteractionsController < Researcher::ResearcherController
   
   def update
     params.permit!
+    
+#    params[:interaction][:messages_attributes].each do |i, v|
+#      params[:interaction][:messages_attributes][i]['id'] = params[:interaction][:messages_attributes][i]['id'].to_i
+#    end
+    
     @interaction = Interaction.find params[:interaction][:id]
     
     #    @interaction.messages.each do |m|
@@ -101,7 +106,14 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     #      end
     #    end
     
-    if @interaction.update! params[:interaction]
+#    @in
+
+    return d params[:interaction]
+
+    puts "\n ================================= \n"
+    puts "\n ================================= \n"
+    
+    if @interaction.update_attributes!(params[:interaction])
       flash[:blue] = 'Bot foi editado, verifique na lista.'
       
       return redirect_to researcher_interactions_path

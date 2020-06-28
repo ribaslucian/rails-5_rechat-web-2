@@ -70,7 +70,7 @@
 </style>
 
 
-<div class="ws-mobile-container-y ws-messages" __on__click="angular_controller('GlobalController').save_times(total_times);">
+<div class="ws-mobile-container-y ws-messages" onclick="end_times_and_submit()">
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
 
         <div class="ws-message messages" style="margin: 25px 0;">
@@ -183,12 +183,16 @@
       });
   });
 
-  window.onbeforeunload = function () {
+  function end_times_and_submit() {
       end_times();
 
       if (total_times != {}) {
           angular_controller('GlobalController').save_times(total_times);
       }
+  }
+
+  window.onbeforeunload = function () {
+      end_times_and_submit();
   };
 </script>
 

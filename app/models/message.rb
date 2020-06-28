@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   # 1
   after_create_commit { broadcast_if_raw_message }
   after_create :start_interaction
-  # before_save :translate_and_calc_sentimental
+#   before_save :translate_and_calc_sentimental
   before_save :calc_sentimental
   
   belongs_to :interaction, optional: true
