@@ -26,8 +26,6 @@ class Message < ApplicationRecord
 
       # verificar se existe uma mensagem de interacao ja iniciada
       if !last_message.nil?
-        puts "\n ------------------ \n"
-        
         # antes precisamos ver se a ultima mensagm enviada é a ultima da interacao em questao
         last_message_interaction = Message
         .where(interaction_id: last_message.interaction_id)

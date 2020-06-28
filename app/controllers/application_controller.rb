@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
     
     return if params[:action] == 'authorize'
     
-#    if params[:contact_access]
-#      return d 'oi'
-#    end
+    if params[:contact_return]
+      Message.where(contact_id: params[:contact_id]).update_all(chat_open: true)
+    end
     
     #    return d Message.all
     
