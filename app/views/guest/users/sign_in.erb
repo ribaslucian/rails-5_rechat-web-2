@@ -32,13 +32,13 @@
                     <%= f.text_field(:name, placeholder: '* Nome de usuário:') %>
                 </div>
 
-                <%#*<div class="field disabled">%>
-                    <%#= f.label(:type_acronym_id, '* Tipo de usuário:') %>
+                <div class="field disabled" style="display: none;">
+                    <%= f.label(:type_acronym_id, '* Tipo de usuário:') %>
 
-                    <%#*<select class="ui dropdown" name="user[type_acronym_id]" id="user_type_acronym_id">%>
-                        <%#*<option value="201">Voluntário</option>%>
-                    <%#*</select>%>
-                <%#*</div>%>
+                    <select class="ui dropdown" name="user[type_acronym_id]" id="user_type_acronym_id">
+                        <option value="201">Voluntário</option>
+                    </select>
+                </div>
 
                 <div class="field">
                     <%= f.label(:entity_name, 'Seu nome:') %>
@@ -56,13 +56,15 @@
                     Informe ao menos 3 contatos que você costuma conversar nos
                     aplicativos WhatsApp ou Telegram.
                 </div>
-                
+
                 <br/>
 
 
                 <div id="contacts">
                     <%= f.fields_for :contacts do |c| %>
                       <%= render 'contact_fields', f: c %>
+                      <div class="ui divider fitted"></div>
+                      <br/>
                     <% end %>
 
                     <div class="links" style="margin-top: 20px; margin-left: 17px;">
