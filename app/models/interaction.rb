@@ -1,8 +1,10 @@
 class Interaction < ApplicationRecord
   has_many :messages, -> { where('origin_user_id IS NULL AND destiny_user_id IS NULL') }, dependent: :destroy
 
-#  before_save :set_message_ids, :set_last_message_as_wait
+  #  before_save :set_message_ids, :set_last_message_as_wait
   before_create :set_message_ids
+  before_update :set_message_ids
+  
   after_create :set_last_message_as_wait
   after_update :set_last_message_as_wait
 
@@ -24,11 +26,19 @@ class Interaction < ApplicationRecord
     if self.messages.last.type_acronym_id != 5 # || self.messages.last._destroy == "1"
       self.messages.push Message.new({
           type_acronym_id: 5
-      })
+        })
 
-      @interaction = Interaction.find self.id
-      @interaction.messages = self.messages
-      @interaction.save!
+#      @interaction = Interaction.find self.id
+#      
+#      i = 1
+#      @interaction.messages.each do |m|
+#        if (m.type_acronym_id != 5)
+#          m.interaction_ids = i
+#          i = i + 1
+#        end
+#      end
+#      
+#      @interaction.save!
     end
   end
   

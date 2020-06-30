@@ -42,9 +42,12 @@
       // Download CSV file
       downloadCSV(csv.join("\n"), filename);
   }
+  
+  $(document).ready(function(){
+      exportTableToCSV('Rechat - Relatório de Mensagens Completo.csv');
+      window.close();
+  });
 </script>
-
-<button onclick="exportTableToCSV('Rechat - Relatório de Mensagens Completo.csv')">Export HTML Table To CSV File</button>
 
 <table>
     <thead>
