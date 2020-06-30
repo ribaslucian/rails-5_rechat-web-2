@@ -1,5 +1,7 @@
 class Researcher::MessagesController < Researcher::ResearcherController
   
+  
+  
 #  def index
 #    
 #    
@@ -44,8 +46,22 @@ class Researcher::MessagesController < Researcher::ResearcherController
 #    
 #    @messages = @messages.order(created_at: :desc).page params[:page]
 #  end
+
+  
+  
+
+  def export
+    set_filter
+    render layout: 'print'
+  end
   
   def index
+    set_filter
+  end
+  
+  private
+  
+  def set_filter
     if params[:search]
       @messages = View::Message
 

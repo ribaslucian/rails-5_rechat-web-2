@@ -72,3 +72,4 @@ gem 'pycall'
 gem 'whenever', require: false
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 gem 'kaminari'
+#gem 'layout_by_act'

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     get '/interactions/start/:id', to: 'interactions#start'
     
     resources :users
+    
     resources :messages
+    get '/messages_export', to: 'messages#export'
   end
   
   namespace :voluntary do
