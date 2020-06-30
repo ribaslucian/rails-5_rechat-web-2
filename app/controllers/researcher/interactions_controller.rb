@@ -74,6 +74,9 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     params.permit!
 
     @interaction = Interaction.new params[:interaction]
+    
+    
+#    return d @interaction
 
     if @interaction.save!
       flash[:green] = 'Bot foi cadastrado, verifique na lista.'
@@ -108,10 +111,11 @@ class Researcher::InteractionsController < Researcher::ResearcherController
     
 #    @in
 
-    return d params[:interaction]
+#    return d params[:interaction]
+#
+#    puts "\n ================================= \n"
+#    puts "\n ================================= \n"
 
-    puts "\n ================================= \n"
-    puts "\n ================================= \n"
     
     if @interaction.update_attributes!(params[:interaction])
       flash[:blue] = 'Bot foi editado, verifique na lista.'
