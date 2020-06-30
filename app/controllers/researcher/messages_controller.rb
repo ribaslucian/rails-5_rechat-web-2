@@ -46,14 +46,6 @@ class Researcher::MessagesController < Researcher::ResearcherController
 #    
 #    @messages = @messages.order(created_at: :desc).page params[:page]
 #  end
-
-  
-  
-
-  def export
-    set_filter
-    render layout: 'print'
-  end
   
   def index
     set_filter

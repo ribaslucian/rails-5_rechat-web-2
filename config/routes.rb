@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     resources :users
     
     resources :messages
-    get '/messages_export', to: 'messages#export'
+    
+    get '/reports/users', to: 'reports#users'
+    get '/reports/bots', to: 'reports#bots'
+    get '/reports/messages', to: 'reports#messages'
   end
   
   namespace :voluntary do
