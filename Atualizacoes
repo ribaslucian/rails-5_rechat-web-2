@@ -1,5 +1,8 @@
-- Atualizar agendamento da APK para notificar o dia todo e não apenas depois de um horário específico.
-- Marcar mensagens como lidas também quando sair da conversa.
+Correções
+- 
+
+Futuro
 - Criar opção para "desfazer envio" do bot.
 - Criar lista de usuário que visualizaram o Bot em questão.
-- Menu da mensagem recebida da API não abre.
+- Criar uma ferramenta para backup REAL dos dados.
+- Programar o agendamento de fato.
