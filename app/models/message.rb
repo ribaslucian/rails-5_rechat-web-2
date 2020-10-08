@@ -154,12 +154,12 @@ class Message < ApplicationRecord
 
     else
       # nenhuma interacao em vigor
-#      Message.create!({
-#          origin_user_id: 0,
-#          destiny_user_id: self.origin_user_id,
-#          content: 'Olá! Não posso responder no momento, assim que possível entro em contato.',
-#          contact_id: self.contact_id
-#        })
+      Message.create!({
+          origin_user_id: 0,
+          destiny_user_id: self.origin_user_id,
+          content: 'Olá! Não posso responder no momento, assim que possível entro em contato.',
+          contact_id: self.contact_id
+        })
     end
   end
 

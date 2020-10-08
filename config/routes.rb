@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     get '/reports/users', to: 'reports#users'
     get '/reports/bots', to: 'reports#bots'
     get '/reports/messages', to: 'reports#messages'
+    
+    get 'textuals/index', to: 'textuals#index', as: :textuals
   end
   
   namespace :voluntary do

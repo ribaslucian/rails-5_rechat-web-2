@@ -188,48 +188,49 @@ User.create({
     type_acronym_id: 200,
   })
 
-User.create({
-  name: 'lucian',
-  type_acronym_id: 201,
-})
+
+#User.create({
+#  name: 'lucian',
+#  type_acronym_id: 201,
+#})
 
 
-User.create({
-  name: 'Thiagosilva',
-  type_acronym_id: 201,
-  contacts_attributes: [{
-      type_acronym_id: 600,
-      name: 'Mãe'
-  }, {
-      type_acronym_id: 600,
-      name: 'Pai'
-  }, {
-      type_acronym_id: 601,
-      name: 'Joao'
-  }, {
-      type_acronym_id: 602,
-      name: 'Chefe'
-  }, {
-      type_acronym_id: 603,
-      name: 'Dicas'
-  }, {
-      type_acronym_id: 603,
-      name: 'Familia'
-  }]
-})
-
-
-User.create({
-  name: 'Celso',
-  type_acronym_id: 201,
-  contacts_attributes: [{
-      type_acronym_id: 600,
-      name: 'Helen '
-  }, {
-      type_acronym_id: 602,
-      name: 'Leyza'
-  }, {
-      type_acronym_id: 601,
-      name: 'Gilbs'
-  }]
-})
+#User.create({
+#  name: 'Thiagosilva',
+#  type_acronym_id: 201,
+#  contacts_attributes: [{
+#      type_acronym_id: 600,
+#      name: 'Mãe'
+#  }, {
+#      type_acronym_id: 600,
+#      name: 'Pai'
+#  }, {
+#      type_acronym_id: 601,
+#      name: 'Joao'
+#  }, {
+#      type_acronym_id: 602,
+#      name: 'Chefe'
+#  }, {
+#      type_acronym_id: 603,
+#      name: 'Dicas'
+#  }, {
+#      type_acronym_id: 603,
+#      name: 'Familia'
+#  }]
+#})
+#
+#
+#User.create({
+#  name: 'Celso',
+#  type_acronym_id: 201,
+#  contacts_attributes: [{
+#      type_acronym_id: 600,
+#      name: 'Helen '
+#  }, {
+#      type_acronym_id: 602,
+#      name: 'Leyza'
+#  }, {
+#      type_acronym_id: 601,
+#      name: 'Gilbs'
+#  }]
+#})
