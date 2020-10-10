@@ -34,4 +34,4 @@
 # custom
 /Gemfile.lock
 /.ruby-version
-#/app/assets/javascripts/angularjs/init/application.js
+/app/assets/javascripts/angularjs/init/application.js
