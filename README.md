@@ -1,5 +1,3 @@
-
-
 ### * Atalhos WebMedia 2020
 - [você está aqui] Rechat: Código-Fonte do Painel Web
 - [Vídeo Demonstrativo](https://breakdance.github.io/breakdance/)
