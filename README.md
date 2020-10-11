@@ -1,10 +1,10 @@
 ### * Atalhos WebMedia 2020
 - [você está aqui] Rechat: Código-Fonte do Painel Web
-- [Vídeo Demonstrativo](https://breakdance.github.io/breakdance/)
-- [Artigo em PDF (ACM/Webmedia)](https://breakdance.github.io/breakdance/)
+- [Vídeo Demonstrativo](*)
+- [Artigo em PDF (ACM/Webmedia)](https://github.com/ribaslucian/rechat-web/blob/master/public/Artigo%20ACM-Webmedia.pdf)
 - Configurações Temporárias
     - [Link do Painel Web configurado](ec2-18-228-83-110.sa-east-1.compute.amazonaws.com)
-    - [Rechat: APK do Aplicativo Simulador](https://breakdance.github.io/breakdance/)
+    - [Rechat: APK do Aplicativo Simulador](*)
 ---
 
 # Rechat (Painel Web)
