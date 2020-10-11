@@ -1,9 +1,9 @@
 ### * Atalhos WebMedia 2020
 - [você está aqui] Rechat: Código-Fonte do Painel Web
 - [Vídeo Demonstrativo](*)
-- [Artigo em PDF (ACM/Webmedia)](https://drive.google.com/file/d/162U6fJmwhcIZFwMeF_JTvnyl7YhPSshK/view?usp=sharing){:target="_blank"}
+- [Artigo em PDF (ACM/Webmedia)](https://drive.google.com/file/d/162U6fJmwhcIZFwMeF_JTvnyl7YhPSshK/view?usp=sharing)
 - Configurações Temporárias
-    - [Link do Painel Web configurado](ec2-18-228-83-110.sa-east-1.compute.amazonaws.com)
+    - [Link do Painel Web configurado](http://ec2-18-228-83-110.sa-east-1.compute.amazonaws.com)
     - [Rechat: APK do Aplicativo Simulador](*)
 ---
 
