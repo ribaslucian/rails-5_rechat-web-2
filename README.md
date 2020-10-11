@@ -4,7 +4,7 @@
 - [Artigo em PDF (ACM/Webmedia)](https://drive.google.com/file/d/162U6fJmwhcIZFwMeF_JTvnyl7YhPSshK/view?usp=sharing)
 - Configurações Temporárias
     - [Link do Painel Web configurado](http://ec2-18-228-83-110.sa-east-1.compute.amazonaws.com)
-    - [Rechat: APK do Aplicativo Simulador](*)
+    - [Rechat: APK do Aplicativo Simulador](https://github.com/ribaslucian/rechat-apk/blob/master/Rechat.apk)
 ---
 
 # Rechat (Painel Web)
