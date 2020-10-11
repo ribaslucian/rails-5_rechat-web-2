@@ -1,5 +1,5 @@
 ### * Atalhos WebMedia 2020
-- [Vídeo Demonstrativo](*)
+- [Vídeo Demonstrativo](https://youtu.be/rByIa6ugMJ8)
 - _[você está aqui]_ Rechat: Código-Fonte do Painel Web
 - [Rechat: Código-Fonte do Aplicativo Simulador](https://github.com/ribaslucian/rechat-apk)
 - [Artigo em PDF (ACM/Webmedia)](https://drive.google.com/file/d/162U6fJmwhcIZFwMeF_JTvnyl7YhPSshK/view?usp=sharing)
