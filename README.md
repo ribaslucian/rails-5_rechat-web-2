@@ -20,7 +20,7 @@ móvel, principalmente sobre aqueles expostos à conteúdos negativos.
 ##### Funcionamento
 Além do diagrama que apresenta o funcionamento e recursos, criamos um  [vídeo que explica na prática](https://breakdance.github.io/breakdance/).
 
-![Arquitetura de Funcionamento](https://raw.githubusercontent.com/ribaslucian/rails-chat-channel/master/public/rechat_arquitetura.jpg)
+![Arquitetura de Funcionamento](https://raw.githubusercontent.com/ribaslucian/rechat-web/master/public/rechat_arquitetura.jpg)
 
 
 ### Requisitos
