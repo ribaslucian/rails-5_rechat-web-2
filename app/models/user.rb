@@ -3,7 +3,7 @@ class User < ApplicationRecord
   
   before_create :add_defaults_contacts
   before_update :at_least_one_contact
-  after_create :send_welcome
+  #after_create :send_welcome
   
   accepts_nested_attributes_for :contacts, allow_destroy: true
   
