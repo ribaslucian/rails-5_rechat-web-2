@@ -14,7 +14,7 @@ orientation: vertical
 polymorphism: false
 sort: false
 warn: true
-only: null
+only: User, Interaction, Contact, Message, MessageShare
 only_recursion_depth: null
 prepend_primary: false
 cluster: false
