@@ -97,6 +97,7 @@ class Researcher::InteractionsController < Researcher::ResearcherController
   def update
     params.permit!
     
+<<<<<<< HEAD
 #    params[:interaction][:messages_attributes].each do |i, v|
 #      params[:interaction][:messages_attributes][i]['id'] = params[:interaction][:messages_attributes][i]['id'].to_i
 #    end
@@ -121,11 +122,31 @@ class Researcher::InteractionsController < Researcher::ResearcherController
       flash[:blue] = 'Bot foi editado, verifique na lista.'
       
       return redirect_to researcher_interactions_path
+=======
+    i = 1
+    params[:interaction][:messages_attributes].each do |k, m|
+      if (m[:type_acronym_id] != "5" && m[:_destroy] != "1")
+        m[:interaction_ids] = i
+        i = i + 1
+      end
+    end
+    
+    @interaction = Interaction.find params[:interaction][:id]
+    
+    if @interaction.update_attributes!(params[:interaction])
+      flash[:blue] = 'Bot foi editado, verifique na lista.'
+      
+#      return redirect_to researcher_interactions_path
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
     else
       flash[:red] = 'Verifique o formulário e tente novamente.'
     end
     
+<<<<<<< HEAD
     return render 'edit'
+=======
+    return redirect_to (edit_researcher_interaction_path(params[:interaction][:id]))
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
   end
   
   def destroy

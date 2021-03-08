@@ -63,7 +63,15 @@
                               <%= m.type_content_name %>:
                           </b>
 
+<<<<<<< HEAD
                           <%= m.content %>                   
+=======
+                          <% if m.content %>
+                            <%= m.content.html_safe %>
+                          <% else %>
+                            <%= m.content %>                          
+                          <% end %>
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                       </div>
 
                       <div style="font-size: 90%; color: grey; margin: 5px;">
@@ -73,6 +81,7 @@
 
                   <td>
                       <div>
+<<<<<<< HEAD
                           <% if m.destiny_user_id %>
                             <% if m.origin_user_id == 0 %>
                               Pesquisador
@@ -84,10 +93,35 @@
                             <span style="color: grey; font-size: 90%;">
                                 Msg. de Bot
                             </span>
+=======
+                          <% if m.type_acronym_id == 6 %>
+                            <%= m.origin_user_name %>
+                            (<%= Contact.select(:name).find(m.origin_contact_id).name %>)
+                          <% else %>
+                            <% if m.destiny_user_id %>
+                              <% if m.origin_user_id == 0 %>
+                                Pesquisador
+                              <% else %>
+                                <%= m.origin_user_name %>
+                                (<%= m.contact_name %>)
+                              <% end %>
+                            <% else %>
+                              <span style="color: grey; font-size: 90%;">
+                                  Msg. de Bot
+                              </span>
+                            <% end %>
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                           <% end %>
                       </div>
 
                       <div>
+<<<<<<< HEAD
+=======
+  <%# if m.type_acronym_id == 6 %>
+  <%# else %>
+  <%# end %>
+
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                           <% if m.destiny_user_id %>
                             <% if m.destiny_user_id == 0 %>
                               Pesquisador
@@ -95,7 +129,11 @@
                               <%= m.destiny_user_name %>
 
                               <% if m.type_acronym_id == 6 %>
+<<<<<<< HEAD
                                 (<%= Contact.select(:name).find(m.destiny_contact_id).name %>)
+=======
+                                (<%= Contact.select(:name).find(m.contact_id).name %>)
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                               <% else %>
                                 (<%= m.contact_name %>)
                               <% end %>
@@ -124,11 +162,19 @@
                               Referente ao Bot
 
                               <b>
+<<<<<<< HEAD
                                 <% if m.type_acronym_id == 6 %>
                                   <%= m.interaction_id %>
                                 <% else %>
                                   <%= m.reference_interaction_name %>
                                 <% end %>
+=======
+                                  <% if m.type_acronym_id == 6 %>
+                                    <%= m.interaction_id %>
+                                  <% else %>
+                                    <%= m.reference_interaction_name %>
+                                  <% end %>
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                               </b>
                           </div>
                         <% end %>

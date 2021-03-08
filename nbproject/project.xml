@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.web.clientproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
+<<<<<<< HEAD
             <name>Rails WhatsApp Researcher</name>
+=======
+            <name>Rechat Web</name>
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
         </data>
     </configuration>
 </project>

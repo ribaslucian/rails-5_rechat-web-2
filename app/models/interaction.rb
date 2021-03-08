@@ -3,14 +3,22 @@ class Interaction < ApplicationRecord
 
   #  before_save :set_message_ids, :set_last_message_as_wait
   before_create :set_message_ids
+<<<<<<< HEAD
   before_update :set_message_ids
+=======
+#  before_update :set_message_ids_update
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
   
   after_create :set_last_message_as_wait
   after_update :set_last_message_as_wait
 
   belongs_to :type, -> { select :name }, class_name: 'Acronym', foreign_key: :type_acronym_id, optional: true
   
+<<<<<<< HEAD
   accepts_nested_attributes_for :messages, allow_destroy: true  
+=======
+  accepts_nested_attributes_for :messages, allow_destroy: true
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
   
   def set_message_ids
     i = 1
@@ -22,12 +30,28 @@ class Interaction < ApplicationRecord
     end
   end
   
+<<<<<<< HEAD
+=======
+  def set_message_ids_update
+    i = 1
+    self.messages.each do |m|
+      if m._destroy != "1"
+        if m.type_acronym_id != 5
+          m.interaction_ids = i
+          i = i + 1
+        end
+      end
+    end
+  end
+  
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
   def set_last_message_as_wait
     if self.messages.last.type_acronym_id != 5 # || self.messages.last._destroy == "1"
       self.messages.push Message.new({
           type_acronym_id: 5
         })
 
+<<<<<<< HEAD
 #      @interaction = Interaction.find self.id
 #      
 #      i = 1
@@ -39,6 +63,19 @@ class Interaction < ApplicationRecord
 #      end
 #      
 #      @interaction.save!
+=======
+      #      @interaction = Interaction.find self.id
+      #      
+      #      i = 1
+      #      @interaction.messages.each do |m|
+      #        if (m.type_acronym_id != 5)
+      #          m.interaction_ids = i
+      #          i = i + 1
+      #        end
+      #      end
+      #      
+      #      @interaction.save!
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
     end
   end
   

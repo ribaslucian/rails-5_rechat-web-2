@@ -70,7 +70,23 @@
 </style>
 
 
+<<<<<<< HEAD
 <div class="ws-mobile-container-y ws-messages">
+=======
+<div class="ws-mobile-container-y ws-messages"
+     ng-init="
+      $app.share.interaction_id = null;
+      $app.share.propagation_message_id = null;
+      $app.share.interaction_message_id = null;
+
+      $app.share.content = null;
+      $app.share.interaction_ids = null;
+      $app.share.type_content_acronym_id = null;
+      $app.share.reference_interaction_id = null;
+     "
+     
+     >
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
     <div id="messages" class="ws-mobile-container-x ws-behavior-messages">
 
         <div class="ws-message messages" style="margin: 25px 0;">
@@ -206,7 +222,11 @@
         <% Contact.where(user_id: session[:user]['id']).each do |c| %>
 
           <div class="ui checkbox" style="padding: 10px;">
+<<<<<<< HEAD
               <input type="checkbox" name="contacts_ids[<%= c.id %>]" ng-model="contacts_ids[<%= c.id %>]" />
+=======
+              <input type="checkbox" name="$app.contacts_ids[<%= c.id %>]" ng-model="$app.contacts_ids[<%= c.id %>]" />
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
               <label><%= c.name %></label>
           </div>
 
@@ -219,7 +239,11 @@
             Cancelar
         </div>
 
+<<<<<<< HEAD
         <div class="ui blue button" ng-click="message_share(contacts_ids, share)">
+=======
+        <div class="ui blue button" ng-click="message_share()">
+>>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
             Compartilhar
         </div>
     </div>
