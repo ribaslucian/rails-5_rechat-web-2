@@ -11,11 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-<<<<<<< HEAD
-  config.consider_all_requests_local       = true
-=======
   config.consider_all_requests_local       = false
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]

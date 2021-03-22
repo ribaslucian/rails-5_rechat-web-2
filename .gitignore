@@ -32,11 +32,5 @@
 /nbproject/private/
 
 # custom
-<<<<<<< HEAD
 Gemfile.lock
 .ruby-version
-=======
-/Gemfile.lock
-/.ruby-version
-/app/assets/javascripts/angularjs/init/application.js
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66

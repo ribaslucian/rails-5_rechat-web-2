@@ -8,11 +8,7 @@
               </div>
 
 
-<<<<<<< HEAD
               <% m = Message.select(:id, :content, :chat_open).order(id: :desc).where(contact_id: c.id, origin_user_id: 0).first  %>
-=======
-              <% m = Message.select(:id, :content, :chat_open).order(id: :desc).where(contact_id: c.id).first  %>
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
               <%#= m.inspect %>
 
               <div class="ws-mobile-column-2">
@@ -30,17 +26,10 @@
                       <div class="ws-contact-message">
                           <% if m %>
                             <% if m.chat_open == true %>
-<<<<<<< HEAD
                               <%= m.content %>
                             <% else %>
                               <b style="color: black; font-weight: 700 !important;">
                                   <%= m.content %>
-=======
-                              <%= m.content.html_safe %>
-                            <% else %>
-                              <b style="color: black; font-weight: 700 !important;">
-                                  <%= m.content.html_safe %>
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
                               </b>
                             <% end %>
                           

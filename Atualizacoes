@@ -3,10 +3,6 @@ Correções
 
 Futuro
 - Criar opção para "desfazer envio" do bot.
-<<<<<<< HEAD
-=======
-- Criar opção para enviar o bot para um usuário específico. Isso é necessário para disseminar conteúdo que já foram enviados somente para novos usuários.
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
 - Criar lista de usuário que visualizaram o Bot em questão.
 - Criar uma ferramenta para backup REAL dos dados.
 - Programar o agendamento de fato.

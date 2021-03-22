@@ -83,11 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_213834) do
     t.integer "destiny_user_id"
     t.integer "previous_message_id"
     t.integer "contact_id"
-<<<<<<< HEAD
     t.integer "destiny_contact_id"
-=======
-    t.integer "origin_contact_id"
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
     t.text "content_en"
     t.string "sentimental_category"
     t.decimal "sentimental_score"

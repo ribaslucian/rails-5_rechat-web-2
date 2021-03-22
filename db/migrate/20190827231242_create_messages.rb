@@ -9,11 +9,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       ## mensagems de interacoes
       # para criacao de interacoes
       # t.integer :sequence
-<<<<<<< HEAD
       t.belongs_to :interaction, foreign_key: true
-=======
-      t.belongs_to :interaction, foreign_key: true, null: true
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
       t.integer :type_acronym_id, foreign_key: {to_table: :acronyms, name: 'rule_fk:messages.type_acronym'}, default: 3, null: false
       t.json :sent_users_id       # usuarios que mensagem da interacao ja foi enviada
       t.json :answered_users_id    # usuarios que responderam essa mensagem de interacao
@@ -31,12 +27,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :previous_message_id, foreign_key: {to_table: :messages, name: 'rule_fk:messages.previous_message'}
       
       t.integer :contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.contact'}
-<<<<<<< HEAD
       t.integer :destiny_contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.destiny_contact_id'}
-=======
-      #t.integer :destiny_contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.destiny_contact_id'}
-      t.integer :origin_contact_id, foreign_key: {to_table: :contacts, name: 'rule_fk:messages.origin_contact_id'}
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
       
       # calculos emocionais
       t.text :content_en

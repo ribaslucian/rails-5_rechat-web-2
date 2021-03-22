@@ -1,10 +1,6 @@
 // var API_URL = 'http://54.207.155.116/api/authorize.json';
 // var API_URL = 'http://192.168.0.5:3000/api/authorize.json';
-<<<<<<< HEAD
 var API_URL = 'http://localhost:3000/api/authorize.json';
-=======
-var API_URL = 'http://ec2-18-228-83-110.sa-east-1.compute.amazonaws.com/api/authorize.json';
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
 var app = angular.module('ChatResearcher', ['toastr']);
 
 app.service('$data', function () {
@@ -47,8 +43,4 @@ app.run(function ($rootScope, $http, $app, $flash, $api, $entity, $data, $basic,
     $app.$api = $api;
     $app.$entity = $entity;
     $app.data = $data;
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66

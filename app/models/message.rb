@@ -267,28 +267,15 @@ class Message < ApplicationRecord
           Message.create!({
               origin_user_id: params['user_id'],
               destiny_user_id: params['user_id'],
-<<<<<<< HEAD
               contact_id: params['origin_contact_id'],
-=======
-              
-              origin_contact_id: params['origin_contact_id'],
-#             destiny_contact_id: params['origin_contact_id'],
-              contact_id: contact_id,
-              
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
               type_acronym_id: 6,
               
 #              interaction_message_id: params['interaction_message_id'],
 #              propagation_message_id: params['propagation_message_id'],
 
               # passar nos parametros
-<<<<<<< HEAD
               content: params['content'],
               destiny_contact_id: contact_id,
-=======
-              content: "<i>Compartilhada</i> &nbsp; #{params['content']}",
-              chat_open: true,
->>>>>>> 7bd24b15adbc07b3204254e7e73712369fde6a66
               interaction_id: params['interaction_id'],
               interaction_ids: params['interaction_ids'],
               type_content_acronym_id: params['type_content_acronym_id'],
